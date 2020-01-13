@@ -914,7 +914,7 @@ table tfoot td {
 /* - - - - - - - - - - Home Page Styles - - - - - - - - - - */
 .sidebar {
   font-family: 'Lato', sans-serif;
-  color: #00000;
+  color: #000;
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -1395,7 +1395,7 @@ a.newer-posts:hover {
 @media only screen and (max-width: 768px) {
   .sidebar {
     font-family: 'Lato', sans-serif;
-    color: #00000;
+    color: #000;
     position: relative;
     display: -webkit-box;
     display: -webkit-flex;
