@@ -889,7 +889,7 @@ table tfoot td {
 }
 
 .post, .article-page {
-  background-color: #000;
+  background-color: #1D1B1B;
 }
 
 ::-moz-selection {
@@ -1497,7 +1497,7 @@ a.newer-posts:hover {
 
 #navbar a {
   float: left;
-  color: #EC4D37;
+  color: #00ffdc;
   text-align: center;
   padding: 12px;
   text-decoration: none;
@@ -1519,7 +1519,7 @@ a.newer-posts:hover {
 
 #navbar a.active {
   background-color: #1D1B1B;
-  color: #EC4D37;
+  color: #00ffdc;
 }
 
 #navbar-right {
