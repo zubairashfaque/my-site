@@ -913,6 +913,8 @@ table tfoot td {
 
 /* - - - - - - - - - - Home Page Styles - - - - - - - - - - */
 .sidebar {
+  font-family: 'Lato', sans-serif;
+  color: #00000;
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
