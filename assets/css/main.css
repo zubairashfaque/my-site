@@ -1393,7 +1393,7 @@ a.newer-posts:hover {
 @media only screen and (max-width: 768px) {
   .sidebar {
     font-family: 'Lato', sans-serif;
-    color: #ffffff;
+    color: #00000;
     position: relative;
     display: -webkit-box;
     display: -webkit-flex;
