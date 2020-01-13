@@ -1392,6 +1392,8 @@ a.newer-posts:hover {
 /* Small Devices, Tablets */
 @media only screen and (max-width: 768px) {
   .sidebar {
+    font-family: 'Lato', sans-serif;
+    color: #ffffff;
     position: relative;
     display: -webkit-box;
     display: -webkit-flex;
