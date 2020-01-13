@@ -934,7 +934,7 @@ table tfoot td {
   bottom: 0;
   width: 240px;
   height: 100%;
-  padding: 20px 10px;
+  padding: 75px 10px;
   background-color: #ffffff;
 }
 
@@ -1411,7 +1411,7 @@ a.newer-posts:hover {
         -ms-flex-pack: justify;
             justify-content: space-between;
     width: 100%;
-    padding: 10px;
+    padding: 80px;
     background-color: #ffffff;
     -webkit-box-shadow: 0 1px 1px 0 rgba(31, 35, 46, 0.15);
             box-shadow: 0 1px 1px 0 rgba(31, 35, 46, 0.15);
