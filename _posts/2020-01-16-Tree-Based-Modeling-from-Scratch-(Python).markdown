@@ -10,12 +10,12 @@ tags: [ZUBI_ASH, BLOG, DATACAMP, Decision_Tree_Algorithm] # add tag
 
 In this blog, I will cover in detail my understanding of tree-based modes. This tutorial is for beginners to learn tree-based modeling from scratch.
 
-###  Overview
+##  Overview
 *	Explaining of tree based models for classification and regression from scratch with their advantages and disadvantages.
 *	Learn supervised machine learning concepts like Classification and Regression Trees (CART), Bagging and Random Forests, Boosting random forest, and ensemble methods.
 *	Implementation of these tree based machine-learning algorithms in Python.
 
-### Introduction
+## Introduction
 
 Decision tree are supervised learning models used in data mining. In other words, these models help us in finding new information in a provided dataset to solve problems involving classification and regression. Tree based learning algorithms are considered to be one of the best in terms of accuracy, stability, ease of understanding and flexibility. As discussed, these models have a high flexibility but that comes at a price: on one hand, trees are able to capture complex non-linear relationships; on the other hand, they are prone to over fitting (memorizing the noise present in a dataset).
 
@@ -47,7 +47,7 @@ Types of decision trees are based on the type of target variable we have. It can
 
 In order to understand how a classification tree produces purest leafs we have to understand definition of information gain.
 
-#### Information Gain
+### Information Gain
 
 The nodes of a classification tree are grown recursively; in other words, the restraint to grow of an internal node of leaf depends on the state of its ancestor’s node. 
 
@@ -67,7 +67,7 @@ A question that you may have in your mind here is: What is impurity and what is 
 
 Now, we can build a conclusion that less impure node requires less information to describe it. And, more impure node requires more information. There are different criteria you can use to measure impurities of a node among which are the gini-index and entropy. 
 
-#### What is Gini Index?
+### What is Gini Index?
 
 Gini index or Gini impurity measures the degree or probability of a particular variable being wrongly classified when it is randomly chosen. But what is actually meant by ‘impurity’? If all the elements belong to a single class, then it can be called pure. The degree of Gini index varies between 0 and 1, where 0 denotes that all elements belong to a certain class or if there exists only one class, and 1 denotes that the elements are randomly distributed across various classes. A Gini Index of 0.5 denotes equally distributed elements into some classes.
 
@@ -77,7 +77,7 @@ Gini index or Gini impurity measures the degree or probability of a particular v
 
 where pi  is the probability of an object being classified to a particular class. While building the decision tree, we would prefer choosing the attribute/feature with the least Gini index as the root node.
 
-#### What is Entropy?
+### What is Entropy?
 
 Information theory is a measure to define this degree of disorganization in a system known as Entropy. If the sample is completely homogeneous, then the entropy is zero and if the sample is an equally divided (50% – 50%), it has entropy of one.
 
@@ -87,7 +87,8 @@ Information theory is a measure to define this degree of disorganization in a sy
 
 Here p and q is probability of success and failure respectively in that node. Entropy is also used with categorical target variable. It chooses the split which has lowest entropy compared to parent node and other splits. The lesser the entropy, the better it is.
 
-#### Steps to calculate entropy for a split:
+### Steps to calculate entropy for a split:
+
   1.	Calculate entropy of parent node
   2.	Calculate entropy of each individual node of split and calculate weighted average of all sub-nodes available in split.
 
