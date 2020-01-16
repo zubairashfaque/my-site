@@ -11,11 +11,9 @@ tags: [ZUBI_ASH, BLOG, DATACAMP, Decision_Tree_Algorithm] # add tag
 In this blog, I will cover in detail my understanding of tree-based modes. This tutorial is for beginners to learn tree-based modeling from scratch.
 
 ####  Overview
-•	Explaining of tree based models for classification and regression from scratch with their advantages and disadvantages.
-
-•	Learn supervised machine learning concepts like Classification and Regression Trees (CART), Bagging and Random Forests, Boosting random forest, and ensemble methods.
-
-•	Implementation of these tree based machine-learning algorithms in Python.
+  •	Explaining of tree based models for classification and regression from scratch with their advantages and disadvantages.
+  •	Learn supervised machine learning concepts like Classification and Regression Trees (CART), Bagging and Random Forests, Boosting random forest, and ensemble methods.
+  •	Implementation of these tree based machine-learning algorithms in Python.
 
 ### Introduction
 
