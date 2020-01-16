@@ -11,11 +11,9 @@ tags: [ZUBI_ASH, BLOG, DATACAMP, Decision_Tree_Algorithm] # add tag
 In this blog, I will cover in detail my understanding of tree-based modes. This tutorial is for beginners to learn tree-based modeling from scratch.
 
 ####  Overview
-  •	Explaining of tree based models for classification and regression from scratch with their advantages and disadvantages.
-  
-  •	Learn supervised machine learning concepts like Classification and Regression Trees (CART), Bagging and Random Forests, Boosting random forest, and ensemble methods.
-  
-  •	Implementation of these tree based machine-learning algorithms in Python.
+*	Explaining of tree based models for classification and regression from scratch with their advantages and disadvantages.
+*	Learn supervised machine learning concepts like Classification and Regression Trees (CART), Bagging and Random Forests, Boosting random forest, and ensemble methods.
+*	Implementation of these tree based machine-learning algorithms in Python.
 
 ### Introduction
 
@@ -25,6 +23,11 @@ Decision tree are supervised learning models used in data mining. In other words
 
 A decision tree is like a flowchart. To put it another way, a decision-tree is data-structure consisting of hierarchy of individual units called nodes. Each internal node represents a “question” or “prediction” (e.g., whether a coin flip comes up heads or tails). 
 There are three kinds of nodes.
+
+* Hexagon shoreditch beard
+* Intelligentsia narwhal austin
+* Literally meditation four
+* Microdosing hoodie woke
 
   I. Root
 
