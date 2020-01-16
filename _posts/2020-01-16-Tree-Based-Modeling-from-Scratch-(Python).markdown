@@ -39,15 +39,39 @@ Figure: [Breast Cancer Wisconsin (Diagnostic) Data Set](https://www.kaggle.com/u
 
 In above tree diagram, consider the case where an instance move back and forth the tree to reach the leaf in left. In this leaf, there are 257 instances classified as benign and 7 instances classified as malignant. As a result, the tree's prediction for this instance would be benign.
 
-### Types of Decision Trees
+#### Types of Decision Trees
 
 Types of decision trees are based on the type of target variable we have. It can be of two types:
-1.	Classification Decision Tree: A decision tree, which has categorical target variable then it called as classification decision tree also called variable decision tree. 
-2.	Regression Decision Tree: A decision tree, which has continuous target variable then it is called as regression decision tree also continuous variable decision Tree.
+1.  **Classification Decision Tree**: A decision tree, which has categorical target variable then it called as classification decision tree also called variable decision tree. 
+2.	**Regression Decision Tree**: A decision tree, which has continuous target variable then it is called as regression decision tree also continuous variable decision Tree.
 
-1. First ordered list item
-2. Another item
-⋅⋅* Unordered sub-list. 
+In order to understand how a classification tree produces purest leafs we have to understand definition of information gain.
+
+#### Information Gain
+
+The nodes of a classification tree are grown recursively; in other words, the restraint to grow of an internal node of leaf depends on the state of its ancestor’s node. 
+
+{: .center}
+![tree]({{site.baseurl}}/assets/img/tree-2.jpg)
+
+To produce the purist leaves possible, at each node, a tree asks the question involving one feature f and split-point sp. Now, million dollar question is that how does it know which feature and which spit-point to pick? It does so by maximizing information gain. The tree considers that every node contains information and aims at maximizing the information gain obtained after each split. Consider the case where a Node with N samples is split into a left-node with Nleft samples and a right-node with Nright samples. 
+
+The information gain for such split is given by the formula shows below.
+
+![information gain]({{site.baseurl}}/assets/img/tree-3.jpg)
+
+A question that you may have in your mind here is: What is impurity and what is criterion is used to measure the impurity of a node? Look at the image below and think which node can be described easily. I am sure, your answer is C because it requires less information as all values are similar. On the other hand, B requires more information to describe it and A requires the maximum information. In other words, we can say that C is a Pure node, B is less Impure and A is more impure.
+
+{: .center}
+![tree]({{site.baseurl}}/assets/img/tree-4.jpg)
+
+Now, we can build a conclusion that less impure node requires less information to describe it. And, more impure node requires more information. There are different criteria you can use to measure impurities of a node among which are the gini-index and entropy. 
+
+#### What is Gini Index?
+
+Gini index or Gini impurity measures the degree or probability of a particular variable being wrongly classified when it is randomly chosen. But what is actually meant by ‘impurity’? If all the elements belong to a single class, then it can be called pure. The degree of Gini index varies between 0 and 1, where 0 denotes that all elements belong to a certain class or if there exists only one class, and 1 denotes that the elements are randomly distributed across various classes. A Gini Index of 0.5 denotes equally distributed elements into some classes.
+
+
 
 Emphasis, aka italics, with *asterisks* or _underscores_.
 
