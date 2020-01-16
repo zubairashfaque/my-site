@@ -28,8 +28,8 @@ There are three kinds of nodes.
 * Internal node
 * Leaf
 
-The root is parent node or starting of a flowchart, a question-giving rise to two children nodes. An internal node having one parent node, question-giving rise to two children nodes. Leaf having one parent node with no children node and involving no questions; it is where prediction is made.
-A decision tree is a tree in which each internal node is labeled with an input feature. The branch coming from a node labeled with an input feature are labeled with each of the possible values of the output feature or in other words the branch leads to a secondary decision node on a different input feature. Each leaf of the tree is labeled with a class or a probability distribution over the classes, telling that the data set has been classified by the tree either into a specific class, or into a particular probability distribution.
+The `root` is parent node or starting of a flowchart, a question-giving rise to two children nodes. An internal node having one parent node, question-giving rise to two children nodes. Leaf having one parent node with no children node and involving no questions; it is where prediction is made.
+A decision tree is a tree in which each internal node is labeled with an input `feature`. The branch coming from a node labeled with an input feature are labeled with each of the possible values of the output feature or in other words the branch leads to a `secondary decision` node on a different input feature. Each leaf of the tree is labeled with a `class` or a `probability distribution` over the classes, telling that the data set has been classified by the tree either into a specific class, or into a particular probability distribution.
 
 {: .center}
 ![I and My friends]({{site.baseurl}}/assets/img/tree-1.jpg)
@@ -37,15 +37,15 @@ A decision tree is a tree in which each internal node is labeled with an input f
 {: .center}
 Figure: [Breast Cancer Wisconsin (Diagnostic) Data Set](https://www.kaggle.com/uciml/breast-cancer-wisconsin-data)
 
-In above tree diagram, consider the case where an instance move back and forth the tree to reach the leaf in left. In this leaf, there are 257 instances classified as benign and 7 instances classified as malignant. As a result, the tree's prediction for this instance would be benign.
+In above tree `diagram`, consider the case where an instance move back and forth the tree to reach the leaf in left. In this leaf, there are 257 instances classified as benign and 7 instances classified as `malignant`. As a result, the tree's prediction for this instance would be `benign`.
 
 #### Types of Decision Trees
 
 Types of decision trees are based on the type of target variable we have. It can be of two types:
-1.  **Classification Decision Tree**: A decision tree, which has categorical target variable then it called as classification decision tree also called variable decision tree. 
-2.	**Regression Decision Tree**: A decision tree, which has continuous target variable then it is called as regression decision tree also continuous variable decision Tree.
+1.  **Classification Decision Tree**: A decision tree, which has categorical target variable then it called as `classification decision` tree also called variable decision tree. 
+2.	**Regression Decision Tree**: A decision tree, which has continuous target variable then it is called as `regression decision` tree also continuous variable decision Tree.
 
-In order to understand how a classification tree produces purest leafs we have to understand definition of information gain.
+In order to understand how a classification tree produces purest leafs we have to understand definition of `information gain`.
 
 ### Information Gain
 
@@ -54,45 +54,45 @@ The nodes of a classification tree are grown recursively; in other words, the re
 {: .center}
 ![tree]({{site.baseurl}}/assets/img/tree-2.jpg)
 
-To produce the purist leaves possible, at each node, a tree asks the question involving one feature f and split-point sp. Now, million dollar question is that how does it know which feature and which spit-point to pick? It does so by maximizing information gain. The tree considers that every node contains information and aims at maximizing the information gain obtained after each split. Consider the case where a Node with N samples is split into a left-node with Nleft samples and a right-node with Nright samples. 
+To produce the purist leaves possible, at each node, a tree asks the question involving one `feature f` and `split-point sp`. Now, million dollar question is that how does it know which feature and which spit-point to pick? It does so by maximizing information gain. The tree considers that every node contains information and aims at maximizing the information gain obtained after each split. Consider the case where a Node with N samples is split into a left-node with Nleft samples and a right-node with Nright samples. 
 
-The information gain for such split is given by the formula shows below.
+The `information gain` for such split is given by the formula shows below.
 
 ![information gain]({{site.baseurl}}/assets/img/tree-3.jpg)
 
-A question that you may have in your mind here is: What is impurity and what is criterion is used to measure the impurity of a node? Look at the image below and think which node can be described easily. I am sure, your answer is C because it requires less information as all values are similar. On the other hand, B requires more information to describe it and A requires the maximum information. In other words, we can say that C is a Pure node, B is less Impure and A is more impure.
+A `question` that you may have in your mind here is: What is impurity and what is `criterion` is used to measure the impurity of a node? Look at the `image` below and think which node can be described easily. I am sure, your answer is C because it requires less information as all values are similar. On the other hand, B requires more information to describe it and A requires the maximum information. In other words, we can say that C is a Pure node, B is less Impure and A is more impure.
 
 {: .center}
 ![tree]({{site.baseurl}}/assets/img/tree-4.jpg)
 
-Now, we can build a conclusion that less impure node requires less information to describe it. And, more impure node requires more information. There are different criteria you can use to measure impurities of a node among which are the gini-index and entropy. 
+Now, we can build a conclusion that less impure node requires less information to describe it. And, more impure node requires more information. There are different criteria you can use to measure impurities of a node among which are the `gini-index` and `entropy`. 
 
 ### What is Gini Index?
 
-Gini index or Gini impurity measures the degree or probability of a particular variable being wrongly classified when it is randomly chosen. But what is actually meant by ‘impurity’? If all the elements belong to a single class, then it can be called pure. The degree of Gini index varies between 0 and 1, where 0 denotes that all elements belong to a certain class or if there exists only one class, and 1 denotes that the elements are randomly distributed across various classes. A Gini Index of 0.5 denotes equally distributed elements into some classes.
+Gini index or Gini impurity measures the `degree or probability` of a particular variable being wrongly classified when it is randomly chosen. But what is actually meant by `‘impurity’`? If all the elements belong to a single class, then it can be called pure. The degree of` Gini index` varies between 0 and 1, where 0 denotes that all elements belong to a certain class or if there exists only one class, and 1 denotes that the elements are randomly distributed across various classes. A `Gini Index` of 0.5 denotes equally distributed elements into some classes.
 
 **Formula for Gini Index**
 
 ![information gain]({{site.baseurl}}/assets/img/tree-5.jpg)
 
-where pi  is the probability of an object being classified to a particular class. While building the decision tree, we would prefer choosing the attribute/feature with the least Gini index as the root node.
+where pi  is the probability of an object being classified to a particular class. While building the decision tree, we would prefer choosing the attribute/feature with the least `Gini index` as the root node.
 
 ### What is Entropy?
 
-Information theory is a measure to define this degree of disorganization in a system known as Entropy. If the sample is completely homogeneous, then the entropy is zero and if the sample is an equally divided (50% – 50%), it has entropy of one.
+Information theory is a measure to define this degree of `disorganization` in a system known as `Entropy`. If the sample is completely homogeneous, then the `entropy` is zero and if the sample is an equally divided (50% – 50%), it has `entropy` of one.
 
 **Formula for Entropy**
 
 ![information gain]({{site.baseurl}}/assets/img/tree-6.jpg)
 
-Here p and q is probability of success and failure respectively in that node. Entropy is also used with categorical target variable. It chooses the split which has lowest entropy compared to parent node and other splits. The lesser the entropy, the better it is.
+Here `p` and `q` is `probability` of success and failure respectively in that node. `Entropy` is also used with categorical target variable. It chooses the split which has lowest `entropy` compared to parent node and other splits. The lesser the `entropy`, the better it is.
 
 ### Steps to calculate entropy for a split:
 
   1.	Calculate entropy of parent node
   2.	Calculate entropy of each individual node of split and calculate weighted average of all sub-nodes available in split.
 
-Now, lets describe how a classification tree learns. When an unconstrained tree is trained, the nodes are grown recursively. In other words, a node exists based on the state of its predecessors. At a non-leaf node, the data is split based on feature f and split-point sp in such a way to maximize information gain. If the information gain obtained by splitting a node is null, the node is declared a leaf.
+Now, lets describe how a classification tree learns. When an unconstrained tree is trained, the nodes are grown recursively. In other words, a node exists based on the state of its predecessors. At a non-leaf node, the data is split based on `feature f` and `split-point sp` in such a way to maximize information gain. If the information gain obtained by splitting a node is null, the node is declared a `leaf`.
 
 
 {% highlight ruby %}
@@ -120,6 +120,7 @@ y_pred= dt.predict(X_test)
 accuracy_score(y_test, y_pred) 
 {% endhighlight %}
 
+`**accuracy_score**: 0.92105263157894735` 
 
 Emphasis, aka italics, with *asterisks* or _underscores_.
 
