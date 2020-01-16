@@ -41,7 +41,13 @@ A decision tree is a tree in which each internal node is labeled with an input f
 
 ![Breast Cancer Wisconsin (Diagnostic) Data Set]({{site.baseurl}}/assets/img/tree-1.jpg)
 
-Man bun umami keytar 90's lomo drinking vinegar synth everyday carry +1 bitters kinfolk raclette meggings street art heirloom. Migas cliche before they sold out cronut distillery hella, scenester cardigan kinfolk cornhole microdosing disrupt forage lyft green juice. Tofu deep v food truck live-edge edison bulb vice. Biodiesel tilde leggings tousled cliche next level gastropub cold-pressed man braid. Lyft humblebrag squid viral, vegan chicharrones vice kinfolk. Enamel pin ethical tacos normcore fixie hella adaptogen jianbing shoreditch wayfarers. Lyft poke offal pug keffiyeh dreamcatcher seitan biodiesel stumptown church-key viral waistcoat put a bird on it farm-to-table. Meggings pitchfork master cleanse pickled venmo. Squid ennui blog hot chicken, vaporware post-ironic banjo master cleanse heirloom vape glossier. Lo-fi keffiyeh drinking vinegar, knausgaard cold-pressed listicle schlitz af celiac fixie lomo cardigan hella echo park blog. Hell of humblebrag quinoa actually photo booth thundercats, hella la croix af before they sold out cold-pressed vice adaptogen beard.
+Emphasis, aka italics, with *asterisks* or _underscores_.
+
+Strong emphasis, aka bold, with **asterisks** or __underscores__.
+
+Combined emphasis with **asterisks and _underscores_**.
+
+Strikethrough uses two tildes. ~~Scratch this.~~
 
 ### Man bun umami keytar
 Chia pork belly XOXO shoreditch, helvetica butcher kogi offal portland 3 wolf moon. Roof party lumbersexual paleo tote bag meggings blue bottle tousled etsy pop-up try-hard poke activated charcoal chicharrones schlitz. Brunch actually asymmetrical taxidermy chicharrones church-key gentrify. Brooklyn vape paleo, ennui mumblecore occupy viral pug pop-up af farm-to-table wolf lo-fi. Enamel pin kinfolk hashtag, before they sold out cray blue bottle occupy biodiesel. Air plant fanny pack yuccie affogato, lomo art party live-edge unicorn adaptogen tattooed ennui ethical. Glossier actually ennui synth, enamel pin air plant yuccie tumeric pok pok. Ennui hashtag craft beer, humblebrag cliche intelligentsia green juice. Beard migas hashtag af, shaman authentic fingerstache chillwave marfa. Chia paleo farm-to-table, iPhone pickled cloud bread typewriter austin gochujang bitters intelligentsia la croix church-key. Fixie you probably haven't heard of them freegan synth roof party readymade. Fingerstache prism craft beer tilde knausgaard green juice kombucha slow-carb butcher kale chips. Snackwave organic tbh ennui XOXO. Hell of woke blue bottle, tofu roof party food truck pok pok thundercats. Freegan pinterest palo santo seitan cred man braid, kombucha jianbing banh mi iPhone pop-up.
