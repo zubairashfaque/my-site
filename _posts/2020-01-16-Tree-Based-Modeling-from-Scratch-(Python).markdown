@@ -33,8 +33,8 @@ A decision tree is a tree in which each internal node is labeled with an input f
 
 {: .center}
 ![I and My friends]({{site.baseurl}}/assets/img/tree-1.jpg)
-
-![Breast Cancer Wisconsin (Diagnostic) Data Set](https://www.google.com)
+{: .center}
+[Breast Cancer Wisconsin (Diagnostic) Data Set](https://www.kaggle.com/uciml/breast-cancer-wisconsin-data)
 
 Emphasis, aka italics, with *asterisks* or _underscores_.
 
