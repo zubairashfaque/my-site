@@ -133,7 +133,25 @@ dt_entropy = DecisionTreeClassifier(max_depth=8, criterion='entropy', random_sta
 
 #=> Fit dt_entropy to the training set
 dt_entropy.fit(X_train,y_train)
+
+#=> Import accuracy_score from sklearn.metrics
+from sklearn.metrics import accuracy_score
+
+#=> Use dt_entropy to predict test set labels
+y_pred= dt_entropy.predict(X_test)
+
+#=> Evaluate accuracy_entropy
+accuracy_entropy = accuracy_score(y_test, y_pred)
+
+#=> Print accuracy_entropy
+print('Accuracy achieved by using entropy: ', accuracy_entropy)
+
+#=> Print accuracy_gini
+print('Accuracy achieved by using the gini index: ', accuracy_gini)
 {% endhighlight %}
+
+Accuracy achieved by using entropy:  0.929824561404
+Accuracy achieved by using the gini index:  0.929824561404
 
 Emphasis, aka italics, with *asterisks* or _underscores_.
 
