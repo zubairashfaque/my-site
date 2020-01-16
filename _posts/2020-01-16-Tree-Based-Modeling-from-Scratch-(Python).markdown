@@ -70,7 +70,9 @@ Now, we can build a conclusion that less impure node requires less information t
 #### What is Gini Index?
 
 Gini index or Gini impurity measures the degree or probability of a particular variable being wrongly classified when it is randomly chosen. But what is actually meant by ‘impurity’? If all the elements belong to a single class, then it can be called pure. The degree of Gini index varies between 0 and 1, where 0 denotes that all elements belong to a certain class or if there exists only one class, and 1 denotes that the elements are randomly distributed across various classes. A Gini Index of 0.5 denotes equally distributed elements into some classes.
+
 **Formula for Gini Index**
+
 ![information gain]({{site.baseurl}}/assets/img/tree-5.jpg)
 
 where pi  is the probability of an object being classified to a particular class. While building the decision tree, we would prefer choosing the attribute/feature with the least Gini index as the root node.
@@ -78,7 +80,9 @@ where pi  is the probability of an object being classified to a particular class
 #### What is Entropy?
 
 Information theory is a measure to define this degree of disorganization in a system known as Entropy. If the sample is completely homogeneous, then the entropy is zero and if the sample is an equally divided (50% – 50%), it has entropy of one.
-**Formula for Entropy*
+
+**Formula for Entropy**
+
 ![information gain]({{site.baseurl}}/assets/img/tree-6.jpg)
 
 Here p and q is probability of success and failure respectively in that node. Entropy is also used with categorical target variable. It chooses the split which has lowest entropy compared to parent node and other splits. The lesser the entropy, the better it is.
