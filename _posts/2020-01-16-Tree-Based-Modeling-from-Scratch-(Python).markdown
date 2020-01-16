@@ -12,16 +12,16 @@ In this blog, I will cover in detail my understanding of tree-based modes. This 
 
 ##  Overview
 *	Explaining of tree based models for classification and regression from scratch with their advantages and disadvantages.
-*	Learn supervised machine learning concepts like Classification and Regression Trees (CART), Bagging and Random Forests, Boosting random forest, and ensemble methods.
-*	Implementation of these tree based machine-learning algorithms in Python.
+*	Learn supervised machine learning concepts like `Classification and Regression Trees (CART)`, `Bagging and Random Forests`, `Boosting random forest`, and `ensemble methods`.
+*	Implementation of these tree based machine-learning algorithms in `Python`.
 
 ## Introduction
 
-Decision tree are supervised learning models used in data mining. In other words, these models help us in finding new information in a provided dataset to solve problems involving classification and regression. Tree based learning algorithms are considered to be one of the best in terms of accuracy, stability, ease of understanding and flexibility. As discussed, these models have a high flexibility but that comes at a price: on one hand, trees are able to capture complex non-linear relationships; on the other hand, they are prone to over fitting (memorizing the noise present in a dataset).
+Decision tree are supervised learning models used in data mining. In other words, these models help us in finding new information in a provided dataset to solve problems involving `classification` and `regression`. Tree based learning algorithms are considered to be one of the best in terms of `accuracy`, `stability`, `ease of understanding` and `flexibility`. As discussed, these models have a high flexibility but that comes at a price: on one hand, trees are able to capture complex non-linear relationships; on the other hand, they are prone to over fitting (memorizing the noise present in a dataset).
 
 ### 1. What is Decision Tree? 
 
-A decision tree is like a flowchart. To put it another way, a decision-tree is data-structure consisting of hierarchy of individual units called nodes. Each internal node represents a “question” or “prediction” (e.g., whether a coin flip comes up heads or tails). 
+A decision tree is like a flowchart. To put it another way, a decision-tree is data-structure consisting of hierarchy of individual units called nodes. Each internal node represents a `question` or `prediction` (e.g., whether a coin flip comes up heads or tails). 
 There are three kinds of nodes.
 
 * Root
