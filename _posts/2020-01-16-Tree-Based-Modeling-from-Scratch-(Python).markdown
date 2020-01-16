@@ -27,6 +27,23 @@ There are three kinds of nodes.
   ⋅⋅I. Root
   ⋅⋅II. Internal node
   ⋅⋅III. Leaf
+  
+  1. First ordered list item
+2. Another item
+⋅⋅* Unordered sub-list. 
+1. Actual numbers don't matter, just that it's a number
+⋅⋅1. Ordered sub-list
+4. And another item.
+
+⋅⋅⋅You can have properly indented paragraphs within list items. Notice the blank line above, and the leading spaces (at least one, but we'll use three here to also align the raw Markdown).
+
+⋅⋅⋅To have a line break without a paragraph, you will need to use two trailing spaces.⋅⋅
+⋅⋅⋅Note that this line is separate, but within the same paragraph.⋅⋅
+⋅⋅⋅(This is contrary to the typical GFM line break behaviour, where trailing spaces are not required.)
+
+* Unordered list can use asterisks
+- Or minuses
++ Or pluses
 
 The root is parent node or starting of a flowchart, a question-giving rise to two children nodes. An internal node having one parent node, question-giving rise to two children nodes. Leaf having one parent node with no children node and involving no questions; it is where prediction is made.
 A decision tree is a tree in which each internal node is labeled with an input feature. The branch coming from a node labeled with an input feature are labeled with each of the possible values of the output feature or in other words the branch leads to a secondary decision node on a different input feature. Each leaf of the tree is labeled with a class or a probability distribution over the classes, telling that the data set has been classified by the tree either into a specific class, or into a particular probability distribution.
