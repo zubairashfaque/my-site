@@ -37,7 +37,7 @@ The root is parent node or starting of a flowchart, a question-giving rise to tw
 A decision tree is a tree in which each internal node is labeled with an input feature. The branch coming from a node labeled with an input feature are labeled with each of the possible values of the output feature or in other words the branch leads to a secondary decision node on a different input feature. Each leaf of the tree is labeled with a class or a probability distribution over the classes, telling that the data set has been classified by the tree either into a specific class, or into a particular probability distribution.
 
 
-      ![Breast Cancer Wisconsin (Diagnostic) Data Set]({{site.baseurl}}/assets/img/tree-1.jpg)
+ ![Breast Cancer Wisconsin (Diagnostic) Data Set]({{site.baseurl}}/assets/img/tree-1.jpg)
 
  [Breast Cancer Wisconsin (Diagnostic) Data Set](https://www.google.com)
 
