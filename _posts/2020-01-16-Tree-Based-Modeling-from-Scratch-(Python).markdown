@@ -122,7 +122,8 @@ accuracy_score(y_test, y_pred)
 
 `accuracy_score: 0.92105263157894735` 
 
-**Using entropy as a criterion**
+### Using entropy as a criterion
+
 {% highlight ruby %}
 #=> Import DecisionTreeClassifier from sklearn.tree
 from sklearn.tree import DecisionTreeClassifier
