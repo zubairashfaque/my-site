@@ -24,26 +24,17 @@ Decision tree are supervised learning models used in data mining. In other words
 A decision tree is like a flowchart. To put it another way, a decision-tree is data-structure consisting of hierarchy of individual units called nodes. Each internal node represents a “question” or “prediction” (e.g., whether a coin flip comes up heads or tails). 
 There are three kinds of nodes.
 
-  ⋅⋅I. Root
-  ⋅⋅II. Internal node
-  ⋅⋅III. Leaf
-  
-  I. First ordered list item
-II. Another item
-III. Leaf
-
+* Root
+* Internal node
+* Leaf
 
 The root is parent node or starting of a flowchart, a question-giving rise to two children nodes. An internal node having one parent node, question-giving rise to two children nodes. Leaf having one parent node with no children node and involving no questions; it is where prediction is made.
 A decision tree is a tree in which each internal node is labeled with an input feature. The branch coming from a node labeled with an input feature are labeled with each of the possible values of the output feature or in other words the branch leads to a secondary decision node on a different input feature. Each leaf of the tree is labeled with a class or a probability distribution over the classes, telling that the data set has been classified by the tree either into a specific class, or into a particular probability distribution.
 
 
-![I and My friends]({{site.baseurl}}/assets/img/we-in-rest.jpg)
+![I and My friends]({{site.baseurl}}/assets/img/tree-1.jpg)
 
-
-
-
-
- [Breast Cancer Wisconsin (Diagnostic) Data Set](https://www.google.com)
+![Breast Cancer Wisconsin (Diagnostic) Data Set](https://www.google.com)
 
 Emphasis, aka italics, with *asterisks* or _underscores_.
 
