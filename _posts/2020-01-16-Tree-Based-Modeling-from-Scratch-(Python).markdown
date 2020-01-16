@@ -120,7 +120,7 @@ y_pred= dt.predict(X_test)
 accuracy_score(y_test, y_pred) 
 {% endhighlight %}
 
-`**accuracy_score**: 0.92105263157894735` 
+`accuracy_score: 0.92105263157894735` 
 
 Emphasis, aka italics, with *asterisks* or _underscores_.
 
