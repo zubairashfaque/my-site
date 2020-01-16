@@ -33,8 +33,9 @@ A decision tree is a tree in which each internal node is labeled with an input f
 
 {: .center}
 ![I and My friends]({{site.baseurl}}/assets/img/tree-1.jpg)
+
 {: .center}
-[Breast Cancer Wisconsin (Diagnostic) Data Set](https://www.kaggle.com/uciml/breast-cancer-wisconsin-data)
+Figure: [Breast Cancer Wisconsin (Diagnostic) Data Set](https://www.kaggle.com/uciml/breast-cancer-wisconsin-data)
 
 In above tree diagram, consider the case where an instance move back and forth the tree to reach the leaf in left. In this leaf, there are 257 instances classified as benign and 7 instances classified as malignant. As a result, the tree's prediction for this instance would be benign.
 
