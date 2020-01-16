@@ -87,7 +87,7 @@ Information theory is a measure to define this degree of disorganization in a sy
 
 Here p and q is probability of success and failure respectively in that node. Entropy is also used with categorical target variable. It chooses the split which has lowest entropy compared to parent node and other splits. The lesser the entropy, the better it is.
 
- #### Steps to calculate entropy for a split:
+#### Steps to calculate entropy for a split:
   1.	Calculate entropy of parent node
   2.	Calculate entropy of each individual node of split and calculate weighted average of all sub-nodes available in split.
 
