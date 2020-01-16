@@ -12,7 +12,9 @@ In this blog, I will cover in detail my understanding of tree-based modes. This 
 
 ####  Overview
 •	Explaining of tree based models for classification and regression from scratch with their advantages and disadvantages.
+
 •	Learn supervised machine learning concepts like Classification and Regression Trees (CART), Bagging and Random Forests, Boosting random forest, and ensemble methods.
+
 •	Implementation of these tree based machine-learning algorithms in Python.
 
 ### Introduction
@@ -30,7 +32,8 @@ The root is parent node or starting of a flowchart, a question-giving rise to tw
 A decision tree is a tree in which each internal node is labeled with an input feature. The branch coming from a node labeled with an input feature are labeled with each of the possible values of the output feature or in other words the branch leads to a secondary decision node on a different input feature. Each leaf of the tree is labeled with a class or a probability distribution over the classes, telling that the data set has been classified by the tree either into a specific class, or into a particular probability distribution.
 
 
-![Macbook]({{site.baseurl}}/assets/img/tree-1.jpg)
+![Breast Cancer Wisconsin (Diagnostic) Data Set]({{site.baseurl}}/assets/img/tree-1.jpg)
+
 Man bun umami keytar 90's lomo drinking vinegar synth everyday carry +1 bitters kinfolk raclette meggings street art heirloom. Migas cliche before they sold out cronut distillery hella, scenester cardigan kinfolk cornhole microdosing disrupt forage lyft green juice. Tofu deep v food truck live-edge edison bulb vice. Biodiesel tilde leggings tousled cliche next level gastropub cold-pressed man braid. Lyft humblebrag squid viral, vegan chicharrones vice kinfolk. Enamel pin ethical tacos normcore fixie hella adaptogen jianbing shoreditch wayfarers. Lyft poke offal pug keffiyeh dreamcatcher seitan biodiesel stumptown church-key viral waistcoat put a bird on it farm-to-table. Meggings pitchfork master cleanse pickled venmo. Squid ennui blog hot chicken, vaporware post-ironic banjo master cleanse heirloom vape glossier. Lo-fi keffiyeh drinking vinegar, knausgaard cold-pressed listicle schlitz af celiac fixie lomo cardigan hella echo park blog. Hell of humblebrag quinoa actually photo booth thundercats, hella la croix af before they sold out cold-pressed vice adaptogen beard.
 
 ### Man bun umami keytar
