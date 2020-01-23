@@ -223,7 +223,7 @@ OUTPUT:
 
 We see a high correlation between these three measures for our character `co-occurrence network`.
 
-So we've been looking at different ways to find the important characters in the Game of Thrones `co-occurrence network`. According to `degree centrality`, `Eddard Stark` is the most important `character initially` in the books. But who is/are the most important character(s) in the fifth book according to these three measures
+So we've been looking at different ways to find the important characters in the Game of Thrones `co-occurrence network`. According to `degree centrality`, `Eddard Stark` is the most important `character initially` in the books. But who is/are the most important character(s) in the fifth book according to these three measures.
 
 {% highlight ruby %}
 =># Finding the most important character in the fifth book,  
