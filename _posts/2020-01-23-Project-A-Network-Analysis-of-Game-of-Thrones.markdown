@@ -1,19 +1,20 @@
 ---
 layout: post
-title: Tree Based Modeling from Scratch (Python)
-date: 2020-01-16 00:00:00 +0300
-description: In this blog, I will cover in detail my understanding of tree-based modes. This tutorial is for beginners to learn tree-based modeling from scratch. (optional)
-img: Decision-Tree-Algorithm.jpg # Add image post (optional)
+title: A Network Analysis of Game of Thrones
+date: 2020-01-23 00:00:00 +0300
+description: In this blog, I will analyze the network of characters in Game of Thrones and how it changes over the course of the books. (optional)
+img: Game_of_Thrones.jpg # Add image post (optional)
 fig-caption: # Add figcaption (optional)
-tags: [ZUBI_ASH, BLOG, DATACAMP, Decision_Tree_Algorithm] # add tag
+tags: [ZUBI_ASH, PROJECT, DATACAMP, Game_of_Thrones] # add tag
 ---
 
-In this blog, I will cover in detail my understanding of tree-based modes. This tutorial is for beginners to learn tree-based modeling from scratch.
+In this blog, I will analyze the network of characters in Game of Thrones and how it changes over the course of the books.
 
-##  Overview
-*	Explaining of tree based models for classification and regression from scratch with their advantages and disadvantages.
-*	Learn supervised machine learning concepts like `Classification and Regression Trees (CART)`, `Bagging and Random Forests`, `Boosting random forest`, and `ensemble methods`.
-*	Implementation of these tree based machine-learning algorithms in `Python`.
+##  Project Description
+`Game of Thrones` is a TV series based on the novel `A Song Of Ice And Fire` written by `George RR Martin`. Most Important characters are `Jon Snow`, `Daenerys Targaryen`, or `Tyrion Lannister`. Let us find out who is the most `important character` in `Game of Thrones`? The importance of character could be analyzed by their `co-occurrence network` and its `evolution` over the five books in R.R. Martin's. We will look at how the importance of the characters changes over the books using different centrality measures.
+
+In this project we will use `networkx` package and different network centrality measures.In this project uses a dataset parsed by `Andrew J. Beveridge` and `Jie Shan` which is available [here](https://github.com/mathbeveridge/asoiaf). For more information on this dataset have a look at the [Network of Thrones blog](https://networkofthrones.wordpress.com/).
+
 
 ## Introduction
 
