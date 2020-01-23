@@ -100,4 +100,8 @@ model.add(Dense(10, activation='relu'))
 
 #=> The output layer has one unit for each category (3 categories) and 'softmax' activation.
 model.add(Dense(3, activation='softmax'))
+
+#=> Compile the model
+model.compile(optimizer='adam', loss='categorical_crossentropy',  metrics=['accuracy'])
+
 {% endhighlight %}
