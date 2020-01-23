@@ -71,10 +71,10 @@ G_book1 = nx.Graph()
 Currently, the graph object `G_book1` is empty. Let's now populate it with the `edges` from `book1`. And while we're at it, let's load in the rest of the books too!
 
 {% highlight ruby %}
-=># Iterating through the DataFrame to add edges
+#=> Iterating through the DataFrame to add edges
 for index, edge in book1.iterrows():
     G_book1.add_edge(edge['Source'], edge['Target'], weight=edge['weight'])
-=># Creating a list of networks for all the books
+#=> Creating a list of networks for all the books
 books = [G_book1]
 book_fnames = ['book2.csv', 'book3.csv', 'book4.csv', 'book5.csv']
 for book_fname in book_fnames:
@@ -95,16 +95,16 @@ First, let's measure the importance of a node in a network by looking at the num
 Using this measure, let's extract the top ten important characters from the first book `(book[0])` and the fifth book `(book[4])`.
 
 {% highlight ruby %}
-=># Calculating the degree centrality of book 1
+#=> Calculating the degree centrality of book 1
 deg_cen_book1 = nx.degree_centrality(books[0])
 
-=># Calculating the degree centrality of book 5
+#=> Calculating the degree centrality of book 5
 deg_cen_book5 = nx.degree_centrality(books[4])
 
 sorted_deg_cen_book1 = sorted(deg_cen_book1.items(), key=lambda x:x[1], reverse=True)[0:10]
 sorted_deg_cen_book5 = sorted(deg_cen_book5.items(), key=lambda x:x[1], reverse=True)[0:10]
 
-=># Printing out the top 10 of book1 and book5
+#=> Printing out the top 10 of book1 and book5
 print(sorted_deg_cen_book1)
 print(sorted_deg_cen_book5)
 {% endhighlight %}
@@ -122,13 +122,13 @@ Let's look at the evolution of degree centrality of a couple of characters like 
 {% highlight ruby %}
 %matplotlib inline
 
-=># Creating a list of degree centrality of all the books
+#=> Creating a list of degree centrality of all the books
 evol = [nx.degree_centrality(book) for book in books]
  
-=># Creating a DataFrame from the list of degree centralities in all the books
+#=> Creating a DataFrame from the list of degree centralities in all the books
 degree_evol_df = pd.DataFrame.from_records(evol)
 
-=># Plotting the degree centrality evolution of Eddard-Stark, Tyrion-Lannister and Jon-Snow
+#=> Plotting the degree centrality evolution of Eddard-Stark, Tyrion-Lannister and Jon-Snow
 degree_evol_df[['Eddard-Stark', 'Tyrion-Lannister', 'Jon-Snow']].plot()
 {% endhighlight %}
 
@@ -148,13 +148,13 @@ evol = [nx.betweenness_centrality(book, weight='weight') for book in books]
 =># Making a DataFrame from the list
 betweenness_evol_df = pd.DataFrame.from_records(evol)
 
-=># Finding the top 4 characters in every book
+#=> Finding the top 4 characters in every book
 set_of_char = set()
 for i in range(5):
     set_of_char |= set(list(betweenness_evol_df.T[i].sort_values(ascending=False)[0:4].index))
 list_of_char = list(set_of_char)
 
-=># Plotting the evolution of the top characters
+#=> Plotting the evolution of the top characters
 betweenness_evol_df[list_of_char].plot(figsize=(13, 7))
 {% endhighlight %}
 
@@ -169,19 +169,19 @@ We see a peculiar rise in the importance of `Stannis Baratheon` over the books. 
 `PageRank` was the initial way Google ranked web pages. It evaluates the inlinks and outlinks of webpages in the world wide web, which is, essentially, a directed network. Let's look at the importance of characters in the Game of Thrones network according to `PageRank`.
 
 {% highlight ruby %}
-=># Creating a list of pagerank of all the characters in all the books
+#=> Creating a list of pagerank of all the characters in all the books
 evol = [nx.pagerank(book) for book in books]
 
-=># Making a DataFrame from the list
+#=> Making a DataFrame from the list
 pagerank_evol_df = pd.DataFrame.from_records(evol)
 
-=># Finding the top 4 characters in every book
+#=> Finding the top 4 characters in every book
 set_of_char = set()
 for i in range(5):
     set_of_char |= set(list(pagerank_evol_df.T[i].sort_values(ascending=False)[0:4].index))
 list_of_char = list(set_of_char)
 
-=># Plotting the top characters
+#=> Plotting the top characters
 pagerank_evol_df[list_of_char].plot(figsize=(13, 7))
 {% endhighlight %}
 
@@ -198,16 +198,16 @@ We have seen three different measures to calculate the importance of a node in a
 Let's look at the correlation between PageRank, betweenness centrality and degree centrality for the fifth book using Pearson correlation.
 
 {% highlight ruby %}
-=># Creating a list of pagerank, betweenness centrality, degree centrality
-=># of all the characters in the fifth book.
+#=> Creating a list of pagerank, betweenness centrality, degree centrality
+#=> of all the characters in the fifth book.
 measures = [nx.pagerank(books[4]), 
             nx.betweenness_centrality(books[4], weight='weight'), 
             nx.degree_centrality(books[4])]
 
-=># Creating the correlation DataFrame
+#=> Creating the correlation DataFrame
 cor = pd.DataFrame.from_records(measures)
 
-=># Calculating the correlation
+#=> Calculating the correlation
 cor.T.corr()
 {% endhighlight %}
 
@@ -226,8 +226,8 @@ We see a high correlation between these three measures for our character `co-occ
 So we've been looking at different ways to find the important characters in the Game of Thrones `co-occurrence network`. According to `degree centrality`, `Eddard Stark` is the most important `character initially` in the books. But who is/are the most important character(s) in the fifth book according to these three measures.
 
 {% highlight ruby %}
-=># Finding the most important character in the fifth book,  
-=># according to degree centrality, betweenness centrality and pagerank.
+#=> Finding the most important character in the fifth book,  
+#=> according to degree centrality, betweenness centrality and pagerank.
 p_rank, b_cent, d_cent = cor.idxmax(axis=1)
 {% endhighlight %}
 
