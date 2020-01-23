@@ -47,7 +47,7 @@ OUTPUT.
 | Aegon-I-Targaryen | Eddard-Stark | Undirected  | 4 | 1 |
 | Aemon-Targaryen-(Maester-Aemon) | Alliser-Thorne | Undirected | 4 | 1 | 
 
-### 1. Time to find Network of Thrones? 
+### 2. Time to find Network of Thrones? 
 
 The resulting DataFrame book1 has 5 columns: `Source`, `Target`, `Type`, `weight`, and `book`.
 Before diving into details we have to understand the concept of the Nodes and Edges concept in NetworkX which could be depicted in the following picture.
@@ -66,6 +66,25 @@ import networkx as nx
 G_book1 = nx.Graph()
 {% endhighlight %}
 
+### 3. Populate the network with the DataFrame
+
+Currently, the graph object `G_book1` is empty. Let's now populate it with the `edges` from `book1`. And while we're at it, let's load in the rest of the books too!
+
+{% highlight ruby %}
+#=> Iterating through the DataFrame to add edges
+for index, edge in book1.iterrows():
+    G_book1.add_edge(edge['Source'], edge['Target'], weight=edge['weight'])
+=># Creating a list of networks for all the books
+books = [G_book1]
+book_fnames = ['book2.csv', 'datasets/book3.csv', 'datasets/book4.csv', 'datasets/book5.csv']
+for book_fname in book_fnames:
+    book = pd.read_csv(book_fname)
+    G_book = nx.Graph()
+    for index, edge in book.iterrows():
+        G_book.add_edge(edge['Source'], edge['Target'], weight=edge['weight'])
+    books.append(G_book)
+{% endhighlight %}
+ 
 The `root` is parent node or starting of a flowchart, a question-giving rise to two children nodes. An internal node having one parent node, question-giving rise to two children nodes. Leaf having one parent node with no children node and involving no questions; it is where prediction is made.
 A decision tree is a tree in which each internal node is labeled with an input `feature`. The branch coming from a node labeled with an input feature are labeled with each of the possible values of the output feature or in other words the branch leads to a `secondary decision` node on a different input feature. Each leaf of the tree is labeled with a `class` or a `probability distribution` over the classes, telling that the data set has been classified by the tree either into a specific class, or into a particular probability distribution.
 
