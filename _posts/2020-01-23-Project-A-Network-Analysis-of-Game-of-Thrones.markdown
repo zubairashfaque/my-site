@@ -133,7 +133,7 @@ degree_evol_df[['Eddard-Stark', 'Tyrion-Lannister', 'Jon-Snow']].plot()
 {% endhighlight %}
 
 {: .center}
-![tree]({{site.baseurl}}/assets/img/graph_GOT_edited.png)
+![tree]({{site.baseurl}}/assets/img/graph_GOT.png)
 
  ### 6. What's up with Stannis Baratheon?
 
