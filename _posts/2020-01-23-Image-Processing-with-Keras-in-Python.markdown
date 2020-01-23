@@ -31,6 +31,29 @@ plt.show()
 {: .center}
 ![GOT]({{site.baseurl}}/assets/img/k_img_1.jpeg)
 
+### Images as data: changing images
+
+To modify an image, you can modify the existing numbers in the array. In a color image, you can change the values in one of the color channels without affecting the other colors, by indexing on the last dimension of the array.
+
+
+{% highlight ruby %}
+#=> Set the red channel in this part of the image to 1
+data[0:10, 0:10, 3] = 1
+
+#=> Set the green channel in this part of the image to 0
+data[0:10, 0:10, 2] = 0
+
+#=> Set the blue channel in this part of the image to 0
+data[0:10, 0:10, 3] = 0
+
+#=> Visualize the result
+plt.imshow(data)
+plt.show()
+{% endhighlight %}
+
+{: .center}
+![GOT]({{site.baseurl}}/assets/img/k_img_2.jpeg)
+
 `Game of Thrones` is a TV series based on the novel `A Song Of Ice And Fire` written by `George RR Martin`. Most Important characters are `Jon Snow`, `Daenerys Targaryen`, or `Tyrion Lannister`. Let us find out who is the most `important character` in `Game of Thrones`? The importance of character could be analyzed by their `co-occurrence network` and its `evolution` over the five books in R.R. Martin's. We will look at how the importance of the characters changes over the books using different centrality measures.
 
 In this project we will use `networkx` package and different network centrality measures.In this project uses a dataset parsed by `Andrew J. Beveridge` and `Jie Shan` which is available [here](https://github.com/mathbeveridge/asoiaf). For more information on this dataset have a look at the [Network of Thrones blog](https://networkofthrones.wordpress.com/).
