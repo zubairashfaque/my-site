@@ -164,9 +164,9 @@ betweenness_evol_df[list_of_char].plot(figsize=(13, 7))
 
 ### 7. What does the Google PageRank algorithm tell us about Game of Thrones?
 
-We see a peculiar rise in the importance of Stannis Baratheon over the books. In the fifth book, he is significantly more important than other characters in the network, even though he is the third most important character according to degree centrality.
+We see a peculiar rise in the importance of `Stannis Baratheon` over the books. In the fifth book, he is significantly more important than other characters in the network, even though he is the third most important character according to `degree centrality`.
 
-PageRank was the initial way Google ranked web pages. It evaluates the inlinks and outlinks of webpages in the world wide web, which is, essentially, a directed network. Let's look at the importance of characters in the Game of Thrones network according to PageRank.
+`PageRank` was the initial way Google ranked web pages. It evaluates the inlinks and outlinks of webpages in the world wide web, which is, essentially, a directed network. Let's look at the importance of characters in the Game of Thrones network according to `PageRank`.
 
 {% highlight ruby %}
 =># Creating a list of pagerank of all the characters in all the books
@@ -191,7 +191,7 @@ pagerank_evol_df[list_of_char].plot(figsize=(13, 7))
 
 ### 8. Correlation between different measures
 
-Stannis, Jon Snow, and Daenerys are the most important characters in the fifth book according to PageRank. Eddard Stark follows a similar curve but for degree centrality and betweenness centrality: He is important in the first book but dies into oblivion over the book series.
+`Stannis`, `Jon Snow`, and `Daenerys` are the most important characters in the fifth book according to `PageRank`. `Eddard Stark` follows a similar curve but for `degree centrality` and `betweenness centrality`: He is important in the first book but dies into oblivion over the book series.
 
 We have seen three different measures to calculate the importance of a node in a network, and all of them tells us something about the characters and their importance in the co-occurrence network. We see some names pop up in all three measures so maybe there is a strong correlation between them?
 
@@ -221,9 +221,9 @@ OUTPUT:
 
 ### 9. Conclusion
 
-We see a high correlation between these three measures for our character co-occurrence network.
+We see a high correlation between these three measures for our character `co-occurrence network`.
 
-So we've been looking at different ways to find the important characters in the Game of Thrones co-occurrence network. According to degree centrality, Eddard Stark is the most important character initially in the books. But who is/are the most important character(s) in the fifth book according to these three measures
+So we've been looking at different ways to find the important characters in the Game of Thrones `co-occurrence network`. According to `degree centrality`, `Eddard Stark` is the most important `character initially` in the books. But who is/are the most important character(s) in the fifth book according to these three measures
 
 {% highlight ruby %}
 =># Finding the most important character in the fifth book,  
