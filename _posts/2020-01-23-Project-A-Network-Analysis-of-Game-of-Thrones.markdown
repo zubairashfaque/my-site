@@ -44,7 +44,7 @@ OUTPUT.
 | Addam-Marbrand | Jaime-Lannister | Undirected | 3 | 1 |
 | Addam-Marbrand | Tywin-Lannister | Undirected | 6 | 1 |
 | Aegon-I-Targaryen | Daenerys-Targaryen | Undirected | 5 | 1 |
-| Aegon-I-Targaryen | Eddard-Stark | Undirected  |     4   |    1  |
+| Aegon-I-Targaryen | Eddard-Stark | Undirected  | 4 | 1 |
 | Aemon-Targaryen-(Maester-Aemon) | Alliser-Thorne | Undirected | 4 | 1 | 
 
 
