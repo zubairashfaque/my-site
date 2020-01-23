@@ -110,4 +110,25 @@ train_data = train_data.reshape((50, 784))
 #=> Fit the model
 model.fit(train_data, train_labels, validation_split=0.2, epochs=3)
 
+#=> Reshape the data to two-dimensional array
+train_data = train_data.reshape((50, 784))
+
+#=> Fit the model
+model.fit(train_data, train_labels, validation_split=0.2, epochs=3)
+
 {% endhighlight %}
+
+
+Train on 40 samples, validate on 10 samples
+Epoch 1/3
+
+`32/40 [=======================>......] - ETA: 0s - loss: 1.0043 - acc: 0.5000`
+`40/40 [==============================] - 0s 7ms/step - loss: 1.0061 - acc: 0.5000 - val_loss: 0.9917 - val_acc: 0.4000`
+`Epoch 2/3`
+
+`32/40 [=======================>......] - ETA: 0s - loss: 0.9580 - acc: 0.5625`
+`40/40 [==============================] - 0s 150us/step - loss: 0.9447 - acc: 0.6000 - val_loss: 0.9603 - val_acc: 0.4000`
+`Epoch 3/3`
+
+`32/40 [=======================>......] - ETA: 0s - loss: 0.8779 - acc: 0.5625`
+`40/40 [==============================] - 0s 140us/step - loss: 0.8957 - acc: 0.5500 - val_loss: 0.9234 - val_acc: 0.4000`
