@@ -104,4 +104,10 @@ model.add(Dense(3, activation='softmax'))
 #=> Compile the model
 model.compile(optimizer='adam', loss='categorical_crossentropy',  metrics=['accuracy'])
 
+#=> Reshape the data to two-dimensional array
+train_data = train_data.reshape((50, 784))
+
+#=> Fit the model
+model.fit(train_data, train_labels, validation_split=0.2, epochs=3)
+
 {% endhighlight %}
