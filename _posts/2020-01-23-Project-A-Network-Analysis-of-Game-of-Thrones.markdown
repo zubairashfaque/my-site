@@ -133,7 +133,7 @@ degree_evol_df[['Eddard-Stark', 'Tyrion-Lannister', 'Jon-Snow']].plot()
 {% endhighlight %}
 
 {: .center}
-![tree]({{site.baseurl}}/assets/img/graph_GOT.png)
+![tree]({{site.baseurl}}/assets/img/graph_GOT_edited.png)
 
  ### 6. What's up with Stannis Baratheon?
 
@@ -157,6 +157,10 @@ list_of_char = list(set_of_char)
 =># Plotting the evolution of the top characters
 betweenness_evol_df[list_of_char].plot(figsize=(13, 7))
 {% endhighlight %}
+
+
+{: .center}
+![tree]({{site.baseurl}}/assets/img/graph_GOT.png)
 
 #### Types of Decision Trees
 
