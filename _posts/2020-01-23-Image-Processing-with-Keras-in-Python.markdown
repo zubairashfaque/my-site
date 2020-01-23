@@ -16,19 +16,20 @@ In this blog, I will discuss Image Processing with Neural Networks using Keras.
 
 To display image data, you will rely on Python's Matplotlib library, and specifically use matplotlib's pyplot sub-module, that contains many plotting commands. Some of these commands allow you to display the content of images stored in arrays.
 
-
-# Import matplotlib
+{% highlight ruby %}
+#=> Import matplotlib
 import matplotlib.pyplot as plt
 
-# Load the image
+#=> Load the image
 data = plt.imread('bricks.png')
 
-# Display the image
+#=> Display the image
 plt.imshow(data)
 plt.show()
+{% endhighlight %}
 
 {: .center}
-![GOT]({{site.baseurl}}/assets/img/got_network.jpeg)
+![GOT]({{site.baseurl}}/assets/img/k_img_1.jpeg)
 
 `Game of Thrones` is a TV series based on the novel `A Song Of Ice And Fire` written by `George RR Martin`. Most Important characters are `Jon Snow`, `Daenerys Targaryen`, or `Tyrion Lannister`. Let us find out who is the most `important character` in `Game of Thrones`? The importance of character could be analyzed by their `co-occurrence network` and its `evolution` over the five books in R.R. Martin's. We will look at how the importance of the characters changes over the books using different centrality measures.
 
