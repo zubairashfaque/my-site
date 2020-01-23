@@ -76,7 +76,7 @@ for index, edge in book1.iterrows():
     G_book1.add_edge(edge['Source'], edge['Target'], weight=edge['weight'])
 =># Creating a list of networks for all the books
 books = [G_book1]
-book_fnames = ['book2.csv', 'datasets/book3.csv', 'datasets/book4.csv', 'datasets/book5.csv']
+book_fnames = ['book2.csv', 'book3.csv', 'book4.csv', 'book5.csv']
 for book_fname in book_fnames:
     book = pd.read_csv(book_fname)
     G_book = nx.Graph()
