@@ -113,9 +113,6 @@ OUTPUT1: `[('Eddard-Stark', 0.3548387096774194), ('Robert-Baratheon', 0.26881720
 
 OUTPUT2: `[('Jon-Snow', 0.1962025316455696), ('Daenerys-Targaryen', 0.18354430379746836), ('Stannis-Baratheon', 0.14873417721518986), ('Tyrion-Lannister', 0.10443037974683544), ('Theon-Greyjoy', 0.10443037974683544), ('Cersei-Lannister', 0.08860759493670886), ('Barristan-Selmy', 0.07911392405063292), ('Hizdahr-zo-Loraq', 0.06962025316455696), ('Asha-Greyjoy', 0.056962025316455694), ('Melisandre', 0.05379746835443038)]`
 
-
-5. Evolution of importance of characters over the books
-
  ### 5. Evolution of importance of characters over the books
 
 According to `degree centrality`, the most important character in the first book is Eddard Stark but he is not even in the top 10 of the fifth book. The importance of characters changes over the course of five books because, you know, stuff happens... ;)
@@ -136,9 +133,9 @@ degree_evol_df[['Eddard-Stark', 'Tyrion-Lannister', 'Jon-Snow']].plot()
 {% endhighlight %}
 
 {: .center}
-![tree]({{site.baseurl}}/assets/img/graph_GOT.png)
+![tree]({{site.baseurl}}/assets/img/graph_GOT_edited.png)
 
- ### 5. What's up with Stannis Baratheon?
+ ### 6. What's up with Stannis Baratheon?
 
 We can see that the importance of `Eddard Stark` dies off as the book series progresses. With `Jon Snow`, there is a drop in the fourth book but a sudden rise in the fifth book.
 
@@ -160,6 +157,10 @@ list_of_char = list(set_of_char)
 =># Plotting the evolution of the top characters
 betweenness_evol_df[list_of_char].plot(figsize=(13, 7))
 {% endhighlight %}
+
+
+{: .center}
+![tree]({{site.baseurl}}/assets/img/graph_GOT.png)
 
 #### Types of Decision Trees
 
