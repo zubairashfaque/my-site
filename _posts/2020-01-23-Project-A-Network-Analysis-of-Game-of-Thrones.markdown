@@ -219,123 +219,21 @@ OUTPUT:
 | 0.793372 | 1.000000 | 0.833816|
 | 0.971493 | 0.833816 | 1.000000|
 
-Types of decision trees are based on the type of target variable we have. It can be of two types:
-1.  **Classification Decision Tree**: A decision tree, which has categorical target variable then it called as `classification decision` tree also called variable decision tree. 
-2.	**Regression Decision Tree**: A decision tree, which has continuous target variable then it is called as `regression decision` tree also continuous variable decision Tree.
+### 9. Conclusion
 
-In order to understand how a classification tree produces purest leafs we have to understand definition of `information gain`.
+We see a high correlation between these three measures for our character co-occurrence network.
 
-### Information Gain
-
-The nodes of a classification tree are grown recursively; in other words, the restraint to grow of an internal node of leaf depends on the state of its ancestor’s node. 
-
-{: .center}
-![tree]({{site.baseurl}}/assets/img/graph_GOT.png)
-
-To produce the purist leaves possible, at each node, a tree asks the question involving one `feature f` and `split-point sp`. Now, million dollar question is that how does it know which feature and which spit-point to pick? It does so by maximizing information gain. The tree considers that every node contains information and aims at maximizing the information gain obtained after each split. Consider the case where a Node with N samples is split into a left-node with Nleft samples and a right-node with Nright samples. 
-
-The `information gain` for such split is given by the formula shows below.
-
-![information gain]({{site.baseurl}}/assets/img/tree-3.jpg)
-
-A `question` that you may have in your mind here is: What is impurity and what is `criterion` is used to measure the impurity of a node? Look at the `image` below and think which node can be described easily. I am sure, your answer is C because it requires less information as all values are similar. On the other hand, B requires more information to describe it and A requires the maximum information. In other words, we can say that C is a Pure node, B is less Impure and A is more impure.
-
-{: .center}
-![tree]({{site.baseurl}}/assets/img/tree-4.jpg)
-
-Now, we can build a conclusion that less impure node requires less information to describe it. And, more impure node requires more information. There are different criteria you can use to measure impurities of a node among which are the `gini-index` and `entropy`. 
-
-### What is Gini Index?
-
-Gini index or Gini impurity measures the `degree or probability` of a particular variable being wrongly classified when it is randomly chosen. But what is actually meant by `‘impurity’`? If all the elements belong to a single class, then it can be called pure. The degree of` Gini index` varies between 0 and 1, where 0 denotes that all elements belong to a certain class or if there exists only one class, and 1 denotes that the elements are randomly distributed across various classes. A `Gini Index` of 0.5 denotes equally distributed elements into some classes.
-
-**Formula for Gini Index**
-
-![information gain]({{site.baseurl}}/assets/img/tree-5.jpg)
-
-where pi  is the probability of an object being classified to a particular class. While building the decision tree, we would prefer choosing the attribute/feature with the least `Gini index` as the root node.
-
-### What is Entropy?
-
-Information theory is a measure to define this degree of `disorganization` in a system known as `Entropy`. If the sample is completely homogeneous, then the `entropy` is zero and if the sample is an equally divided (50% – 50%), it has `entropy` of one.
-
-**Formula for Entropy**
-
-![information gain]({{site.baseurl}}/assets/img/tree-6.jpg)
-
-Here `p` and `q` is `probability` of success and failure respectively in that node. `Entropy` is also used with categorical target variable. It chooses the split which has lowest `entropy` compared to parent node and other splits. The lesser the `entropy`, the better it is.
-
-### Steps to calculate entropy for a split:
-
-  1.	Calculate entropy of parent node
-  2.	Calculate entropy of each individual node of split and calculate weighted average of all sub-nodes available in split.
-
-Now, lets describe how a classification tree learns. When an unconstrained tree is trained, the nodes are grown recursively. In other words, a node exists based on the state of its predecessors. At a non-leaf node, the data is split based on `feature f` and `split-point sp` in such a way to maximize information gain. If the information gain obtained by splitting a node is null, the node is declared a `leaf`.
-
+So we've been looking at different ways to find the important characters in the Game of Thrones co-occurrence network. According to degree centrality, Eddard Stark is the most important character initially in the books. But who is/are the most important character(s) in the fifth book according to these three measures
 
 {% highlight ruby %}
-#=> Import DecisionTreeClassifier 
-from sklearn.tree import DecisionTreeClassifier 
-#=> Import train_test_split 
-from sklearn.model_selection import train_test_split 
-#=> Import accuracy_score 
-from sklearn.metrics import accuracy_score 
-#=> Split dataset into 80% train, 20% test 
-X_train, X_test, y_train, y_test= train_test_split(X, y, 
-                                                   test_size=0.2,
-                                                   stratify=y,
-                                                   random_state=1) 
-#=> Instantiate dt, set 'criterion' to 'gini' 
-dt = DecisionTreeClassifier(criterion='gini', random_state=1) 
-
-#=> Fit dt to the training set 
-dt.fit(X_train,y_train) 
- 
-#=> Predict test-set labels 
-y_pred= dt.predict(X_test) 
- 
-#=> Evaluate test-set accuracy 
-accuracy_score(y_test, y_pred) 
+=># Finding the most important character in the fifth book,  
+=># according to degree centrality, betweenness centrality and pagerank.
+p_rank, b_cent, d_cent = cor.idxmax(axis=1)
 {% endhighlight %}
 
-`accuracy_score: 0.92105263157894735` 
+`p_rank = 'Jon-Snow'`
 
-### Using entropy as a criterion
+`b_cent = 'Stannis-Baratheon'`
 
-{% highlight ruby %}
-#=> Import DecisionTreeClassifier from sklearn.tree
-from sklearn.tree import DecisionTreeClassifier
-
-#=> Instantiate dt_entropy, set 'entropy' as the information criterion
-dt_entropy = DecisionTreeClassifier(max_depth=8, criterion='entropy', random_state=1)
-
-#=> Fit dt_entropy to the training set
-dt_entropy.fit(X_train,y_train)
-
-#=> Import accuracy_score from sklearn.metrics
-from sklearn.metrics import accuracy_score
-
-#=> Use dt_entropy to predict test set labels
-y_pred= dt_entropy.predict(X_test)
-
-#=> Evaluate accuracy_entropy
-accuracy_entropy = accuracy_score(y_test, y_pred)
-
-#=> Print accuracy_entropy
-print('Accuracy achieved by using entropy: ', accuracy_entropy)
-
-#=> Print accuracy_gini
-print('Accuracy achieved by using the gini index: ', accuracy_gini)
-{% endhighlight %}
-
-Accuracy achieved by using entropy:  0.929824561404
-Accuracy achieved by using the gini index:  0.929824561404
-
-Emphasis, aka italics, with *asterisks* or _underscores_.
-
-Strong emphasis, aka bold, with **asterisks** or __underscores__.
-
-Combined emphasis with **asterisks and _underscores_**.
-
-Strikethrough uses two tildes. ~~Scratch this.~~
+`d_cent = 'Jon-Snow'`
 
