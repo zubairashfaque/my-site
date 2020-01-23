@@ -38,13 +38,13 @@ To modify an image, you can modify the existing numbers in the array. In a color
 
 {% highlight ruby %}
 #=> Set the red channel in this part of the image to 1
-data[0:10, 0:10, 3] = 1
+data[0:10, 0:10, 0] = 1
 
 #=> Set the green channel in this part of the image to 0
 data[0:10, 0:10, 2] = 0
 
 #=> Set the blue channel in this part of the image to 0
-data[0:10, 0:10, 3] = 0
+data[0:10, 0:10, 1] = 0
 
 #=> Visualize the result
 plt.imshow(data)
