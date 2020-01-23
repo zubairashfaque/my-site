@@ -54,6 +54,29 @@ plt.show()
 {: .center}
 ![GOT]({{site.baseurl}}/assets/img/k_img_2.JPG)
 
+
+### create a one-hot encoding
+
+Neural networks expect the labels of classes in a dataset to be organized in a one-hot encoded manner: each row in the array contains zeros in all columns, except the column corresponding to a unique label, which is set to 1.
+
+{% highlight ruby %}
+#=> The number of image categories
+n_categories = 3
+
+#=> The unique values of categories in the data
+categories = np.array(["shirt", "dress", "shoe"])
+
+#=> Initialize ohe_labels as all zeros
+ohe_labels = np.zeros((len(labels), n_categories))
+
+#=> Loop over the labels
+for ii in range(len(labels)):
+    # Find the location of this label in the categories variable
+    jj = np.where(categories == labels[ii])
+    # Set the corresponding zero to one
+    ohe_labels[ii, jj] = 1
+{% endhighlight %}
+
 `Game of Thrones` is a TV series based on the novel `A Song Of Ice And Fire` written by `George RR Martin`. Most Important characters are `Jon Snow`, `Daenerys Targaryen`, or `Tyrion Lannister`. Let us find out who is the most `important character` in `Game of Thrones`? The importance of character could be analyzed by their `co-occurrence network` and its `evolution` over the five books in R.R. Martin's. We will look at how the importance of the characters changes over the books using different centrality measures.
 
 In this project we will use `networkx` package and different network centrality measures.In this project uses a dataset parsed by `Andrew J. Beveridge` and `Jie Shan` which is available [here](https://github.com/mathbeveridge/asoiaf). For more information on this dataset have a look at the [Network of Thrones blog](https://networkofthrones.wordpress.com/).
