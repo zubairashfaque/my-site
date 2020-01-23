@@ -11,8 +11,10 @@ tags: [ZUBI_ASH, PROJECT, DATACAMP, Game_of_Thrones] # add tag
 In this blog, I will analyze the network of characters in Game of Thrones and how it changes over the course of the books.
 
 ##  Project Description
+
 {: .center}
 ![GOT]({{site.baseurl}}/assets/img/got_network.jpeg)
+
 `Game of Thrones` is a TV series based on the novel `A Song Of Ice And Fire` written by `George RR Martin`. Most Important characters are `Jon Snow`, `Daenerys Targaryen`, or `Tyrion Lannister`. Let us find out who is the most `important character` in `Game of Thrones`? The importance of character could be analyzed by their `co-occurrence network` and its `evolution` over the five books in R.R. Martin's. We will look at how the importance of the characters changes over the books using different centrality measures.
 
 In this project we will use `networkx` package and different network centrality measures.In this project uses a dataset parsed by `Andrew J. Beveridge` and `Jie Shan` which is available [here](https://github.com/mathbeveridge/asoiaf). For more information on this dataset have a look at the [Network of Thrones blog](https://networkofthrones.wordpress.com/).
