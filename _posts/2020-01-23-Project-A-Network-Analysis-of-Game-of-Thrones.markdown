@@ -11,6 +11,10 @@ tags: [ZUBI_ASH, PROJECT, DATACAMP, Game_of_Thrones] # add tag
 In this blog, I will analyze the network of characters in Game of Thrones and how it changes over the course of the books.
 
 ##  Project Description
+
+{: .center}
+![GOT]({{site.baseurl}}/assets/img/got_network.jpeg)
+
 `Game of Thrones` is a TV series based on the novel `A Song Of Ice And Fire` written by `George RR Martin`. Most Important characters are `Jon Snow`, `Daenerys Targaryen`, or `Tyrion Lannister`. Let us find out who is the most `important character` in `Game of Thrones`? The importance of character could be analyzed by their `co-occurrence network` and its `evolution` over the five books in R.R. Martin's. We will look at how the importance of the characters changes over the books using different centrality measures.
 
 In this project we will use `networkx` package and different network centrality measures.In this project uses a dataset parsed by `Andrew J. Beveridge` and `Jie Shan` which is available [here](https://github.com/mathbeveridge/asoiaf). For more information on this dataset have a look at the [Network of Thrones blog](https://networkofthrones.wordpress.com/).
@@ -20,7 +24,29 @@ In this project we will use `networkx` package and different network centrality 
 
 Decision tree are supervised learning models used in data mining. In other words, these models help us in finding new information in a provided dataset to solve problems involving `classification` and `regression`. Tree based learning algorithms are considered to be one of the best in terms of `accuracy`, `stability`, `ease of understanding` and `flexibility`. As discussed, these models have a high flexibility but that comes at a price: on one hand, trees are able to capture complex non-linear relationships; on the other hand, they are prone to over fitting (memorizing the noise present in a dataset).
 
-### 1. What is Decision Tree? 
+### 1. Let's load and explore the data? 
+
+This dataset constitutes a network and is given as a text file describing the edges between characters, with some attributes attached to each edge. Let's start by loading in the data for the first book A Game of Thrones and inspect it.
+
+{% highlight ruby %}
+#=> Importing modules
+import pandas as pd
+#=>  Reading in book1.csv
+book1 = pd.read_csv("book1.csv")
+#=> Printing out the head of the dataset
+print(book1.head())
+{% endhighlight %}
+
+OUTPUT.
+
+| Source | Target | Type | weight | book |
+|---------------:|----------------:|-----------:|--:|--:|
+| Addam-Marbrand | Jaime-Lannister | Undirected | 3 | 1 |
+| Addam-Marbrand | Tywin-Lannister | Undirected | 6 | 1 |
+| Aegon-I-Targaryen | Daenerys-Targaryen | Undirected | 5 | 1 |
+| Aegon-I-Targaryen | Eddard-Stark | Undirected  | 4 | 1 |
+| Aemon-Targaryen-(Maester-Aemon) | Alliser-Thorne | Undirected | 4 | 1 | 
+
 
 A decision tree is like a flowchart. To put it another way, a decision-tree is data-structure consisting of hierarchy of individual units called nodes. Each internal node represents a `question` or `prediction` (e.g., whether a coin flip comes up heads or tails). 
 There are three kinds of nodes.
