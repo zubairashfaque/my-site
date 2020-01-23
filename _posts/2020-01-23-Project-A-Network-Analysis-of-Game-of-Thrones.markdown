@@ -133,7 +133,7 @@ degree_evol_df[['Eddard-Stark', 'Tyrion-Lannister', 'Jon-Snow']].plot()
 {% endhighlight %}
 
 {: .center}
-![tree]({{site.baseurl}}/assets/img/graph_GOT.png)
+![tree1]({{site.baseurl}}/assets/img/graph_GOT.png)
 
  ### 6. What's up with Stannis Baratheon?
 
@@ -160,7 +160,7 @@ betweenness_evol_df[list_of_char].plot(figsize=(13, 7))
 
 
 {: .center}
-![tree]({{site.baseurl}}/assets/img/graph_GOT2.png)
+![tree2]({{site.baseurl}}/assets/img/graph_GOT2.png)
 
 ### 7. What does the Google PageRank algorithm tell us about Game of Thrones?
 
