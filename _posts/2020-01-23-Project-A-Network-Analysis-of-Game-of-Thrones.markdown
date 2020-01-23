@@ -109,15 +109,57 @@ print(sorted_deg_cen_book1)
 print(sorted_deg_cen_book5)
 {% endhighlight %}
 
-Using this measure, let's extract the top ten important characters from the first book (book[0]) and the fifth book (book[4]).
-The `root` is parent node or starting of a flowchart, a question-giving rise to two children nodes. An internal node having one parent node, question-giving rise to two children nodes. Leaf having one parent node with no children node and involving no questions; it is where prediction is made.
-A decision tree is a tree in which each internal node is labeled with an input `feature`. The branch coming from a node labeled with an input feature are labeled with each of the possible values of the output feature or in other words the branch leads to a `secondary decision` node on a different input feature. Each leaf of the tree is labeled with a `class` or a `probability distribution` over the classes, telling that the data set has been classified by the tree either into a specific class, or into a particular probability distribution.
+OUTPUT1: `[('Eddard-Stark', 0.3548387096774194), ('Robert-Baratheon', 0.2688172043010753), ('Tyrion-Lannister', 0.24731182795698928), ('Catelyn-Stark', 0.23118279569892475), ('Jon-Snow', 0.19892473118279572), ('Robb-Stark', 0.18817204301075272), ('Sansa-Stark', 0.18817204301075272), ('Bran-Stark', 0.17204301075268819), ('Cersei-Lannister', 0.16129032258064518), ('Joffrey-Baratheon', 0.16129032258064518)]`
 
+OUTPUT2: `[('Jon-Snow', 0.1962025316455696), ('Daenerys-Targaryen', 0.18354430379746836), ('Stannis-Baratheon', 0.14873417721518986), ('Tyrion-Lannister', 0.10443037974683544), ('Theon-Greyjoy', 0.10443037974683544), ('Cersei-Lannister', 0.08860759493670886), ('Barristan-Selmy', 0.07911392405063292), ('Hizdahr-zo-Loraq', 0.06962025316455696), ('Asha-Greyjoy', 0.056962025316455694), ('Melisandre', 0.05379746835443038)]`
+
+
+5. Evolution of importance of characters over the books
+
+ ### 5. Evolution of importance of characters over the books
+
+According to `degree centrality`, the most important character in the first book is Eddard Stark but he is not even in the top 10 of the fifth book. The importance of characters changes over the course of five books because, you know, stuff happens... ;)
+
+Let's look at the evolution of degree centrality of a couple of characters like `Eddard Stark`, `Jon Snow`, and `Tyrion`, which showed up in the top 10 of `degree centrality` in the `first book`.
+
+{% highlight ruby %}
+%matplotlib inline
+
+=># Creating a list of degree centrality of all the books
+evol = [nx.degree_centrality(book) for book in books]
+ 
+=># Creating a DataFrame from the list of degree centralities in all the books
+degree_evol_df = pd.DataFrame.from_records(evol)
+
+=># Plotting the degree centrality evolution of Eddard-Stark, Tyrion-Lannister and Jon-Snow
+degree_evol_df[['Eddard-Stark', 'Tyrion-Lannister', 'Jon-Snow']].plot()
+{% endhighlight %}
 
 {: .center}
-Figure: [Breast Cancer Wisconsin (Diagnostic) Data Set](https://www.kaggle.com/uciml/breast-cancer-wisconsin-data)
+![tree]({{site.baseurl}}/assets/img/graph_GOT.png)
 
-In above tree `diagram`, consider the case where an instance move back and forth the tree to reach the leaf in left. In this leaf, there are 257 instances classified as benign and 7 instances classified as `malignant`. As a result, the tree's prediction for this instance would be `benign`.
+ ### 5. What's up with Stannis Baratheon?
+
+We can see that the importance of `Eddard Stark` dies off as the book series progresses. With `Jon Snow`, there is a drop in the fourth book but a sudden rise in the fifth book.
+
+Now let's look at various other measures like betweenness centrality and PageRank to find important characters in our `Game of Thrones` character co-occurrence network and see if we can uncover some more interesting facts about this network. Let's plot the evolution of betweenness centrality of this network over the five books. We will take the evolution of the top four characters of every book and plot it.
+
+{% highlight ruby %}
+=># Creating a list of betweenness centrality of all the books just like we did for degree centrality
+evol = [nx.betweenness_centrality(book, weight='weight') for book in books]
+
+=># Making a DataFrame from the list
+betweenness_evol_df = pd.DataFrame.from_records(evol)
+
+=># Finding the top 4 characters in every book
+set_of_char = set()
+for i in range(5):
+    set_of_char |= set(list(betweenness_evol_df.T[i].sort_values(ascending=False)[0:4].index))
+list_of_char = list(set_of_char)
+
+=># Plotting the evolution of the top characters
+betweenness_evol_df[list_of_char].plot(figsize=(13, 7))
+{% endhighlight %}
 
 #### Types of Decision Trees
 
@@ -132,7 +174,7 @@ In order to understand how a classification tree produces purest leafs we have t
 The nodes of a classification tree are grown recursively; in other words, the restraint to grow of an internal node of leaf depends on the state of its ancestor’s node. 
 
 {: .center}
-![tree]({{site.baseurl}}/assets/img/tree-2.jpg)
+![tree]({{site.baseurl}}/assets/img/graph_GOT.png)
 
 To produce the purist leaves possible, at each node, a tree asks the question involving one `feature f` and `split-point sp`. Now, million dollar question is that how does it know which feature and which spit-point to pick? It does so by maximizing information gain. The tree considers that every node contains information and aims at maximizing the information gain obtained after each split. Consider the case where a Node with N samples is split into a left-node with Nleft samples and a right-node with Nright samples. 
 
