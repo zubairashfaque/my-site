@@ -85,6 +85,31 @@ for book_fname in book_fnames:
     books.append(G_book)
 {% endhighlight %}
  
+ 
+ ### 4. Time to find the most important character in Game of Thrones
+ 
+ Is it `Jon Snow`, `Tyrion`, `Daenerys`, or someone else? Let's see! Network Science offers us many different `metrics` to measure the importance of a node in a network. Note that there is no "correct" way of calculating the most important `node` in a network, every `metric` has a different meaning.
+
+First, let's measure the importance of a node in a network by looking at the number of neighbors it has, that is, the number of nodes it is connected to. For example, an `influential` account on `Twitter`, where the follower-followee relationship forms the network, is an account which has a high number of followers. This measure of importance is called `degree centrality`.
+
+Using this measure, let's extract the top ten important characters from the first book `(book[0])` and the fifth book `(book[4])`.
+
+{% highlight ruby %}
+=># Calculating the degree centrality of book 1
+deg_cen_book1 = nx.degree_centrality(books[0])
+
+=># Calculating the degree centrality of book 5
+deg_cen_book5 = nx.degree_centrality(books[4])
+
+sorted_deg_cen_book1 = sorted(deg_cen_book1.items(), key=lambda x:x[1], reverse=True)[0:10]
+sorted_deg_cen_book5 = sorted(deg_cen_book5.items(), key=lambda x:x[1], reverse=True)[0:10]
+
+=># Printing out the top 10 of book1 and book5
+print(sorted_deg_cen_book1)
+print(sorted_deg_cen_book5)
+{% endhighlight %}
+
+Using this measure, let's extract the top ten important characters from the first book (book[0]) and the fifth book (book[4]).
 The `root` is parent node or starting of a flowchart, a question-giving rise to two children nodes. An internal node having one parent node, question-giving rise to two children nodes. Leaf having one parent node with no children node and involving no questions; it is where prediction is made.
 A decision tree is a tree in which each internal node is labeled with an input `feature`. The branch coming from a node labeled with an input feature are labeled with each of the possible values of the output feature or in other words the branch leads to a `secondary decision` node on a different input feature. Each leaf of the tree is labeled with a `class` or a `probability distribution` over the classes, telling that the data set has been classified by the tree either into a specific class, or into a particular probability distribution.
 
