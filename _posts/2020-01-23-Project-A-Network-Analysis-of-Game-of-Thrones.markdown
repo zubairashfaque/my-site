@@ -39,13 +39,14 @@ print(book1.head())
 
 OUTPUT.
 
-|                   Source       |       Target       |   Type      |  weight |  book |
-|-------------------------------:|-------------------:|------------:|--------:|------:|
-|                 Addam-Marbrand |    Jaime-Lannister | Undirected  |     3   |    1  |
-|                 Addam-Marbrand |    Tywin-Lannister | Undirected  |     6   |    1  |
-|              Aegon-I-Targaryen | Daenerys-Targaryen | Undirected  |     5   |    1  |
-|              Aegon-I-Targaryen |       Eddard-Stark | Undirected  |     4   |    1  |
-|Aemon-Targaryen-(Maester-Aemon) |     Alliser-Thorne | Undirected  |     4   |    1  | 
+| Source | Target | Type | weight | book |
+|---------------:|----------------:|-----------:|--:|--:|
+| Addam-Marbrand | Jaime-Lannister | Undirected | 3 | 1 |
+| Addam-Marbrand | Tywin-Lannister | Undirected | 6 | 1 |
+| Aegon-I-Targaryen | Daenerys-Targaryen | Undirected | 5 | 1 |
+| Aegon-I-Targaryen | Eddard-Stark | Undirected  |     4   |    1  |
+| Aemon-Targaryen-(Maester-Aemon) | Alliser-Thorne | Undirected | 4 | 1 | 
+
 
 A decision tree is like a flowchart. To put it another way, a decision-tree is data-structure consisting of hierarchy of individual units called nodes. Each internal node represents a `question` or `prediction` (e.g., whether a coin flip comes up heads or tails). 
 There are three kinds of nodes.
