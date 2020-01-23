@@ -29,7 +29,7 @@ plt.show()
 {% endhighlight %}
 
 {: .center}
-![GOT]({{site.baseurl}}/assets/img/k_img_1.jpeg)
+![GOT]({{site.baseurl}}/assets/img/k_img_1.JPG)
 
 ### Images as data: changing images
 
@@ -52,7 +52,7 @@ plt.show()
 {% endhighlight %}
 
 {: .center}
-![GOT]({{site.baseurl}}/assets/img/k_img_2.jpeg)
+![GOT]({{site.baseurl}}/assets/img/k_img_2.JPG)
 
 `Game of Thrones` is a TV series based on the novel `A Song Of Ice And Fire` written by `George RR Martin`. Most Important characters are `Jon Snow`, `Daenerys Targaryen`, or `Tyrion Lannister`. Let us find out who is the most `important character` in `Game of Thrones`? The importance of character could be analyzed by their `co-occurrence network` and its `evolution` over the five books in R.R. Martin's. We will look at how the importance of the characters changes over the books using different centrality measures.
 
