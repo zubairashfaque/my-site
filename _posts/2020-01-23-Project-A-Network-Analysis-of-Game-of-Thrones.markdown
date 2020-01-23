@@ -71,7 +71,7 @@ G_book1 = nx.Graph()
 Currently, the graph object `G_book1` is empty. Let's now populate it with the `edges` from `book1`. And while we're at it, let's load in the rest of the books too!
 
 {% highlight ruby %}
-#=> Iterating through the DataFrame to add edges
+=># Iterating through the DataFrame to add edges
 for index, edge in book1.iterrows():
     G_book1.add_edge(edge['Source'], edge['Target'], weight=edge['weight'])
 =># Creating a list of networks for all the books
@@ -85,7 +85,7 @@ for book_fname in book_fnames:
     books.append(G_book)
 {% endhighlight %}
  
- 
+
  ### 4. Time to find the most important character in Game of Thrones
  
  Is it `Jon Snow`, `Tyrion`, `Daenerys`, or someone else? Let's see! Network Science offers us many different `metrics` to measure the importance of a node in a network. Note that there is no "correct" way of calculating the most important `node` in a network, every `metric` has a different meaning.
@@ -160,9 +160,64 @@ betweenness_evol_df[list_of_char].plot(figsize=(13, 7))
 
 
 {: .center}
-![tree]({{site.baseurl}}/assets/img/graph_GOT.png)
+![tree]({{site.baseurl}}/assets/img/graph_GOT2.png)
 
-#### Types of Decision Trees
+### 7. What does the Google PageRank algorithm tell us about Game of Thrones?
+
+We see a peculiar rise in the importance of Stannis Baratheon over the books. In the fifth book, he is significantly more important than other characters in the network, even though he is the third most important character according to degree centrality.
+
+PageRank was the initial way Google ranked web pages. It evaluates the inlinks and outlinks of webpages in the world wide web, which is, essentially, a directed network. Let's look at the importance of characters in the Game of Thrones network according to PageRank.
+
+{% highlight ruby %}
+=># Creating a list of pagerank of all the characters in all the books
+evol = [nx.pagerank(book) for book in books]
+
+=># Making a DataFrame from the list
+pagerank_evol_df = pd.DataFrame.from_records(evol)
+
+=># Finding the top 4 characters in every book
+set_of_char = set()
+for i in range(5):
+    set_of_char |= set(list(pagerank_evol_df.T[i].sort_values(ascending=False)[0:4].index))
+list_of_char = list(set_of_char)
+
+=># Plotting the top characters
+pagerank_evol_df[list_of_char].plot(figsize=(13, 7))
+{% endhighlight %}
+
+{: .center}
+![tree]({{site.baseurl}}/assets/img/graph_GOT3.png)
+
+
+### 8. Correlation between different measures
+
+Stannis, Jon Snow, and Daenerys are the most important characters in the fifth book according to PageRank. Eddard Stark follows a similar curve but for degree centrality and betweenness centrality: He is important in the first book but dies into oblivion over the book series.
+
+We have seen three different measures to calculate the importance of a node in a network, and all of them tells us something about the characters and their importance in the co-occurrence network. We see some names pop up in all three measures so maybe there is a strong correlation between them?
+
+Let's look at the correlation between PageRank, betweenness centrality and degree centrality for the fifth book using Pearson correlation.
+
+{% highlight ruby %}
+=># Creating a list of pagerank, betweenness centrality, degree centrality
+=># of all the characters in the fifth book.
+measures = [nx.pagerank(books[4]), 
+            nx.betweenness_centrality(books[4], weight='weight'), 
+            nx.degree_centrality(books[4])]
+
+=># Creating the correlation DataFrame
+cor = pd.DataFrame.from_records(measures)
+
+=># Calculating the correlation
+cor.T.corr()
+{% endhighlight %}
+
+OUTPUT:
+
+| 0 | 1 | 2 |
+|---------:|---------:|--------:|
+| 1.000000 | 0.793372 | 0.971493|
+| 0.793372 | 1.000000 | 0.833816|
+| 0.971493 | 0.833816 | 1.000000|
 
 Types of decision trees are based on the type of target variable we have. It can be of two types:
 1.  **Classification Decision Tree**: A decision tree, which has categorical target variable then it called as `classification decision` tree also called variable decision tree. 
