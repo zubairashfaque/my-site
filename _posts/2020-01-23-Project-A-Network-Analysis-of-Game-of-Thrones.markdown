@@ -71,7 +71,7 @@ G_book1 = nx.Graph()
 Currently, the graph object `G_book1` is empty. Let's now populate it with the `edges` from `book1`. And while we're at it, let's load in the rest of the books too!
 
 {% highlight ruby %}
-#=> Iterating through the DataFrame to add edges
+=># Iterating through the DataFrame to add edges
 for index, edge in book1.iterrows():
     G_book1.add_edge(edge['Source'], edge['Target'], weight=edge['weight'])
 =># Creating a list of networks for all the books
@@ -85,7 +85,7 @@ for book_fname in book_fnames:
     books.append(G_book)
 {% endhighlight %}
  
- 
+
  ### 4. Time to find the most important character in Game of Thrones
  
  Is it `Jon Snow`, `Tyrion`, `Daenerys`, or someone else? Let's see! Network Science offers us many different `metrics` to measure the importance of a node in a network. Note that there is no "correct" way of calculating the most important `node` in a network, every `metric` has a different meaning.
