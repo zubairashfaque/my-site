@@ -55,7 +55,7 @@ Before diving into details we have to understand the concept of the Nodes and Ed
 {: .center}
 ![NetworkX]({{site.baseurl}}/assets/img/Node_edge.JPG)
 
-Source and target are the two nodes that are linked by an edge. A network can have directed or undirected edges and in this network all the edges are undirected. The weight attribute of every edge tells us the number of interactions that the characters have had over the book, and the book column tells us the book number.
+`Source` and `target` are the two `nodes` that are linked by an `edge`. A network can have directed or undirected edges and in this network all the edges are undirected. The weight attribute of every edge tells us the number of `interactions that the characters` have had over the book, and the book column tells us the book number.
 
 The `root` is parent node or starting of a flowchart, a question-giving rise to two children nodes. An internal node having one parent node, question-giving rise to two children nodes. Leaf having one parent node with no children node and involving no questions; it is where prediction is made.
 A decision tree is a tree in which each internal node is labeled with an input `feature`. The branch coming from a node labeled with an input feature are labeled with each of the possible values of the output feature or in other words the branch leads to a `secondary decision` node on a different input feature. Each leaf of the tree is labeled with a `class` or a `probability distribution` over the classes, telling that the data set has been classified by the tree either into a specific class, or into a particular probability distribution.
