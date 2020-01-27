@@ -174,3 +174,51 @@ for ii in range(8):
 #=> Print conv
 print(conv)
 {% endhighlight %}
+
+### Image convolutions
+
+The convolution of an image with a kernel summarizes a part of the image as the sum of the multiplication of that part of the image with the kernel. Now, you will write the code that executes a convolution of an image with a kernel using Numpy. Given a black and white image that is stored in the variable im, write the operations inside the loop that would execute the convolution with the provided kernel.
+
+{% highlight ruby %}
+kernel = np.array([[0, 1, 0], [1, 1, 1], [0, 1, 0]])
+result = np.zeros(im.shape)
+
+#=> Output array
+for ii in range(im.shape[0] - 3):
+    for jj in range(im.shape[1] - 3):
+        result[ii, jj] = (im[ii:ii+3, jj:jj+3] * kernel).sum()
+
+#=> Print result
+print(result)
+{% endhighlight %}
+
+### Defining image convolution kernels
+
+This code is now stored in a function called convolution() that takes two inputs: image and kernel and produces the convolved image. Now, you will be asked to define the kernel that finds a particular feature in the image.
+
+For example, the following kernel finds a vertical line in images:
+
+np.array([[-1, 1, -1], 
+          [-1, 1, -1], 
+          [-1, 1, -1]])
+Define a kernel that finds a dark spot surrounded by bright pixels.(A horizontal line has dark pixels at the top, bright pixels in the middle, and then dark pixels in the bottom)
+
+
+kernel = np.array([[-1, -1, -1], 
+                   [1, 1, 1],
+                   [-1, -1, -1]])          
+ 
+ 
+ Define a kernel that finds a light spot surrounded by dark pixels. (A light spot has a bright pixel (with larger values, e.g., 1) in the center, surrounded by pixels that are dark (lower values, e.g., -1))
+ 
+ 
+kernel = np.array([[-1, -1, -1], 
+                   [-1, 1, -1],
+                   [-1, -1, -1]])        
+                   
+Define a kernel that finds a dark spot surrounded by bright pixels.(This is the exact opposite of a bright pixel surrounded by dark pixels.)                   
+
+
+kernel = np.array([[1, 1, 1], 
+                   [1, -1, 1],
+                   [1, 1, 1]])    
