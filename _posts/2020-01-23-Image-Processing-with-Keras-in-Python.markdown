@@ -201,6 +201,8 @@ For example, the following kernel finds a vertical line in images:
 np.array([[-1, 1, -1], 
           [-1, 1, -1], 
           [-1, 1, -1]])
+
+
 Define a kernel that finds a dark spot surrounded by bright pixels.(A horizontal line has dark pixels at the top, bright pixels in the middle, and then dark pixels in the bottom)
 
 
@@ -209,7 +211,8 @@ kernel = np.array([[-1, -1, -1],
                    [-1, -1, -1]])          
  
  
- Define a kernel that finds a light spot surrounded by dark pixels. (A light spot has a bright pixel (with larger values, e.g., 1) in the center, surrounded by pixels that are dark (lower values, e.g., -1))
+
+Define a kernel that finds a light spot surrounded by dark pixels. (A light spot has a bright pixel (with larger values, e.g., 1) in the center, surrounded by pixels that are dark (lower values, e.g., -1))
  
  
 kernel = np.array([[-1, -1, -1], 
