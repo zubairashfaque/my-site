@@ -28,6 +28,7 @@ The objective of this task is to detect `sentiments` of the speech in tweets. Fo
 Formally, given a training sample of tweets and labels, where label `1` denotes the tweet is racist/sexist and label `0` denotes the tweet is not racist/sexist, your objective is to predict the labels on the test dataset.
 
 `data source: https://www.kaggle.com/arkhoshghalb/twitter-sentiment-analysis-hatred-speech`
+[link to kaggle dataset!](https://www.kaggle.com/arkhoshghalb/twitter-sentiment-analysis-hatred-speech)
 
 ### 2. IMPORT LIBRARIES AND LOAD DATASETS
 
