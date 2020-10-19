@@ -63,6 +63,13 @@ admission_df.head()
 ![GOT]({{site.baseurl}}/assets/img/pro_grad_pic_4.png)
 
 
+
+
+
+
+### 3. EXPLORE DATASET
+
+
 Getting a concise `summary` of the dataframe admission_df.
 
 {% highlight ruby %}
@@ -106,32 +113,47 @@ We can see that there is a column named `Serial No.` which are just ids no use o
 admission_df = admission_df.drop(['Serial No.'], axis = 1)
 {% endhighlight %}
 
-
-
-### 3. EXPLORE DATASET
-
-We want to sure there are no `null` elements in our data. for this we going to check null value in `seaborn heatmap`
-
-If any `null` element it will show in the chart
+We want to sure there are no `null` elements in our data.
 
 {% highlight ruby %}
-sns.heatmap(tweets_df.isnull(), yticklabels = False, cbar = False, cmap="Blues")
+#=> checking the null values
+admission_df.isnull().sum()
 {% endhighlight %}
 
 RESULT: 
-{: .center}
-![GOT]({{site.baseurl}}/assets/img/sentiment_3.JPG)
-
-Checking other than `1` or `0` values in label column.
 
 {% highlight ruby %}
- sns.heatmap(tweets_df.isnull(), yticklabels = False, cbar = False, cmap="Blues")
+GRE Score            0
+TOEFL Score          0
+University Rating    0
+SOP                  0
+LOR                  0
+CGPA                 0
+Research             0
+Chance of Admit      0
+dtype: int64
+{% endhighlight %}
+
+
+Grouping by University ranking  
+
+{% highlight ruby %}
+df_university = admission_df.groupby(by = 'University Rating').mean()
+df_university
 {% endhighlight %}
 
 
 RESULT: 
 {: .center}
-![GOT]({{site.baseurl}}/assets/img/sentiment_4.JPG)
+![GOT]({{site.baseurl}}/assets/img/pro_grad_pic_5.JPG)
+
+Performing data visualiztion for batter understanding.
+
+Checking data distribution.
+
+{% highlight ruby %}
+ admission_df.hist(bins = 30, figsize = (20, 20), color = 'r')
+{% endhighlight %}
 
 We can see in the plot that majority of labels are `0`.
 
@@ -141,26 +163,31 @@ Let's get the `length` of the `messages`.
 tweets_df['length'] = tweets_df['tweet'].apply(len)
 {% endhighlight %}
 
+RESULT: 
+{: .center}
+![GOT]({{site.baseurl}}/assets/img/pro_grad_pic_6.JPG)
 
-OUTPUT.
+{% highlight ruby %}
+sns.pairplot(admission_df)
+{% endhighlight %}
 
-| index | label | label | tweet | 
-|---------------:|----------------:|-----------:|--:|
-| 0 | 0 | @user when a father is dysfunctional and is s... | 102 |
-| 1 | 0 | @user @user thanks for #lyft credit i can't us...	 |122 |
-| 2 | 0 | bihday your majesty | 21 |
-| 3 | 0 | #model i love u take with u all the time in ...  | 86 |
-| 4 | 0 | to see nina turner on the airwaves trying to...	 | 131 |
+RESULT: 
+{: .center}
+![GOT]({{site.baseurl}}/assets/img/pro_grad_pic_7.png)
 
 
 Let's check the destribution of `length` of `tweets`.
 
 {% highlight ruby %}
-tweets_df['length'].plot(bins=100, kind='hist') 
+corr_matrix = admission_df.corr()
+plt.figure(figsize = (12, 12))
+sns.heatmap(corr_matrix, annot = True)
+plt.show()
 {% endhighlight %}
 
 {: .center}
-![GOT]({{site.baseurl}}/assets/img/sentiment_5.JPG)
+![GOT]({{site.baseurl}}/assets/img/pro_grad_pic_8.JPG
+)
 
 
 Let's see the `shortest message`
