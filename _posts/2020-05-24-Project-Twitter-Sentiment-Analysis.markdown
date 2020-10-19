@@ -331,12 +331,26 @@ RESULT:
 `'!"#$%&\'()*+,-./:;<=>?@[\\]^_`{|}~'
 {% endhighlight %}
 
+We wanted to remove aforementioned result from out text.
 
+Looking at actual text.
 
 {% highlight ruby %}
 Test = 'Good morning beautiful people :)... I am having fun learning Machine learning and AI!!'
 {% endhighlight %}
+ 
+Let go and clear our test data
 
+{% highlight ruby %}
+test_punc_removed = [ char for char in Test if char not in string.punctuation ]
+{% endhighlight %}
+ 
+{% highlight ruby %}
+#=> Join the characters again to form the string.
+test_punc_removed
+test_punc_removed_join = ''.join(test_punc_removed)
+test_punc_removed_join
+{% endhighlight %}
 
 Currently, the graph object `G_book1` is empty. Let's now populate it with the `edges` from `book1`. And while we're at it, let's load in the rest of the books too!
 
