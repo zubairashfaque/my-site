@@ -576,6 +576,42 @@ RESULT:
  'AI']
 {% endhighlight %}
 
+### 4. NLP - TOKENIZATION
+Natural Language Processing - TOKENIZATION
+
+Features in machine learning is basically numerical attributes from which anyone can perform some mathematical operation such as matrix factorisation, dot product etc. But there are various scenario when dataset does not contain numerical attribute for example- sentimental analysis of `Twitter/Facebook user`, `Amazon customer review`, `IMDB/Netflix movie recommendation`. In all the above cases dataset contain numerical value, string value, character value, categorical value, connection (one user connected to another user). Conversion of these types of feature into numerical feature is called featurization.
+
+Lets suppose we have folowing four strings
+ 
+STRING1: This is the first paper.
+STRING2: This paper is the second paper.
+STRING3: And this is the thirt one.
+STRING4: Is this the first paper?
+
+we wanted to convert them in bunch of numbers. We do pick every single word from t he s entences and place them in a table as column (each word each column). And as rows we put training samples. At the end we add zeros and ones corresponding to locations of every single word if it exist every single instinct and frequency in the sentence.
+
+{: .center}
+![GOT]({{site.baseurl}}/assets/img/sentiment_9.JPG)
+
+we will use CountVectorizer which convert a collection of text documents to a matrix of token counts.
+
+{% highlight ruby %}
+from sklearn.feature_extraction.text import CountVectorizer
+sample_data = ['This is the first paper.','This document is the second paper.','And this is the third one.','Is this the first paper?']
+
+vectorizer = CountVectorizer()
+
+X = vectorizer.fit_transform(sample_data)
+{% endhighlight %}
+
+{% highlight ruby %}
+print(vectorizer.get_feature_names())
+{% endhighlight %}
+
+{% highlight ruby %}
+['and', 'document', 'first', 'is', 'one', 'paper', 'second', 'the', 'third', 'this']
+{% endhighlight %}
+
 Currently, the graph object `G_book1` is empty. Let's now populate it with the `edges` from `book1`. And while we're at it, let's load in the rest of the books too!
 
 {% highlight ruby %}
