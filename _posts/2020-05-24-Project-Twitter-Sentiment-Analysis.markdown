@@ -207,6 +207,7 @@ positive = tweets_df[tweets_df['label']==0]
 
 
 OUTPUT:
+
 | index | label | tweet | length | 
 |----:|------:|--------------------------------------------:|--:|
 | 0 | 0 | @user when a father is dysfunctional and is s... | 102 |
@@ -223,6 +224,7 @@ negative = tweets_df[tweets_df['label']==1]
 
 
 OUTPUT:
+
 | index | label | tweet | length | 
 |---------------:|----------------:|--------------------------------------------:|--:|
 | 0 | 1 | @user #cnn calls #michigan middle school 'buil... | 74 |
