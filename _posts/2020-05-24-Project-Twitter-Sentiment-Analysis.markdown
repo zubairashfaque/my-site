@@ -154,7 +154,7 @@ The resulting DataFrame book1 has 5 columns: `Source`, `Target`, `Type`, `weight
 Before diving into details we have to understand the concept of the Nodes and Edges concept in NetworkX which could be depicted in the following picture.
 
 {: .center}
-![NetworkX]({{site.baseurl}}/assets/img/sentiment_3.jpg)
+![NetworkX]({{site.baseurl}}/assets/img/sentiment_4.jpg)
 
 We can see in the plot that majority of labels are `0`.
 
@@ -162,6 +162,38 @@ Let's get the `length` of the `messages`.
 
 {% highlight ruby %}
 tweets_df['length'] = tweets_df['tweet'].apply(len)
+{% endhighlight %}
+
+
+OUTPUT.
+
+| index | label | label | tweet | 
+|---------------:|----------------:|-----------:|--:|
+| 0 | 0 | @user when a father is dysfunctional and is s... | 102 |
+| 1 | 0 | @user @user thanks for #lyft credit i can't us...	 |122 |
+| 2 | 0 | bihday your majesty | 21 |
+| 3 | 0 | #model i love u take with u all the time in ...  | 86 |
+| 4 | 0 | to see nina turner on the airwaves trying to...	 | 131 |
+
+
+Let's check the destribution of `length` of `tweets`.
+
+{% highlight ruby %}
+tweets_df['length'].plot(bins=100, kind='hist') 
+{% endhighlight %}
+
+{: .center}
+![NetworkX]({{site.baseurl}}/assets/img/sentiment_5.jpg)
+
+
+Let's see the `shortest message`
+
+{% highlight ruby %}
+tweets_df[tweets_df['length'] == 11]['tweet'].iloc[0]
+{% endhighlight %}
+
+{% highlight ruby %}
+'i love you '
 {% endhighlight %}
 
 `Source` and `target` are the two `nodes` that are linked by an `edge`. A network can have directed or undirected edges and in this network all the edges are undirected. The weight attribute of every edge tells us the number of `interactions that the characters` have had over the book, and the book column tells us the book number.
@@ -174,6 +206,35 @@ import networkx as nx
 #=> Creating an empty graph object
 G_book1 = nx.Graph()
 {% endhighlight %}
+
+
+positive = tweets_df[tweets_df['label']==0]
+
+
+OUTPUT:
+| index | label | label | tweet | 
+|---------------:|----------------:|-----------:|--:|
+| 0 | 0 | @user when a father is dysfunctional and is s... | 102 |
+| 1 | 0 | @user @user thanks for #lyft credit i can't us...	 |122 |
+| 2 | 0 | bihday your majesty | 21 |
+| 3 | 0 | #model i love u take with u all the time in ...  | 86 |
+| 4 | 0 | to see nina turner on the airwaves trying to...	 | 131 |
+
+
+negative = tweets_df[tweets_df['label']==1]
+
+
+OUTPUT:
+| index | label | label | tweet | 
+|---------------:|----------------:|-----------:|--:|
+| 0 | 1 | @user #cnn calls #michigan middle school 'buil... | 74 |
+| 1 | 1 | no comment! in #australia #opkillingbay #se...		 |101 |
+| 2 | 1 | @user @user lumpy says i am a . prove it lumpy. | 22 |
+| 3 | 1 | it's unbelievable that in the 21st century we'...  | 47 |
+| 4 | 1 | lady banned from kentucky mall. @user #jcpenn..	 | 104 |
+
+
+
 
 ### 3. Populate the network with the DataFrame
 
