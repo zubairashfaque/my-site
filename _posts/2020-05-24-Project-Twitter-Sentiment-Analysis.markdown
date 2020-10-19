@@ -205,8 +205,8 @@ positive = tweets_df[tweets_df['label']==0]
 
 
 OUTPUT:
-| index | label | label | tweet | 
-|---------------:|----------------:|-----------:|--:|
+| index | label | tweet | length | 
+|----:|------:|--------------------------------------------:|--:|
 | 0 | 0 | @user when a father is dysfunctional and is s... | 102 |
 | 1 | 0 | @user @user thanks for #lyft credit i can't us...	 |122 |
 | 2 | 0 | bihday your majesty | 21 |
@@ -218,8 +218,8 @@ negative = tweets_df[tweets_df['label']==1]
 
 
 OUTPUT:
-| index | label | label | tweet | 
-|---------------:|----------------:|-----------:|--:|
+| index | label | tweet | length | 
+|---------------:|----------------:|--------------------------------------------:|--:|
 | 0 | 1 | @user #cnn calls #michigan middle school 'buil... | 74 |
 | 1 | 1 | no comment! in #australia #opkillingbay #se...		 |101 |
 | 2 | 1 | @user @user lumpy says i am a . prove it lumpy. | 22 |
