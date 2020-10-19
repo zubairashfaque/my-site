@@ -312,7 +312,7 @@ plt.imshow(WordCloud().generate(sentences_as_one_string))
 
 
 
-### 4. PERFORM DATA CLEANING - REMOVE PUNCTUATION FROM TEXT
+### 4. PERFORM DATA CLEANING - REMOVE PUNCTUATION FROM TEXT & REMOVE STOPWORDS
 
 {: .center}
 ![GOT]({{site.baseurl}}/assets/img/sentiment_8.jpeg)
@@ -352,6 +352,230 @@ test_punc_removed_join = ''.join(test_punc_removed)
 test_punc_removed_join
 {% endhighlight %}
 
+{% highlight ruby %}
+'Good morning beautiful people  I am having fun learning Machine learning and AI'
+{% endhighlight %}
+
+Importing Natural Language tool kit
+
+{% highlight ruby %}
+#=> import nltk # Natural Language tool kit 
+nltk.download('stopwords')
+{% endhighlight %}
+
+{% highlight ruby %}
+#=># You have to download stopwords Package to execute this command
+from nltk.corpus import stopwords
+stopwords.words('english')
+{% endhighlight %}
+
+
+{% highlight ruby %}
+['i',
+ 'me',
+ 'my',
+ 'myself',
+ 'we',
+ 'our',
+ 'ours',
+ 'ourselves',
+ 'you',
+ "you're",
+ "you've",
+ "you'll",
+ "you'd",
+ 'your',
+ 'yours',
+ 'yourself',
+ 'yourselves',
+ 'he',
+ 'him',
+ 'his',
+ 'himself',
+ 'she',
+ "she's",
+ 'her',
+ 'hers',
+ 'herself',
+ 'it',
+ "it's",
+ 'its',
+ 'itself',
+ 'they',
+ 'them',
+ 'their',
+ 'theirs',
+ 'themselves',
+ 'what',
+ 'which',
+ 'who',
+ 'whom',
+ 'this',
+ 'that',
+ "that'll",
+ 'these',
+ 'those',
+ 'am',
+ 'is',
+ 'are',
+ 'was',
+ 'were',
+ 'be',
+ 'been',
+ 'being',
+ 'have',
+ 'has',
+ 'had',
+ 'having',
+ 'do',
+ 'does',
+ 'did',
+ 'doing',
+ 'a',
+ 'an',
+ 'the',
+ 'and',
+ 'but',
+ 'if',
+ 'or',
+ 'because',
+ 'as',
+ 'until',
+ 'while',
+ 'of',
+ 'at',
+ 'by',
+ 'for',
+ 'with',
+ 'about',
+ 'against',
+ 'between',
+ 'into',
+ 'through',
+ 'during',
+ 'before',
+ 'after',
+ 'above',
+ 'below',
+ 'to',
+ 'from',
+ 'up',
+ 'down',
+ 'in',
+ 'out',
+ 'on',
+ 'off',
+ 'over',
+ 'under',
+ 'again',
+ 'further',
+ 'then',
+ 'once',
+ 'here',
+ 'there',
+ 'when',
+ 'where',
+ 'why',
+ 'how',
+ 'all',
+ 'any',
+ 'both',
+ 'each',
+ 'few',
+ 'more',
+ 'most',
+ 'other',
+ 'some',
+ 'such',
+ 'no',
+ 'nor',
+ 'not',
+ 'only',
+ 'own',
+ 'same',
+ 'so',
+ 'than',
+ 'too',
+ 'very',
+ 's',
+ 't',
+ 'can',
+ 'will',
+ 'just',
+ 'don',
+ "don't",
+ 'should',
+ "should've",
+ 'now',
+ 'd',
+ 'll',
+ 'm',
+ 'o',
+ 're',
+ 've',
+ 'y',
+ 'ain',
+ 'aren',
+ "aren't",
+ 'couldn',
+ "couldn't",
+ 'didn',
+ "didn't",
+ 'doesn',
+ "doesn't",
+ 'hadn',
+ "hadn't",
+ 'hasn',
+ "hasn't",
+ 'haven',
+ "haven't",
+ 'isn',
+ "isn't",
+ 'ma',
+ 'mightn',
+ "mightn't",
+ 'mustn',
+ "mustn't",
+ 'needn',
+ "needn't",
+ 'shan',
+ "shan't",
+ 'shouldn',
+ "shouldn't",
+ 'wasn',
+ "wasn't",
+ 'weren',
+ "weren't",
+ 'won',
+ "won't",
+ 'wouldn',
+ "wouldn't"]
+{% endhighlight %}
+
+Removing stoppage words
+
+{% highlight ruby %}
+test_punc_removed_join_clean = [word for word in test_punc_removed_join.split() if word.lower() not in stopwords.words('english')]
+{% endhighlight %}
+
+{% highlight ruby %}
+print(test_punc_removed_join_clean)
+{% endhighlight %}
+
+RESULT:
+
+{% highlight ruby %}
+['Good',
+ 'morning',
+ 'beautiful',
+ 'people',
+ 'fun',
+ 'learning',
+ 'Machine',
+ 'learning',
+ 'AI']
+{% endhighlight %}
+
 Currently, the graph object `G_book1` is empty. Let's now populate it with the `edges` from `book1`. And while we're at it, let's load in the rest of the books too!
 
 {% highlight ruby %}
@@ -370,7 +594,6 @@ for book_fname in book_fnames:
 {% endhighlight %}
  
 
- ### 4. Time to find the most important character in Game of Thrones
  
  Is it `Jon Snow`, `Tyrion`, `Daenerys`, or someone else? Let's see! Network Science offers us many different `metrics` to measure the importance of a node in a network. Note that there is no "correct" way of calculating the most important `node` in a network, every `metric` has a different meaning.
 
