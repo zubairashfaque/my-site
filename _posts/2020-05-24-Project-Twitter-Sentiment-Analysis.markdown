@@ -2,10 +2,10 @@
 layout: post
 title: Twitter Sentiment Analysis
 date: 2020-05-24 00:00:00 +0300
-description: In this blog, I will discuss linguistic features for detecting the sentiment of Twitter messages. (optional)
+description: In this blog, I will discuss linguistic features for detecting the sentiment of Twitter messages using Naive Bayes classifier. (optional)
 img: sentiment.png # Add image post (optional)
 fig-caption: # Add figcaption (optional)
-tags: [ZUBI_ASH, PROJECT, NLP, Twitter, linguistic, sentiment] # add tag
+tags: [ZUBI_ASH, PROJECT, NLP, Twitter, linguistic, sentiment, Naive_Bayes] # add tag
 ---
 
 ##  Project Description
