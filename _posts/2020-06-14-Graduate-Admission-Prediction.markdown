@@ -60,7 +60,7 @@ admission_df.head()
 {% endhighlight %}
 
 {: .center}
-![GOT]({{site.baseurl}}/assets/img/pro_grad_pic_4.png)
+![GOT]({{site.baseurl}}/assets/img/pro_grad_pic_3.JPG)
 
 
 
