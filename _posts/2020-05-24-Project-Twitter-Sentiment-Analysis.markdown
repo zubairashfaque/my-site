@@ -8,7 +8,7 @@ fig-caption: # Add figcaption (optional)
 tags: [ZUBI_ASH, PROJECT, NLP, Twitter, linguistic, sentiment] # add tag
 ---
 
-In this blog, I will discuss linguistic features for detecting the sentiment of Twitter messages. We take a supervised approach to the problem, but I removed hashtags in the Twitter data for building training data.
+In this blog, I will discuss linguistic features for detecting the sentiment of Twitter messages. I take a supervised approach to the problem, but I removed hashtags in the Twitter data for building training data.
 ##  Project Description
 
 {: .center}
@@ -21,7 +21,7 @@ In this project we will use `networkx` package and different network centrality 
 
 ## Introduction
 
-Decision tree are supervised learning models used in data mining. In other words, these models help us in finding new information in a provided dataset to solve problems involving `classification` and `regression`. Tree based learning algorithms are considered to be one of the best in terms of `accuracy`, `stability`, `ease of understanding` and `flexibility`. As discussed, these models have a high flexibility but that comes at a price: on one hand, trees are able to capture complex non-linear relationships; on the other hand, they are prone to over fitting (memorizing the noise present in a dataset).
+In the past few years, there has been a huge growth in the use of microblogging platforms such as Twitter. Spurred by that growth, companies and media organizations are increasingly seeking ways to mine Twitter for information about what people think and feel about their products and services. Companies such as Twitratr (twitrratr.com), tweetfeel (www.tweetfeel.com), and Social Mention (www.socialmention.com) are just a few who advertise Twitter sentiment analysis as one of their services. While there has been a fair amount of research on how sentiments are expressed in genres such as online reviews and news articles, how sentiments are expressed given the informal language and message-length constraints of microblogging has been much less studied.
 
 ### 1. Let's load and explore the data? 
 
