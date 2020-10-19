@@ -125,6 +125,7 @@ admission_df.isnull().sum()
 RESULT: 
 
 {% highlight ruby %}
+
 GRE Score            0
 TOEFL Score          0
 University Rating    0
@@ -134,6 +135,7 @@ CGPA                 0
 Research             0
 Chance of Admit      0
 dtype: int64
+
 {% endhighlight %}
 
 
