@@ -17,19 +17,19 @@ In this blog, I will discuss linguistic features for detecting the sentiment of 
 
 ## Introduction
 
-In the past few years, there has been a huge growth in the use of microblogging platforms such as Twitter. Spurred by that growth, companies and media organizations are increasingly seeking ways to mine Twitter for information about what people think and feel about their products and services. Companies such as Twitratr (twitrratr.com), tweetfeel (www.tweetfeel.com), and Social Mention (www.socialmention.com) are just a few who advertise Twitter sentiment analysis as one of their services. While there has been a fair amount of research on how sentiments are expressed in genres such as online reviews and news articles, how sentiments are expressed given the informal language and message-length constraints of microblogging has been much less studied.
+In the past few years, there has been a huge growth in the use of `microblogging` platforms such as `Twitter`. Spurred by that growth, companies and media organizations are increasingly seeking ways to mine `Twitter` for information about what people think and feel about their products and services. Companies such as `Twitratr (twitrratr.com)`, `tweetfeel (www.tweetfeel.com)`, and `Social Mention (www.socialmention.com)` are just a few who advertise `Twitter` sentiment analysis as one of their services. While there has been a fair amount of research on how `sentiments` are expressed in genres such as online reviews and news articles, how sentiments are expressed given the informal language and message-length constraints of microblogging has been much less studied.
 
-In this project, I will train a Naive Bayes classifier to predict sentiment from thousands of Twitter tweets. The process could be done automatically without having humans manually review thousands of tweets and customer reviews.
+In this project, I will train a Naive Bayes classifier to predict sentiment from thousands of Twitter tweets. The process could be done automatically without having humans manually review thousands of `twitter` and customer `reviews`.
 
 ### 1. Problem Statement 
 
-The objective of this task is to detect sentiment of the speech in tweets. For the sake of simplicity, we say a tweet contains hate speech if it has a racist or sexist sentiment associated with it. So, the task is to classify racist or sexist tweets from other tweets.
+The objective of this task is to detect `sentiments` of the speech in tweets. For the sake of simplicity, we say a tweet contains hate speech if it has a `racist` or `sexist` sentiment associated with it. So, the task is to classify racist or sexist tweets from other tweets.
 
-Formally, given a training sample of tweets and labels, where label '1' denotes the tweet is racist/sexist and label '0' denotes the tweet is not racist/sexist, your objective is to predict the labels on the test dataset.
+Formally, given a training sample of tweets and labels, where label `1` denotes the tweet is racist/sexist and label `0` denotes the tweet is not racist/sexist, your objective is to predict the labels on the test dataset.
 
-data source: https://www.kaggle.com/arkhoshghalb/twitter-sentiment-analysis-hatred-speech
+`data source: https://www.kaggle.com/arkhoshghalb/twitter-sentiment-analysis-hatred-speech`
 
-### 2. IMPORT LIBRARIES, LOAD DATASETS AND  the data?
+### 2. IMPORT LIBRARIES AND LOAD DATASETS
 
 {% highlight ruby %}
 #=> Importing modules
@@ -54,31 +54,7 @@ print(tweets_df.head())
 | 4 | 5 | 0 | factsguide: society now #motivation |
 
 
-### 1. Let's load and explore the data? 
-
-This dataset constitutes a network and is given as a text file describing the edges between characters, with some attributes attached to each edge. Let's start by loading in the data for the first book A Game of Thrones and inspect it.
-
-{% highlight ruby %}
-#=> Importing modules
-import pandas as pd
-#=>  Reading in book1.csv
-book1 = pd.read_csv("book1.csv")
-#=> Printing out the head of the dataset
-print(book1.head())
-{% endhighlight %}
-
-OUTPUT.
-
-| Source | Target | Type | weight | book |
-|---------------:|----------------:|-----------:|--:|--:|
-| Addam-Marbrand | Jaime-Lannister | Undirected | 3 | 1 |
-| Addam-Marbrand | Tywin-Lannister | Undirected | 6 | 1 |
-| Aegon-I-Targaryen | Daenerys-Targaryen | Undirected | 5 | 1 |
-| Aegon-I-Targaryen | Eddard-Stark | Undirected  | 4 | 1 |
-| Aemon-Targaryen-(Maester-Aemon) | Alliser-Thorne | Undirected | 4 | 1 | 
-
-
-Getting a concise summary of the dataframe tweets_df.
+Getting a concise `summary` of the dataframe tweets_df.
 
 {% highlight ruby %}
 tweets_df.info()
@@ -99,7 +75,7 @@ dtypes: int64(2), object(1)
 memory usage: 749.2+ KB
 {% endhighlight %}
 
-Getting statistical summary of data frame tweets_df.
+Getting `statistical summary` of data frame tweets_df.
 
 {% highlight ruby %}
 tweets_df.describe()
@@ -118,7 +94,42 @@ OUTPUT.
 | 75% | 23971.750000 | 0.000000 |
 | max | 31962.000000 | 1.000000 |
 
-### 2. Time to find Network of Thrones? 
+peeking in dataframe tweets_df.
+
+{% highlight ruby %}
+tweets_df['tweet']
+{% endhighlight %}
+
+
+RESULT:
+{% highlight ruby %}
+0         @user when a father is dysfunctional and is s...
+1        @user @user thanks for #lyft credit i can't us...
+2                                      bihday your majesty
+3        #model   i love u take with u all the time in ...
+4                   factsguide: society now    #motivation
+                               ...                        
+31957    ate @user isz that youuu?ðððððð...
+31958      to see nina turner on the airwaves trying to...
+31959    listening to sad songs on a monday morning otw...
+31960    @user #sikh #temple vandalised in in #calgary,...
+31961                     thank you @user for you follow  
+Name: tweet, Length: 31962, dtype: object
+{% endhighlight %}
+
+We can see that there is a column named `id` which are just ids no use of it so we can remove it.
+
+{% highlight ruby %}
+tweets_df = tweets_df.drop(['id'], axis = 1)
+{% endhighlight %}
+
+
+
+{% highlight ruby %}
+sns.heatmap(tweets_df.isnull(), yticklabels = False, cbar = False, cmap="Blues")
+{% endhighlight %}
+
+### 3. EXPLORE DATASET
 
 The resulting DataFrame book1 has 5 columns: `Source`, `Target`, `Type`, `weight`, and `book`.
 Before diving into details we have to understand the concept of the Nodes and Edges concept in NetworkX which could be depicted in the following picture.
