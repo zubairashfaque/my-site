@@ -202,8 +202,9 @@ G_book1 = nx.Graph()
 
 Let's see the `positive messages`
 
-
+{% highlight ruby %}
 positive = tweets_df[tweets_df['label']==0]
+{% endhighlight %}
 
 
 OUTPUT:
@@ -219,8 +220,9 @@ OUTPUT:
 
 Let's see the `negative messages`
 
-
+{% highlight ruby %}
 negative = tweets_df[tweets_df['label']==1]
+{% endhighlight %}
 
 
 OUTPUT:
@@ -279,6 +281,62 @@ sentences
  'beautiful sign by vendor 80 for $45.00!! #upsideofflorida #shopalyssas   #love ',
  ' @user all #smiles when #media is   !! ð\x9f\x98\x9cð\x9f\x98\x88 #pressconference in #antalya #turkey ! sunday #throwback  love! ð\x9f\x98\x8að\x9f\x98\x98â\x9d¤ï¸\x8f '
 {% endhighlight %}
+
+Joining all `sentences`.
+
+{% highlight ruby %}
+sentences_as_one_string = " ".join(sentences)
+{% endhighlight %}
+
+`WordCloud` installation
+
+{% highlight ruby %}
+!pip install WordCloud
+{% endhighlight %}
+
+Importing `WordCloud` library
+
+{% highlight ruby %}
+from wordcloud import WordCloud
+{% endhighlight %}
+
+`Visualizing` the `WordCloud`
+
+{% highlight ruby %}
+plt.figure(figsize=(20,20))
+plt.imshow(WordCloud().generate(sentences_as_one_string))
+{% endhighlight %}
+
+{: .center}
+![GOT]({{site.baseurl}}/assets/img/sentiment_6.JPG)
+
+
+
+### 4. PERFORM DATA CLEANING - REMOVE PUNCTUATION FROM TEXT
+
+{: .center}
+![GOT]({{site.baseurl}}/assets/img/sentiment_8.jpeg)
+
+Firstly, we have to remove punctuation then followed by removing stop words from the text.
+
+Import string and check import string punctuation
+
+{% highlight ruby %}
+import string
+string.punctuation
+{% endhighlight %}
+
+RESULT:
+{% highlight ruby %}
+`'!"#$%&\'()*+,-./:;<=>?@[\\]^_`{|}~'
+{% endhighlight %}
+
+
+
+{% highlight ruby %}
+Test = 'Good morning beautiful people :)... I am having fun learning Machine learning and AI!!'
+{% endhighlight %}
+
 
 Currently, the graph object `G_book1` is empty. Let's now populate it with the `edges` from `book1`. And while we're at it, let's load in the rest of the books too!
 
