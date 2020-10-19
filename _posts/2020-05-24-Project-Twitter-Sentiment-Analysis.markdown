@@ -774,4 +774,4 @@ print(classification_report(y_test, y_predict_test))
 
 #### Please find below twitter sentiment Analysis jupyter notebook on github
 
-[link to github!](https://github.com/zubairashfaque/NLP/blob/main/Twitter%20Sentiment%20Analysis/Twitter_Sentiment_Analysis_ZA.ipynb)
+[link to github!](https://github.com/zubairashfaque/NLP/tree/main/Twitter%20Sentiment%20Analysis)
