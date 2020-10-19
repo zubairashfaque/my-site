@@ -1,19 +1,19 @@
 ---
 layout: post
-title: Twitter Sentiment Analysis
+title: Graduate Admission Prediction
 date: 2020-05-24 00:00:00 +0300
-description: In this blog, I will discuss linguistic features for detecting the sentiment of Twitter messages. (optional)
-img: sentiment.png # Add image post (optional)
+description: In this blog, I will discuss how to predict admission probability on the basis of your portfolio. (optional)
+img: pro_grad_pic_1.jpeg # Add image post (optional)
 fig-caption: # Add figcaption (optional)
-tags: [ZUBI_ASH, PROJECT, NLP, Twitter, linguistic, sentiment] # add tag
+tags: [ZUBI_ASH, PROJECT, REGRESSION, Admission] # add tag
 ---
 
 ##  Project Description
-In this blog, I will discuss linguistic features for detecting the sentiment of Twitter messages. I take a supervised approach to the problem, but I removed hashtags in the Twitter data for building training data.
+All around the world, it's the dream of every student to get admission to the Ivy League and students are often worried about their chances of admission to graduate school. The aim of this blog is to show how a regression model can be built to predict the chance of admission into a particular university based on the student's profile. This model will give students a clear idea about their admission probability in a particular university.
 
 
 {: .center}
-![GOT]({{site.baseurl}}/assets/img/sentiment_2.jpg)
+![GOT]({{site.baseurl}}/assets/img/pro_grad_pic_3.png)
 
 ## Introduction
 
