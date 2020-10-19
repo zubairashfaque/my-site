@@ -767,3 +767,11 @@ print(classification_report(y_test, y_predict_test))
 | accuracy |  |  | 0.94 | 6393 |
 | macro avg | 0.79 | 0.74 | 0.74 | 6393 |
 | weighted avg | 0.94 | 0.94 | 0.94 | 6393 |
+
+
+
+
+
+#### Please find below twitter sentiment Analysis jupyter notebook on github
+
+[link to github!](https://github.com/zubairashfaque/NLP/blob/main/Twitter%20Sentiment%20Analysis/Twitter_Sentiment_Analysis_ZA.ipynb)
