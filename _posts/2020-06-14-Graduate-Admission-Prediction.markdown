@@ -79,6 +79,7 @@ admission_df.info()
 OUTPUT.
 
 {% highlight ruby %}
+
 <class 'pandas.core.frame.DataFrame'>
 RangeIndex: 500 entries, 0 to 499
 Data columns (total 8 columns):
@@ -94,6 +95,7 @@ Data columns (total 8 columns):
  7   Chance of Admit    500 non-null    float64
 dtypes: float64(4), int64(4)
 memory usage: 31.4 KB
+
 {% endhighlight %}
 
 Getting `statistical summary` of data frame admission_df.
