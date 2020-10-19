@@ -138,7 +138,6 @@ dtype: int64
 
 
 Grouping by University ranking  
-
 {% highlight ruby %}
 df_university = admission_df.groupby(by = 'University Rating').mean()
 df_university
