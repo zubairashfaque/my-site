@@ -124,18 +124,37 @@ tweets_df = tweets_df.drop(['id'], axis = 1)
 {% endhighlight %}
 
 
+### 3. EXPLORE DATASET
+
+We want to sure there are no `null` elements in our data. for this we going to check null value in `seaborn heatmap`
+
+If any `null` element it will show in the chart
 
 {% highlight ruby %}
 sns.heatmap(tweets_df.isnull(), yticklabels = False, cbar = False, cmap="Blues")
 {% endhighlight %}
 
-### 3. EXPLORE DATASET
+RESULT: 
+{: .center}
+![NetworkX]({{site.baseurl}}/assets/img/sentiment_3.jpg)
+
+Checking other than `1` or `0` values in label column.
+
+{% highlight ruby %}
+ sns.heatmap(tweets_df.isnull(), yticklabels = False, cbar = False, cmap="Blues")
+{% endhighlight %}
+
+
+RESULT: 
+{: .center}
+![NetworkX]({{site.baseurl}}/assets/img/sentiment_3.jpg)
+
 
 The resulting DataFrame book1 has 5 columns: `Source`, `Target`, `Type`, `weight`, and `book`.
 Before diving into details we have to understand the concept of the Nodes and Edges concept in NetworkX which could be depicted in the following picture.
 
 {: .center}
-![NetworkX]({{site.baseurl}}/assets/img/Node_edge.JPG)
+![NetworkX]({{site.baseurl}}/assets/img/sentiment_3.jpg)
 
 `Source` and `target` are the two `nodes` that are linked by an `edge`. A network can have directed or undirected edges and in this network all the edges are undirected. The weight attribute of every edge tells us the number of `interactions that the characters` have had over the book, and the book column tells us the book number.
 
