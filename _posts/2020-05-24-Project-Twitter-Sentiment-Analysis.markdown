@@ -29,7 +29,7 @@ Formally, given a training sample of tweets and labels, where label '1' denotes 
 
 data source: https://www.kaggle.com/arkhoshghalb/twitter-sentiment-analysis-hatred-speech
 
-### 2. IMPORT LIBRARIES AND DATASETS 
+### 2. IMPORT LIBRARIES, LOAD DATASETS AND  the data?
 
 {% highlight ruby %}
 #=> Importing modules
@@ -76,6 +76,47 @@ OUTPUT.
 | Aegon-I-Targaryen | Daenerys-Targaryen | Undirected | 5 | 1 |
 | Aegon-I-Targaryen | Eddard-Stark | Undirected  | 4 | 1 |
 | Aemon-Targaryen-(Maester-Aemon) | Alliser-Thorne | Undirected | 4 | 1 | 
+
+
+Getting a concise summary of the dataframe tweets_df.
+
+{% highlight ruby %}
+tweets_df.info()
+{% endhighlight %}
+
+OUTPUT.
+
+{% highlight ruby %}
+<class 'pandas.core.frame.DataFrame'>
+RangeIndex: 31962 entries, 0 to 31961
+Data columns (total 3 columns):
+ #   Column  Non-Null Count  Dtype 
+---  ------  --------------  ----- 
+ 0   id      31962 non-null  int64 
+ 1   label   31962 non-null  int64 
+ 2   tweet   31962 non-null  object
+dtypes: int64(2), object(1)
+memory usage: 749.2+ KB
+{% endhighlight %}
+
+Getting statistical summary of data frame tweets_df.
+
+{% highlight ruby %}
+tweets_df.describe()
+{% endhighlight %}
+
+OUTPUT.
+
+|       | id | label |
+|---------------:|----------------:|-----------:|
+| count | 31962.000000 | 31962.000000 |
+| mean | 15981.500000 | 0.070146 |
+| std | 9226.778988 | 0.255397 |
+| min | 1.000000 | 0.000000 |
+| 25% | 7991.250000 | 0.000000 |
+| 50% | 15981.500000 | 0.000000 |
+| 75% | 23971.750000 | 0.000000 |
+| max | 31962.000000 | 1.000000 |
 
 ### 2. Time to find Network of Thrones? 
 
