@@ -236,7 +236,7 @@ OUTPUT:
 | 4 | 1 | lady banned from kentucky mall. @user #jcpenn..	 | 104 |
 
 
-### 3. Lets Plot The WORDCLOUD
+### 4. Lets Plot The WORDCLOUD
 
 A `WORDCLOUD` is an image made of words that together resemble a cloudy shape. The size of a word shows how important it is e.g. how often it appears in a text — its frequency.
 
@@ -312,7 +312,7 @@ plt.imshow(WordCloud().generate(sentences_as_one_string))
 
 
 
-### 4. PERFORM DATA CLEANING - REMOVE PUNCTUATION FROM TEXT & REMOVE STOPWORDS
+### 5. PERFORM DATA CLEANING - REMOVE PUNCTUATION FROM TEXT & REMOVE STOPWORDS
 
 {: .center}
 ![GOT]({{site.baseurl}}/assets/img/sentiment_8.jpeg)
@@ -576,7 +576,7 @@ RESULT:
  'AI']
 {% endhighlight %}
 
-### 4. NLP - TOKENIZATION
+### 6. NLP - TOKENIZATION
 
 Features in machine learning is basically numerical attributes from which anyone can perform some mathematical operation such as matrix factorisation, dot product etc. But there are various scenario when dataset does not contain numerical attribute for example- sentimental analysis of `Twitter/Facebook user`, `Amazon customer review`, `IMDB/Netflix movie recommendation`. In all the above cases dataset contain numerical value, string value, character value, categorical value, connection (one user connected to another user). Conversion of these types of feature into numerical feature is called featurization.
 
@@ -623,7 +623,7 @@ print(X.toarray())
  {% endhighlight %}
 
 
-### 4. CREATE A PIPELINE TO REMOVE PUNCTUATIONS, STOPWORDS AND PERFORM COUNT VECTORIZATION
+### 7. CREATE A PIPELINE TO REMOVE PUNCTUATIONS, STOPWORDS AND PERFORM COUNT VECTORIZATION
 
 {: .center}
 ![GOT]({{site.baseurl}}/assets/img/sentiment_10.jpg)
@@ -686,7 +686,7 @@ X = tweets
 {: .center}
 ![GOT]({{site.baseurl}}/assets/img/sentiment_11.JPG)
 
-### 4. TRAIN A NAIVE BAYES CLASSIFIER MODEL
+### 8. TRAIN A NAIVE BAYES CLASSIFIER MODEL
 
 {: .center}
 ![GOT]({{site.baseurl}}/assets/img/sentiment_12.JPG)
