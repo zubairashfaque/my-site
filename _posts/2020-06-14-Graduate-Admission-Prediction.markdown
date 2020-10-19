@@ -17,7 +17,12 @@ All around the world, it's the dream of every student to get admission to the Iv
 
 ## Introduction
 
-In the past few years, there has been a huge growth in the use of `microblogging` platforms such as `Twitter`. Spurred by that growth, companies and media organizations are increasingly seeking ways to mine `Twitter` for information about what people think and feel about their products and services. Companies such as `Twitratr (twitrratr.com)`, `tweetfeel (www.tweetfeel.com)`, and `Social Mention (www.socialmention.com)` are just a few who advertise `Twitter` sentiment analysis as one of their services. While there has been a fair amount of research on how `sentiments` are expressed in genres such as online reviews and news articles, how sentiments are expressed given the informal language and message-length constraints of microblogging has been much less studied.
+The eight Ivy League schools — Brown, Columbia, Cornell, Dartmouth, Harvard, the University of Pennsylvania, Princeton and Yale — had a total of 281,060 applicants for the class of 2021. Of those applicants, less than 10% got admissions offers. Harvard had the lowest acceptance rate out of all the Ivies, at just 5%.
+
+Clearly, getting into any Ivy League school is an impressive achievement. So, how do people do it?
+
+Get those grades and test scores up
+For starters, if you want to go to an Ivy, you’re going to need stellar grades and test scores. These are the two most important admissions factors according to The National Association for College Admission Counseling. Ambitious students should take rigorous courses that they can do well in***.
 
 In this project, I will train a Naive Bayes classifier to predict sentiment from thousands of Twitter tweets. The process could be done automatically without having humans manually review thousands of `twitter` and customer `reviews`.
 
@@ -779,3 +784,6 @@ print(classification_report(y_test, y_predict_test))
 #### Please find below twitter sentiment Analysis jupyter notebook on github
 
 [link to github!](https://github.com/zubairashfaque/NLP/tree/main/Twitter%20Sentiment%20Analysis)
+
+
+`***` Taken from: https://www.usatoday.com/story/college/2017/04/26/heres-what-it-really-takes-to-get-into-the-ivy-league-these-days/37430681/ 
