@@ -147,7 +147,7 @@ Checking other than `1` or `0` values in label column.
 
 RESULT: 
 {: .center}
-![NetworkX]({{site.baseurl}}/assets/img/sentiment_4.jpg)
+![GOT]({{site.baseurl}}/assets/img/sentiment_4.jpg)
 
 We can see in the plot that majority of labels are `0`.
 
@@ -176,7 +176,7 @@ tweets_df['length'].plot(bins=100, kind='hist')
 {% endhighlight %}
 
 {: .center}
-![NetworkX]({{site.baseurl}}/assets/img/sentiment_5.jpg)
+![GOT]({{site.baseurl}}/assets/img/sentiment_5.jpg)
 
 
 Let's see the `shortest message`
