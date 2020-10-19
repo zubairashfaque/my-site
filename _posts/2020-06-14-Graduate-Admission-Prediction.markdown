@@ -21,21 +21,29 @@ The eight Ivy League schools — Brown, Columbia, Cornell, Dartmouth, Harvard, t
 
 Clearly, getting into any Ivy League school is an impressive achievement. So, how do people do it?
 
-Get those grades and test scores up
+Get those grades and test scores up!!!
+
 For starters, if you want to go to an Ivy, you’re going to need stellar grades and test scores. These are the two most important admissions factors according to The National Association for College Admission Counseling. Ambitious students should take rigorous courses that they can do well in***.
 
-In this project, I will train a Naive Bayes classifier to predict sentiment from thousands of Twitter tweets. The process could be done automatically without having humans manually review thousands of `twitter` and customer `reviews`.
+### 1. DATA
 
-### 1. Problem Statement 
+The dataset contains several parameters which are considered important during the application for Masters Programs.
+The parameters included are :
 
-The objective of this task is to detect `sentiments` of the speech in tweets. For the sake of simplicity, we say a tweet contains hate speech if it has a `racist` or `sexist` sentiment associated with it. So, the task is to classify racist or sexist tweets from other tweets.
+1. GRE Scores ( out of 340 )
+2. TOEFL Scores ( out of 120 )
+3. University Rating ( out of 5 )
+4. Statement of Purpose and Letter of Recommendation Strength ( out of 5 )
+5. Undergraduate GPA ( out of 10 )
+6. Research Experience ( either 0 or 1 )
+7. Chance of Admit ( ranging from 0 to 1 )
 
-Formally, given a training sample of tweets and labels, where label `1` denotes the tweet is racist/sexist and label `0` denotes the tweet is not racist/sexist, your objective is to predict the labels on the test dataset.
-
-`data source: https://www.kaggle.com/arkhoshghalb/twitter-sentiment-analysis-hatred-speech`
-[link to kaggle dataset!](https://www.kaggle.com/arkhoshghalb/twitter-sentiment-analysis-hatred-speech)
+`data source: https://www.kaggle.com/mohansacharya/graduate-admissions`
+[link to kaggle dataset!](https://www.kaggle.com/mohansacharya/graduate-admissions)
 
 ### 2. IMPORT LIBRARIES AND LOAD DATASETS
+
+Let’s start with loading all the libraries and dependencies.
 
 {% highlight ruby %}
 #=> Importing modules
@@ -46,88 +54,58 @@ import matplotlib.pyplot as plt
 {% endhighlight %}
 
 {% highlight ruby %}
-tweets_df = pd.read_csv('twitter.csv')
+admission_df = pd.read_csv('Admission_Predict.csv')
 #=> Printing out the head of the dataset
-print(tweets_df.head())
+admission_df.head()
 {% endhighlight %}
 
-| index | id | label | tweet | 
-|---------------:|----------------:|-----------:|--:|
-| 0 | 1 | 0 | thank you @user for you follow |
-| 1 | 2 | 0 | @user #sikh #temple vandalised in in #calgary,... |
-| 2 | 3 | 0 | listening to sad songs on a monday morning otw... |
-| 3 | 4 | 0  | to see nina turner on the airwaves trying to... |
-| 4 | 5 | 0 | factsguide: society now #motivation |
+{: .center}
+![GOT]({{site.baseurl}}/assets/img/pro_grad_pic_4.png)
 
 
-Getting a concise `summary` of the dataframe tweets_df.
+Getting a concise `summary` of the dataframe admission_df.
 
 {% highlight ruby %}
-tweets_df.info()
+admission_df.info()
 {% endhighlight %}
 
 OUTPUT.
 
 {% highlight ruby %}
 <class 'pandas.core.frame.DataFrame'>
-RangeIndex: 31962 entries, 0 to 31961
-Data columns (total 3 columns):
- #   Column  Non-Null Count  Dtype 
----  ------  --------------  ----- 
- 0   id      31962 non-null  int64 
- 1   label   31962 non-null  int64 
- 2   tweet   31962 non-null  object
-dtypes: int64(2), object(1)
-memory usage: 749.2+ KB
+RangeIndex: 500 entries, 0 to 499
+Data columns (total 8 columns):
+ #   Column             Non-Null Count  Dtype  
+---  ------             --------------  -----  
+ 0   GRE Score          500 non-null    int64  
+ 1   TOEFL Score        500 non-null    int64  
+ 2   University Rating  500 non-null    int64  
+ 3   SOP                500 non-null    float64
+ 4   LOR                500 non-null    float64
+ 5   CGPA               500 non-null    float64
+ 6   Research           500 non-null    int64  
+ 7   Chance of Admit    500 non-null    float64
+dtypes: float64(4), int64(4)
+memory usage: 31.4 KB
 {% endhighlight %}
 
-Getting `statistical summary` of data frame tweets_df.
+Getting `statistical summary` of data frame admission_df.
 
 {% highlight ruby %}
-tweets_df.describe()
+admission_df.describe()
 {% endhighlight %}
 
 OUTPUT.
 
-|       | id | label |
-|---------------:|----------------:|-----------:|
-| count | 31962.000000 | 31962.000000 |
-| mean | 15981.500000 | 0.070146 |
-| std | 9226.778988 | 0.255397 |
-| min | 1.000000 | 0.000000 |
-| 25% | 7991.250000 | 0.000000 |
-| 50% | 15981.500000 | 0.000000 |
-| 75% | 23971.750000 | 0.000000 |
-| max | 31962.000000 | 1.000000 |
+{: .center}
+![GOT]({{site.baseurl}}/assets/img/pro_grad_pic_4.png)
 
-peeking in dataframe tweets_df.
+We can see that there is a column named `Serial No.` which are just ids no use of it so we can remove it.
 
 {% highlight ruby %}
-tweets_df['tweet']
+admission_df = admission_df.drop(['Serial No.'], axis = 1)
 {% endhighlight %}
 
-
-RESULT:
-{% highlight ruby %}
-0         @user when a father is dysfunctional and is s...
-1        @user @user thanks for #lyft credit i can't us...
-2                                      bihday your majesty
-3        #model   i love u take with u all the time in ...
-4                   factsguide: society now    #motivation
-                               ...                        
-31957    ate @user isz that youuu?ðððððð...
-31958      to see nina turner on the airwaves trying to...
-31959    listening to sad songs on a monday morning otw...
-31960    @user #sikh #temple vandalised in in #calgary,...
-31961                     thank you @user for you follow  
-Name: tweet, Length: 31962, dtype: object
-{% endhighlight %}
-
-We can see that there is a column named `id` which are just ids no use of it so we can remove it.
-
-{% highlight ruby %}
-tweets_df = tweets_df.drop(['id'], axis = 1)
-{% endhighlight %}
 
 
 ### 3. EXPLORE DATASET
