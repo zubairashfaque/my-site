@@ -200,6 +200,8 @@ import networkx as nx
 G_book1 = nx.Graph()
 {% endhighlight %}
 
+Let's see the `positive messages`
+
 
 positive = tweets_df[tweets_df['label']==0]
 
@@ -212,6 +214,9 @@ OUTPUT:
 | 2 | 0 | bihday your majesty | 21 |
 | 3 | 0 | #model i love u take with u all the time in ...  | 86 |
 | 4 | 0 | to see nina turner on the airwaves trying to...	 | 131 |
+
+
+Let's see the `negative messages`
 
 
 negative = tweets_df[tweets_df['label']==1]
@@ -227,9 +232,51 @@ OUTPUT:
 | 4 | 1 | lady banned from kentucky mall. @user #jcpenn..	 | 104 |
 
 
+### 3. Lets Plot The WORDCLOUD
 
+A `WORDCLOUD` is an image made of words that together resemble a cloudy shape. The size of a word shows how important it is e.g. how often it appears in a text — its frequency.
 
-### 3. Populate the network with the DataFrame
+People typically use word clouds to easily produce a summary of large documents (reports, speeches), to create art on a topic (gifts, displays) or to visualise data (tables, surveys).
+
+For it wae have to collect all tweets into list
+
+{% highlight ruby %}
+sentences = tweets_df['tweet'].tolist()
+{% endhighlight %}
+
+{% highlight ruby %}
+sentences
+{% endhighlight %}
+
+{% highlight ruby %}
+[' @user when a father is dysfunctional and is so selfish he drags his kids into his dysfunction.   #run',
+ "@user @user thanks for #lyft credit i can't use cause they don't offer wheelchair vans in pdx.    #disapointed #getthanked",
+ '  bihday your majesty',
+ '#model   i love u take with u all the time in urð\x9f\x93±!!! ð\x9f\x98\x99ð\x9f\x98\x8eð\x9f\x91\x84ð\x9f\x91\x85ð\x9f\x92¦ð\x9f\x92¦ð\x9f\x92¦  ',
+ ' factsguide: society now    #motivation',
+ '[2/2] huge fan fare and big talking before they leave. chaos and pay disputes when they get there. #allshowandnogo  ',
+ ' @user camping tomorrow @user @user @user @user @user @user @user dannyâ\x80¦',
+ "the next school year is the year for exams.ð\x9f\x98¯ can't think about that ð\x9f\x98\xad #school #exams   #hate #imagine #actorslife #revolutionschool #girl",
+ 'we won!!! love the land!!! #allin #cavs #champions #cleveland #clevelandcavaliers  â\x80¦ ',
+ " @user @user welcome here !  i'm   it's so #gr8 ! ",
+ ' â\x86\x9d #ireland consumer price index (mom) climbed from previous 0.2% to 0.5% in may   #blog #silver #gold #forex',
+ 'we are so selfish. #orlando #standwithorlando #pulseshooting #orlandoshooting #biggerproblems #selfish #heabreaking   #values #love #',
+ 'i get to see my daddy today!!   #80days #gettingfed',
+ "@user #cnn calls #michigan middle school 'build the wall' chant '' #tcot  ",
+ 'no comment!  in #australia   #opkillingbay #seashepherd #helpcovedolphins #thecove  #helpcovedolphins',
+ 'ouch...junior is angryð\x9f\x98\x90#got7 #junior #yugyoem   #omg ',
+ 'i am thankful for having a paner. #thankful #positive     ',
+ 'retweet if you agree! ',
+ 'its #friday! ð\x9f\x98\x80 smiles all around via ig user: @user #cookies make people   ',
+ 'as we all know, essential oils are not made of chemicals. ',
+ '#euro2016 people blaming ha for conceded goal was it fat rooney who gave away free kick knowing bale can hit them from there.  ',
+ 'sad little dude..   #badday #coneofshame #cats #pissed #funny #laughs ',
+ "product of the day: happy man #wine tool  who's   it's the #weekend? time to open up &amp; drink up!",
+ '@user @user lumpy says i am a . prove it lumpy.',
+ ' @user #tgif   #ff to my #gamedev #indiedev #indiegamedev #squad! @user @user @user @user @user',
+ 'beautiful sign by vendor 80 for $45.00!! #upsideofflorida #shopalyssas   #love ',
+ ' @user all #smiles when #media is   !! ð\x9f\x98\x9cð\x9f\x98\x88 #pressconference in #antalya #turkey ! sunday #throwback  love! ð\x9f\x98\x8að\x9f\x98\x98â\x9d¤ï¸\x8f '
+{% endhighlight %}
 
 Currently, the graph object `G_book1` is empty. Let's now populate it with the `edges` from `book1`. And while we're at it, let's load in the rest of the books too!
 
