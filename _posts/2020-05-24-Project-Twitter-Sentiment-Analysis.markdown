@@ -759,6 +759,9 @@ print(classification_report(y_test, y_predict_test))
 {% endhighlight %}
 
 
+{: .center}
+![GOT]({{site.baseurl}}/assets/img/sentiment_images.png)
+
 
 |  | precision | recall | f1-score | support |
 |--:|-------:|---------:|-------:|-------:|
