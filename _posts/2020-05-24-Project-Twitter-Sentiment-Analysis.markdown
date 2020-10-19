@@ -147,13 +147,6 @@ Checking other than `1` or `0` values in label column.
 
 RESULT: 
 {: .center}
-![NetworkX]({{site.baseurl}}/assets/img/sentiment_3.jpg)
-
-
-The resulting DataFrame book1 has 5 columns: `Source`, `Target`, `Type`, `weight`, and `book`.
-Before diving into details we have to understand the concept of the Nodes and Edges concept in NetworkX which could be depicted in the following picture.
-
-{: .center}
 ![NetworkX]({{site.baseurl}}/assets/img/sentiment_4.jpg)
 
 We can see in the plot that majority of labels are `0`.
