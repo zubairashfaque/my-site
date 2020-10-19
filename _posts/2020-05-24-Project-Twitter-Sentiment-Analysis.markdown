@@ -577,7 +577,6 @@ RESULT:
 {% endhighlight %}
 
 ### 4. NLP - TOKENIZATION
-Natural Language Processing - TOKENIZATION
 
 Features in machine learning is basically numerical attributes from which anyone can perform some mathematical operation such as matrix factorisation, dot product etc. But there are various scenario when dataset does not contain numerical attribute for example- sentimental analysis of `Twitter/Facebook user`, `Amazon customer review`, `IMDB/Netflix movie recommendation`. In all the above cases dataset contain numerical value, string value, character value, categorical value, connection (one user connected to another user). Conversion of these types of feature into numerical feature is called featurization.
 
@@ -612,71 +611,137 @@ print(vectorizer.get_feature_names())
 ['and', 'document', 'first', 'is', 'one', 'paper', 'second', 'the', 'third', 'this']
 {% endhighlight %}
 
-Currently, the graph object `G_book1` is empty. Let's now populate it with the `edges` from `book1`. And while we're at it, let's load in the rest of the books too!
-
 {% highlight ruby %}
-#=> Iterating through the DataFrame to add edges
-for index, edge in book1.iterrows():
-    G_book1.add_edge(edge['Source'], edge['Target'], weight=edge['weight'])
-#=> Creating a list of networks for all the books
-books = [G_book1]
-book_fnames = ['book2.csv', 'book3.csv', 'book4.csv', 'book5.csv']
-for book_fname in book_fnames:
-    book = pd.read_csv(book_fname)
-    G_book = nx.Graph()
-    for index, edge in book.iterrows():
-        G_book.add_edge(edge['Source'], edge['Target'], weight=edge['weight'])
-    books.append(G_book)
-{% endhighlight %}
- 
-
- 
- Is it `Jon Snow`, `Tyrion`, `Daenerys`, or someone else? Let's see! Network Science offers us many different `metrics` to measure the importance of a node in a network. Note that there is no "correct" way of calculating the most important `node` in a network, every `metric` has a different meaning.
-
-First, let's measure the importance of a node in a network by looking at the number of neighbors it has, that is, the number of nodes it is connected to. For example, an `influential` account on `Twitter`, where the follower-followee relationship forms the network, is an account which has a high number of followers. This measure of importance is called `degree centrality`.
-
-Using this measure, let's extract the top ten important characters from the first book `(book[0])` and the fifth book `(book[4])`.
-
-{% highlight ruby %}
-#=> Calculating the degree centrality of book 1
-deg_cen_book1 = nx.degree_centrality(books[0])
-
-#=> Calculating the degree centrality of book 5
-deg_cen_book5 = nx.degree_centrality(books[4])
-
-sorted_deg_cen_book1 = sorted(deg_cen_book1.items(), key=lambda x:x[1], reverse=True)[0:10]
-sorted_deg_cen_book5 = sorted(deg_cen_book5.items(), key=lambda x:x[1], reverse=True)[0:10]
-
-#=> Printing out the top 10 of book1 and book5
-print(sorted_deg_cen_book1)
-print(sorted_deg_cen_book5)
+print(X.toarray())
 {% endhighlight %}
 
-OUTPUT1: `[('Eddard-Stark', 0.3548387096774194), ('Robert-Baratheon', 0.2688172043010753), ('Tyrion-Lannister', 0.24731182795698928), ('Catelyn-Stark', 0.23118279569892475), ('Jon-Snow', 0.19892473118279572), ('Robb-Stark', 0.18817204301075272), ('Sansa-Stark', 0.18817204301075272), ('Bran-Stark', 0.17204301075268819), ('Cersei-Lannister', 0.16129032258064518), ('Joffrey-Baratheon', 0.16129032258064518)]`
-
-OUTPUT2: `[('Jon-Snow', 0.1962025316455696), ('Daenerys-Targaryen', 0.18354430379746836), ('Stannis-Baratheon', 0.14873417721518986), ('Tyrion-Lannister', 0.10443037974683544), ('Theon-Greyjoy', 0.10443037974683544), ('Cersei-Lannister', 0.08860759493670886), ('Barristan-Selmy', 0.07911392405063292), ('Hizdahr-zo-Loraq', 0.06962025316455696), ('Asha-Greyjoy', 0.056962025316455694), ('Melisandre', 0.05379746835443038)]`
-
- ### 5. Evolution of importance of characters over the books
-
-According to `degree centrality`, the most important character in the first book is Eddard Stark but he is not even in the top 10 of the fifth book. The importance of characters changes over the course of five books because, you know, stuff happens... ;)
-
-Let's look at the evolution of degree centrality of a couple of characters like `Eddard Stark`, `Jon Snow`, and `Tyrion`, which showed up in the top 10 of `degree centrality` in the `first book`.
-
 {% highlight ruby %}
-%matplotlib inline
+[[0 0 1 1 0 1 0 1 0 1]
+ [0 1 0 1 0 1 1 1 0 1]
+ [1 0 0 1 1 0 0 1 1 1]
+ [0 0 1 1 0 1 0 1 0 1]]
+ {% endhighlight %}
 
-#=> Creating a list of degree centrality of all the books
-evol = [nx.degree_centrality(book) for book in books]
- 
-#=> Creating a DataFrame from the list of degree centralities in all the books
-degree_evol_df = pd.DataFrame.from_records(evol)
 
-#=> Plotting the degree centrality evolution of Eddard-Stark, Tyrion-Lannister and Jon-Snow
-degree_evol_df[['Eddard-Stark', 'Tyrion-Lannister', 'Jon-Snow']].plot()
-{% endhighlight %}
+### 4. CREATE A PIPELINE TO REMOVE PUNCTUATIONS, STOPWORDS AND PERFORM COUNT VECTORIZATION
 
 {: .center}
-![tree1]({{site.baseurl}}/assets/img/graph_GOT.png)
+![GOT]({{site.baseurl}}/assets/img/sentiment_10.jpg)
+
+Let's define a pipeline to clean up all the messages. The pipeline performs the following: 
+(1) remove punctuation 
+(2) remove stopwords
+
+{% highlight ruby %}
+def message_cleaning(message):
+    Test_punc_removed = [char for char in message if char not in string.punctuation]
+    Test_punc_removed_join = ''.join(Test_punc_removed)
+    Test_punc_removed_join_clean = [word for word in Test_punc_removed_join.split() if word.lower() not in stopwords.words('english')]
+    return Test_punc_removed_join_clean
+{% endhighlight %}
+
+Applying function on the data.
+
+{% highlight ruby %}
+#=> Let's test the newly added function
+tweets_df_clean = tweets_df['tweet'].apply(message_cleaning)
+{% endhighlight %}
+
+show the cleaned up version
+
+{% highlight ruby %}
+print(tweets_df_clean[5])
+{% endhighlight %}
+
+RESULT:
+{% highlight ruby %}
+['22', 'huge', 'fan', 'fare', 'big', 'talking', 'leave', 'chaos', 'pay', 'disputes', 'get', 'allshowandnogo']
+{% endhighlight %}
+
+show the original version
+
+{% highlight ruby %}
+print(tweets_df['tweet'][5])
+{% endhighlight %}
+
+RESULT:
+{% highlight ruby %}
+[2/2] huge fan fare and big talking before they leave. chaos and pay disputes when they get there. #allshowandnogo
+{% endhighlight %}
+
+Define the cleaning pipeline we defined earlier
+
+{% highlight ruby %}
+from sklearn.feature_extraction.text import CountVectorizer
+vectorizer = CountVectorizer(analyzer = message_cleaning)
+tweets_countvectorizer = CountVectorizer(analyzer = message_cleaning,  dtype = 'uint8').fit_transform(tweets_df['tweet']).toarray()
+{% endhighlight %}
+
+{% highlight ruby %}
+tweets = pd.DataFrame(tweets_countvectorizer)
+X = tweets
+{% endhighlight %}
+
+
+{: .center}
+![GOT]({{site.baseurl}}/assets/img/sentiment_11.JPG)
+
+### 4. TRAIN A NAIVE BAYES CLASSIFIER MODEL
+
+{: .center}
+![GOT]({{site.baseurl}}/assets/img/sentiment_12.JPG)
+
+Naive Bayes classifiers are a collection of classification algorithms based on Bayes’ Theorem. It is not a single algorithm but a family of algorithms where all of them share a common principle, i.e. every pair of features being classified is independent of each other.
+
+{: .center}
+![GOT]({{site.baseurl}}/assets/img/sentiment_13.JPG)
+
+{: .center}
+![GOT]({{site.baseurl}}/assets/img/sentiment_14.JPG)
+
+{: .center}
+![GOT]({{site.baseurl}}/assets/img/sentiment_15.JPG)
+
+{: .center}
+![GOT]({{site.baseurl}}/assets/img/sentiment_16.JPG)
+
+{: .center}
+![GOT]({{site.baseurl}}/assets/img/sentiment_17.JPG)
+
+{: .center}
+![GOT]({{site.baseurl}}/assets/img/sentiment_18.JPG)
+
+Train dataset.
+
+{% highlight ruby %}
+X.shape
+{% endhighlight %}
+
+RESULT:
+`(31962, 47386)`
+
+{% highlight ruby %}
+y.shape
+{% endhighlight %}
+
+RESULT:
+`(31962,)`
+
+{% highlight ruby %}
+from sklearn.model_selection import train_test_split
+X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2)
+{% endhighlight %}
+
+
+
+{% highlight ruby %}
+from sklearn.naive_bayes import MultinomialNB
+
+NB_classifier = MultinomialNB()
+NB_classifier.fit(X_train, y_train)
+{% endhighlight %}
+
+
 
  ### 6. What's up with Stannis Baratheon?
 
