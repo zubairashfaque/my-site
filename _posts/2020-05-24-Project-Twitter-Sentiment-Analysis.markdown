@@ -136,7 +136,7 @@ sns.heatmap(tweets_df.isnull(), yticklabels = False, cbar = False, cmap="Blues")
 
 RESULT: 
 {: .center}
-![NetworkX]({{site.baseurl}}/assets/img/sentiment_3.jpg)
+![GOT]({{site.baseurl}}/assets/img/sentiment_3.jpg)
 
 Checking other than `1` or `0` values in label column.
 
