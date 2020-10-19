@@ -741,107 +741,29 @@ NB_classifier = MultinomialNB()
 NB_classifier.fit(X_train, y_train)
 {% endhighlight %}
 
+{% highlight ruby %}
+from sklearn.metrics import classification_report, confusion_matrix
+{% endhighlight %}
 
-
- ### 6. What's up with Stannis Baratheon?
-
-We can see that the importance of `Eddard Stark` dies off as the book series progresses. With `Jon Snow`, there is a drop in the fourth book but a sudden rise in the fifth book.
-
-Now let's look at various other measures like betweenness centrality and PageRank to find important characters in our `Game of Thrones` character co-occurrence network and see if we can uncover some more interesting facts about this network. Let's plot the evolution of betweenness centrality of this network over the five books. We will take the evolution of the top four characters of every book and plot it.
+Predicting the Test set results
 
 {% highlight ruby %}
-=># Creating a list of betweenness centrality of all the books just like we did for degree centrality
-evol = [nx.betweenness_centrality(book, weight='weight') for book in books]
+y_predict_test = NB_classifier.predict(X_test)
+cm = confusion_matrix(y_test, y_predict_test)
+sns.heatmap(cm, annot=True)
+{% endhighlight %}
 
-=># Making a DataFrame from the list
-betweenness_evol_df = pd.DataFrame.from_records(evol)
-
-#=> Finding the top 4 characters in every book
-set_of_char = set()
-for i in range(5):
-    set_of_char |= set(list(betweenness_evol_df.T[i].sort_values(ascending=False)[0:4].index))
-list_of_char = list(set_of_char)
-
-#=> Plotting the evolution of the top characters
-betweenness_evol_df[list_of_char].plot(figsize=(13, 7))
+{% highlight ruby %}
+print(classification_report(y_test, y_predict_test))
 {% endhighlight %}
 
 
-{: .center}
-![tree2]({{site.baseurl}}/assets/img/graph_GOT2.png)
 
-### 7. What does the Google PageRank algorithm tell us about Game of Thrones?
-
-We see a peculiar rise in the importance of `Stannis Baratheon` over the books. In the fifth book, he is significantly more important than other characters in the network, even though he is the third most important character according to `degree centrality`.
-
-`PageRank` was the initial way Google ranked web pages. It evaluates the inlinks and outlinks of webpages in the world wide web, which is, essentially, a directed network. Let's look at the importance of characters in the Game of Thrones network according to `PageRank`.
-
-{% highlight ruby %}
-#=> Creating a list of pagerank of all the characters in all the books
-evol = [nx.pagerank(book) for book in books]
-
-#=> Making a DataFrame from the list
-pagerank_evol_df = pd.DataFrame.from_records(evol)
-
-#=> Finding the top 4 characters in every book
-set_of_char = set()
-for i in range(5):
-    set_of_char |= set(list(pagerank_evol_df.T[i].sort_values(ascending=False)[0:4].index))
-list_of_char = list(set_of_char)
-
-#=> Plotting the top characters
-pagerank_evol_df[list_of_char].plot(figsize=(13, 7))
-{% endhighlight %}
-
-{: .center}
-![tree]({{site.baseurl}}/assets/img/graph_GOT3.png)
-
-
-### 8. Correlation between different measures
-
-`Stannis`, `Jon Snow`, and `Daenerys` are the most important characters in the fifth book according to `PageRank`. `Eddard Stark` follows a similar curve but for `degree centrality` and `betweenness centrality`: He is important in the first book but dies into oblivion over the book series.
-
-We have seen three different measures to calculate the importance of a node in a network, and all of them tells us something about the characters and their importance in the co-occurrence network. We see some names pop up in all three measures so maybe there is a strong correlation between them?
-
-Let's look at the correlation between PageRank, betweenness centrality and degree centrality for the fifth book using Pearson correlation.
-
-{% highlight ruby %}
-#=> Creating a list of pagerank, betweenness centrality, degree centrality
-#=> of all the characters in the fifth book.
-measures = [nx.pagerank(books[4]), 
-            nx.betweenness_centrality(books[4], weight='weight'), 
-            nx.degree_centrality(books[4])]
-
-#=> Creating the correlation DataFrame
-cor = pd.DataFrame.from_records(measures)
-
-#=> Calculating the correlation
-cor.T.corr()
-{% endhighlight %}
-
-OUTPUT:
-
-| 0 | 1 | 2 |
-|---------:|---------:|--------:|
-| 1.000000 | 0.793372 | 0.971493|
-| 0.793372 | 1.000000 | 0.833816|
-| 0.971493 | 0.833816 | 1.000000|
-
-### 9. Conclusion
-
-We see a high correlation between these three measures for our character `co-occurrence network`.
-
-So we've been looking at different ways to find the important characters in the Game of Thrones `co-occurrence network`. According to `degree centrality`, `Eddard Stark` is the most important `character initially` in the books. But who is/are the most important character(s) in the fifth book according to these three measures.
-
-{% highlight ruby %}
-#=> Finding the most important character in the fifth book,  
-#=> according to degree centrality, betweenness centrality and pagerank.
-p_rank, b_cent, d_cent = cor.idxmax(axis=1)
-{% endhighlight %}
-
-`p_rank = 'Jon-Snow'`
-
-`b_cent = 'Stannis-Baratheon'`
-
-`d_cent = 'Jon-Snow'`
-
+| precision | recall | f1-score | support |
+|----------:|-------:|---------:|-------:|
+| 0 | 0.96 | 0.98 | 0.97 | 5920 |
+| 1 | 0.62 | 0.50 | 0.55 | 473 |
+|  |  |  |  |  |
+| accuracy |  |  | 0.94 | 6393 |
+| macro avg | 0.79 | 0.74 | 0.74 | 6393 |
+| weighted avg | 0.94 | 0.94 | 0.94 | 6393 |
