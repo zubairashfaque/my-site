@@ -8,8 +8,9 @@ fig-caption: # Add figcaption (optional)
 tags: [ZUBI_ASH, PROJECT, NLP, Twitter, linguistic, sentiment] # add tag
 ---
 
-In this blog, I will discuss linguistic features for detecting the sentiment of Twitter messages. I take a supervised approach to the problem, but I removed hashtags in the Twitter data for building training data.
 ##  Project Description
+In this blog, I will discuss linguistic features for detecting the sentiment of Twitter messages. I take a supervised approach to the problem, but I removed hashtags in the Twitter data for building training data.
+
 
 {: .center}
 ![GOT]({{site.baseurl}}/assets/img/sentiment_2.jpg)
@@ -17,6 +18,41 @@ In this blog, I will discuss linguistic features for detecting the sentiment of 
 ## Introduction
 
 In the past few years, there has been a huge growth in the use of microblogging platforms such as Twitter. Spurred by that growth, companies and media organizations are increasingly seeking ways to mine Twitter for information about what people think and feel about their products and services. Companies such as Twitratr (twitrratr.com), tweetfeel (www.tweetfeel.com), and Social Mention (www.socialmention.com) are just a few who advertise Twitter sentiment analysis as one of their services. While there has been a fair amount of research on how sentiments are expressed in genres such as online reviews and news articles, how sentiments are expressed given the informal language and message-length constraints of microblogging has been much less studied.
+
+In this project, I will train a Naive Bayes classifier to predict sentiment from thousands of Twitter tweets. The process could be done automatically without having humans manually review thousands of tweets and customer reviews.
+
+### 1. Problem Statement 
+
+The objective of this task is to detect sentiment of the speech in tweets. For the sake of simplicity, we say a tweet contains hate speech if it has a racist or sexist sentiment associated with it. So, the task is to classify racist or sexist tweets from other tweets.
+
+Formally, given a training sample of tweets and labels, where label '1' denotes the tweet is racist/sexist and label '0' denotes the tweet is not racist/sexist, your objective is to predict the labels on the test dataset.
+
+data source: https://www.kaggle.com/arkhoshghalb/twitter-sentiment-analysis-hatred-speech
+
+### 2. IMPORT LIBRARIES AND DATASETS 
+
+{% highlight ruby %}
+#=> Importing modules
+import pandas as pd
+import numpy as np
+import seaborn as sns
+import matplotlib.pyplot as plt
+{% endhighlight %}
+
+{% highlight ruby %}
+tweets_df = pd.read_csv('twitter.csv')
+#=> Printing out the head of the dataset
+print(tweets_df.head())
+{% endhighlight %}
+
+| index | id | label | tweet | 
+|---------------:|----------------:|-----------:|--:|
+| 0 | 1 | 0 | thank you @user for you follow |
+| 1 | 2 | 0 | @user #sikh #temple vandalised in in #calgary,... |
+| 2 | 3 | 0 | listening to sad songs on a monday morning otw... |
+| 3 | 4 | 0  | to see nina turner on the airwaves trying to... |
+| 4 | 5 | 0 | factsguide: society now #motivation |
+
 
 ### 1. Let's load and explore the data? 
 
