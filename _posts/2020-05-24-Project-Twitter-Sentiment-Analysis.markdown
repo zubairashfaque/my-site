@@ -156,6 +156,14 @@ Before diving into details we have to understand the concept of the Nodes and Ed
 {: .center}
 ![NetworkX]({{site.baseurl}}/assets/img/sentiment_3.jpg)
 
+We can see in the plot that majority of labels are `0`.
+
+Let's get the `length` of the `messages`.
+
+{% highlight ruby %}
+tweets_df['length'] = tweets_df['tweet'].apply(len)
+{% endhighlight %}
+
 `Source` and `target` are the two `nodes` that are linked by an `edge`. A network can have directed or undirected edges and in this network all the edges are undirected. The weight attribute of every edge tells us the number of `interactions that the characters` have had over the book, and the book column tells us the book number.
 
 Once we have the data loaded as a pandas DataFrame, it's time to create a network. We will use networkx, a network analysis library, and create a graph object for the first book.
