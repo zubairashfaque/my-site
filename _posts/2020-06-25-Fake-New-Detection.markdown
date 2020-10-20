@@ -20,21 +20,48 @@ The goal of this hands-on project is to detect fake news using RNN (recurrent ne
 The spread of false information has emerged as a pervasive force in recent years — upsetting elections, disrupting democratic societies, and further dividing people into fractious groups, stubbornly entrenched in destructive “us-versus-them” ideologies. With an estimated 20% to 38% of news stories shared on social media platforms being deemed as bogus, disinformation has, unfortunately, become the new norm, and it’s getter harder and harder to discern the truth from the bits of “fake news” floating around — whether it’s read in the written word, or seen in photographs or moving images.
 To counter the problem, experts have come up with a variety of AI-powered “fake news” detectors.***
 
-### 1. DATA
+### 1. IMPORT LIBRARIES AND DATASETS
 
-The dataset contains several parameters which are considered important during the application for Masters Programs.
-The parameters included are :
+Let’s start with loading all the libraries and dependencies.
 
-1. GRE Scores ( out of 340 )
-2. TOEFL Scores ( out of 120 )
-3. University Rating ( out of 5 )
-4. Statement of Purpose and Letter of Recommendation Strength ( out of 5 )
-5. Undergraduate GPA ( out of 10 )
-6. Research Experience ( either 0 or 1 )
-7. Chance of Admit ( ranging from 0 to 1 )
+{% highlight ruby %}
+!pip install plotly
+!pip install --upgrade nbformat
+!pip install nltk
+!pip install spacy # spaCy is an open-source software library for advanced natural language processing
+!pip install WordCloud
+!pip install gensim # Gensim is an open-source library for unsupervised topic modeling and natural language processing
+import nltk
+nltk.download('punkt')
 
-`data source: https://www.kaggle.com/mohansacharya/graduate-admissions`
-[link to kaggle dataset!](https://www.kaggle.com/mohansacharya/graduate-admissions)
+import tensorflow as tf
+import pandas as pd
+import numpy as np
+import matplotlib.pyplot as plt
+import seaborn as sns
+from wordcloud import WordCloud, STOPWORDS
+import nltk
+import re
+from nltk.stem import PorterStemmer, WordNetLemmatizer
+from nltk.corpus import stopwords
+from nltk.tokenize import word_tokenize, sent_tokenize
+import gensim
+from gensim.utils import simple_preprocess
+from gensim.parsing.preprocessing import STOPWORDS
+
+from tensorflow.keras.preprocessing.text import one_hot, Tokenizer
+from tensorflow.keras.preprocessing.sequence import pad_sequences
+from tensorflow.keras.models import Sequential
+from tensorflow.keras.layers import Dense, Flatten, Embedding, Input, LSTM, Conv1D, MaxPool1D, Bidirectional
+from tensorflow.keras.models import Model
+{% endhighlight %}
+
+load the data
+
+{% highlight ruby %}
+df_true = pd.read_csv("True.csv")
+df_fake = pd.read_csv("Fake.csv")
+{% endhighlight %}
 
 ### 2. IMPORT LIBRARIES AND LOAD DATASETS
 
