@@ -278,7 +278,7 @@ plt.show()
 ![GOT]({{site.baseurl}}/assets/img/pro_grad_pic_11.JPG)
 
 
-### 3. PREPROCESSING - CREATE TRAINING AND TESTING DATASET
+### 4. PREPROCESSING - CREATE TRAINING AND TESTING DATASET
 
 Checking columns 
 
@@ -343,7 +343,7 @@ X_train, X_test, y_train, y_test = train_test_split(X, y, test_size = 0.15)
 {% endhighlight %}
 
 
-### 4. TRAIN AND EVALUATE A LINEAR REGRESSION MODEL
+### 5. TRAIN AND EVALUATE A LINEAR REGRESSION MODEL
 
 {% highlight ruby %}
 from sklearn.linear_model import LinearRegression
@@ -365,7 +365,7 @@ accuracy_LinearRegression
 Result: `0.795970795592809`
 
 
-### 5. TRAIN AND EVALUATE AN ARTIFICIAL NEURAL NETWORK
+### 6. TRAIN AND EVALUATE AN ARTIFICIAL NEURAL NETWORK
 
 Let's see the `shortest message`
 
@@ -704,7 +704,7 @@ accuracy_RandomForest
 Result: `0.752819921074695`
 
 Now result is much better.
-#### UNDERSTAND VARIOUS REGRESSION KPIs
+#### 7. UNDERSTAND VARIOUS REGRESSION KPIs
 
 {: .center}
 ![GOT]({{site.baseurl}}/assets/img/pro_grad_pic_18.JPG)
@@ -731,7 +731,7 @@ Now result is much better.
 ![GOT]({{site.baseurl}}/assets/img/pro_grad_pic_25.JPG)
 
 
-#### MODEL PERFORMANCE
+#### 8. MODEL PERFORMANCE
 
 After model fitting, we would like to assess the performance of the model by comparing model predictions to actual(TRUE) data
 
@@ -789,7 +789,7 @@ Adjusted R2 = 0.7746543115502666
 
 
 
-#### Please find below twitter sentiment Analysis jupyter notebook on github
+#### 9. Please find below twitter sentiment Analysis jupyter notebook on github
 
 [link to github!](https://github.com/zubairashfaque/NLP/tree/main/Twitter%20Sentiment%20Analysis)
 
