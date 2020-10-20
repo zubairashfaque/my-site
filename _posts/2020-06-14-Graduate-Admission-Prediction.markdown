@@ -342,6 +342,28 @@ X_train, X_test, y_train, y_test = train_test_split(X, y, test_size = 0.15)
 {% endhighlight %}
 
 
+### 4. TRAIN AND EVALUATE A LINEAR REGRESSION MODEL
+
+{% highlight ruby %}
+from sklearn.linear_model import LinearRegression
+from sklearn.metrics import mean_squared_error, accuracy_score
+{% endhighlight %}
+
+
+{% highlight ruby %}
+LinearRegression_model = LinearRegression()
+LinearRegression_model.fit(X_train, y_train)
+{% endhighlight %}
+
+
+{% highlight ruby %}
+accuracy_LinearRegression = LinearRegression_model.score(X_test, y_test)
+accuracy_LinearRegression
+{% endhighlight %}
+
+Result: `0.795970795592809`
+
+
 Let's see the `shortest message`
 
 {% highlight ruby %}
