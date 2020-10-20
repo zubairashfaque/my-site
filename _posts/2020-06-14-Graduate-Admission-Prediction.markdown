@@ -274,11 +274,69 @@ plt.show()
 ![GOT]({{site.baseurl}}/assets/img/pro_grad_pic_11.JPG)
 
 
+### 3. PREPROCESSING - CREATE TRAINING AND TESTING DATASET
+
+Checking columns 
+
+{% highlight ruby %}
+admission_df.columns
+{% endhighlight %}
+
+{% highlight ruby %}
+Index(['GRE Score', 'TOEFL Score', 'University Rating', 'SOP', 'LOR ', 'CGPA',
+       'Research', 'Chance of Admit'],
+      dtype='object')
+{% endhighlight %}
+
+
+{% highlight ruby %}
+X = admission_df.drop(columns = ['Chance of Admit'])
+{% endhighlight %}
+
+{% highlight ruby %}
+y = admission_df['Chance of Admit']
+{% endhighlight %}
+
+{% highlight ruby %}
+X.shape
+{% endhighlight %}
+
+RESULT:
+`(500, 7)`
+
+{% highlight ruby %}
+X = np.array(X)
+y = np.array(y)
+{% endhighlight %}
+
+{% highlight ruby %}
+y = y.reshape(-1,1)
+y.shape
+{% endhighlight %}
+
+RESULT:
+`(500, 1)`
+
+
+Scaling the data before training the model
+
+{% highlight ruby %}
+from sklearn.preprocessing import StandardScaler, MinMaxScaler
+scaler_x = StandardScaler()
+X = scaler_x.fit_transform(X)
+
+scaler_y = StandardScaler()
+y = scaler_y.fit_transform(y)
+{% endhighlight %}
 
 
 
+Spliting the data in to test and train sets
 
-
+{% highlight ruby %}
+from sklearn.model_selection import train_test_split
+X_train, X_test, y_train, y_test = train_test_split(X, y, test_size = 0.15)
+{% endhighlight %}
 
 
 Let's see the `shortest message`
