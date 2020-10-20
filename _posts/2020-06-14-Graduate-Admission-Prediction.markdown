@@ -147,6 +147,7 @@ df_university
 
 
 RESULT: 
+
 {: .center}
 ![GOT]({{site.baseurl}}/assets/img/pro_grad_pic_5.JPG)
 
