@@ -210,6 +210,75 @@ plt.show()
 
 Although there are exceptions, people with higher CGPA usually have higher GRE scores maybe because they are smart or hard working
 
+{% highlight ruby %}
+fig = sns.lmplot(x="CGPA", y="LOR ", data=admission_df, hue="Research")
+plt.title("GRE Score vs CGPA")
+plt.show()
+{% endhighlight %}
+
+{: .center}
+![GOT]({{site.baseurl}}/assets/img/pro_grad_pic_11.JPG)
+
+LORs are not that related with CGPA so it is clear that a persons LOR is not dependent on that persons academic excellence. Having research experience is usually related with a good LOR which might be justified by the fact that supervisors have personal interaction with the students performing research which usually results in good LORs
+
+{% highlight ruby %}
+fig = sns.lmplot(x="GRE Score", y="LOR ", data=admission_df, hue="Research")
+plt.title("GRE Score vs CGPA")
+plt.show()
+{% endhighlight %}
+
+{: .center}
+![GOT]({{site.baseurl}}/assets/img/pro_grad_pic_12.JPG)
+
+GRE scores and LORs are also not that related. People with different kinds of LORs have all kinds of GRE scores
+
+{% highlight ruby %}
+fig = sns.regplot(x="CGPA", y="SOP", data=admission_df)
+plt.title("GRE Score vs CGPA")
+plt.show()
+{% endhighlight %}
+
+{: .center}
+![GOT]({{site.baseurl}}/assets/img/pro_grad_pic_13.JPG)
+
+CGPA and SOP are not that related because Statement of Purpose is related to academic performance, but since people with good CGPA tend to be more hard working so they have good things to say in their SOP which might explain the slight move towards higher CGPA as along with good SOPs
+
+
+{% highlight ruby %}
+fig = sns.regplot(x="GRE Score", y="SOP", data=admission_df)
+plt.title("GRE Score vs CGPA")
+plt.show()
+{% endhighlight %}
+
+{: .center}
+![GOT]({{site.baseurl}}/assets/img/pro_grad_pic_14.JPG)
+
+
+Similary, GRE Score and CGPA is only slightly related
+
+
+{% highlight ruby %}
+fig = sns.regplot(x="GRE Score", y="SOP", data=admission_df)
+plt.title("GRE Score vs CGPA")
+plt.show()
+{% endhighlight %}
+
+{: .center}
+![GOT]({{site.baseurl}}/assets/img/pro_grad_pic_15.JPG)
+
+
+Applicants with different kinds of SOP have different kinds of TOEFL Score. So the quality of SOP is not always related to the applicants English skills.
+
+
+
+
+
+
+
+
+
+
+
 
 Let's see the `shortest message`
 
