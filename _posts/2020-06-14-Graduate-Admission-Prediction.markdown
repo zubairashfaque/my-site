@@ -159,6 +159,7 @@ Let's check the destribution of `data`.
 {% endhighlight %}
 
 RESULT: 
+
 {: .center}
 ![GOT]({{site.baseurl}}/assets/img/pro_grad_pic_6.JPG)
 
@@ -181,6 +182,7 @@ plt.show()
 {% endhighlight %}
 
 RESULT: 
+
 {: .center}
 ![GOT]({{site.baseurl}}/assets/img/pro_grad_pic_9.JPG)
 
@@ -194,6 +196,7 @@ plt.show()
 {% endhighlight %}
 
 RESULT: 
+
 {: .center}
 ![GOT]({{site.baseurl}}/assets/img/pro_grad_pic_10.JPG)
 
