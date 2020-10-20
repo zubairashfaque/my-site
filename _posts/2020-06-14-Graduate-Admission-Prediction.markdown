@@ -786,7 +786,7 @@ Adjusted R2 = 0.7746543115502666
 
 
 
-#### 9. Please find below twitter sentiment Analysis jupyter notebook on github
+#### 9. Please find below Graduate Admission Prediction jupyter notebook on github
 
 [link to github!](https://github.com/zubairashfaque/REGRESSION/tree/master/Graduate_Admission_Prediction)
 
