@@ -184,6 +184,9 @@ RESULT:
 {: .center}
 ![GOT]({{site.baseurl}}/assets/img/pro_grad_pic_9.JPG)
 
+
+People with higher GRE Scores also have higher TOEFL Scores which is justified because both TOEFL and GRE have a verbal section which although not similar are relatable
+
 {% highlight ruby %}
 fig = sns.regplot(x="GRE Score", y="CGPA", data=admission_df)
 plt.title("GRE Score vs CGPA")
@@ -192,23 +195,11 @@ plt.show()
 
 RESULT: 
 {: .center}
-![GOT]({{site.baseurl}}/assets/img/pro_grad_pic_9.JPG)
-
-People with higher GRE Scores also have higher TOEFL Scores which is justified because both TOEFL and GRE have a verbal section which although not similar are relatable
-
-
-
-{% highlight ruby %}
-corr_matrix = admission_df.corr()
-plt.figure(figsize = (12, 12))
-sns.heatmap(corr_matrix, annot = True)
-plt.show()
-{% endhighlight %}
-
-{: .center}
-![GOT]({{site.baseurl}}/assets/img/pro_grad_pic_8.JPG)
+![GOT]({{site.baseurl}}/assets/img/pro_grad_pic_10.JPG)
 
 Although there are exceptions, people with higher CGPA usually have higher GRE scores maybe because they are smart or hard working
+
+
 
 {% highlight ruby %}
 fig = sns.lmplot(x="CGPA", y="LOR ", data=admission_df, hue="Research")
@@ -270,7 +261,17 @@ plt.show()
 Applicants with different kinds of SOP have different kinds of TOEFL Score. So the quality of SOP is not always related to the applicants English skills.
 
 
+Correlation among variables
 
+{% highlight ruby %}
+corr_matrix = admission_df.corr()
+plt.figure(figsize = (12, 12))
+sns.heatmap(corr_matrix, annot = True)
+plt.show()
+{% endhighlight %}
+
+{: .center}
+![GOT]({{site.baseurl}}/assets/img/pro_grad_pic_11.JPG)
 
 
 
