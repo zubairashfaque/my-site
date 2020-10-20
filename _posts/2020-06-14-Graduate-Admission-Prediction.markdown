@@ -152,23 +152,17 @@ RESULT:
 
 Performing data visualiztion for batter understanding.
 
-Checking data distribution.
+Let's check the destribution of `data`.
 
 {% highlight ruby %}
  admission_df.hist(bins = 30, figsize = (20, 20), color = 'r')
 {% endhighlight %}
 
-We can see in the plot that majority of labels are `0`.
-
-Let's get the `length` of the `messages`.
-
-{% highlight ruby %}
-tweets_df['length'] = tweets_df['tweet'].apply(len)
-{% endhighlight %}
-
 RESULT: 
 {: .center}
 ![GOT]({{site.baseurl}}/assets/img/pro_grad_pic_6.JPG)
+
+It is clear from the distributions, students with varied merit apply for the university.
 
 {% highlight ruby %}
 sns.pairplot(admission_df)
@@ -178,8 +172,31 @@ RESULT:
 {: .center}
 ![GOT]({{site.baseurl}}/assets/img/pro_grad_pic_7.png)
 
+Understanding the relation between different factors responsible for graduate admissions
 
-Let's check the destribution of `length` of `tweets`.
+{% highlight ruby %}
+fig = sns.regplot(x="GRE Score", y="TOEFL Score", data=admission_df)
+plt.title("GRE Score vs TOEFL Score")
+plt.show()
+{% endhighlight %}
+
+RESULT: 
+{: .center}
+![GOT]({{site.baseurl}}/assets/img/pro_grad_pic_9.JPG)
+
+{% highlight ruby %}
+fig = sns.regplot(x="GRE Score", y="CGPA", data=admission_df)
+plt.title("GRE Score vs CGPA")
+plt.show()
+{% endhighlight %}
+
+RESULT: 
+{: .center}
+![GOT]({{site.baseurl}}/assets/img/pro_grad_pic_9.JPG)
+
+People with higher GRE Scores also have higher TOEFL Scores which is justified because both TOEFL and GRE have a verbal section which although not similar are relatable
+
+
 
 {% highlight ruby %}
 corr_matrix = admission_df.corr()
@@ -189,8 +206,9 @@ plt.show()
 {% endhighlight %}
 
 {: .center}
-![GOT]({{site.baseurl}}/assets/img/pro_grad_pic_8.JPG
-)
+![GOT]({{site.baseurl}}/assets/img/pro_grad_pic_8.JPG)
+
+Although there are exceptions, people with higher CGPA usually have higher GRE scores maybe because they are smart or hard working
 
 
 Let's see the `shortest message`
