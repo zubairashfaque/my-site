@@ -364,15 +364,308 @@ accuracy_LinearRegression
 Result: `0.795970795592809`
 
 
+### 5. TRAIN AND EVALUATE AN ARTIFICIAL NEURAL NETWORK
+
 Let's see the `shortest message`
 
 {% highlight ruby %}
-tweets_df[tweets_df['length'] == 11]['tweet'].iloc[0]
+import tensorflow as tf
+from tensorflow import keras
+from tensorflow.keras.layers import Dense, Activation, Dropout
+from tensorflow.keras.optimizers import Adam
 {% endhighlight %}
 
 {% highlight ruby %}
-'i love you '
+ANN_model = keras.Sequential()
+ANN_model.add(Dense(50, input_dim = 7))
+ANN_model.add(Activation('relu'))
+ANN_model.add(Dense(150))
+ANN_model.add(Activation('relu'))
+ANN_model.add(Dropout(0.5))
+ANN_model.add(Dense(150))
+ANN_model.add(Activation('relu'))
+ANN_model.add(Dropout(0.5))
+ANN_model.add(Dense(50))
+ANN_model.add(Activation('linear'))
+ANN_model.add(Dense(1))
+ANN_model.compile(loss = 'mse', optimizer = 'adam')
+ANN_model.summary()
 {% endhighlight %}
+
+{% highlight ruby %}
+Model: "sequential"
+_________________________________________________________________
+Layer (type)                 Output Shape              Param #   
+=================================================================
+dense (Dense)                (None, 50)                400       
+_________________________________________________________________
+activation (Activation)      (None, 50)                0         
+_________________________________________________________________
+dense_1 (Dense)              (None, 150)               7650      
+_________________________________________________________________
+activation_1 (Activation)    (None, 150)               0         
+_________________________________________________________________
+dropout (Dropout)            (None, 150)               0         
+_________________________________________________________________
+dense_2 (Dense)              (None, 150)               22650     
+_________________________________________________________________
+activation_2 (Activation)    (None, 150)               0         
+_________________________________________________________________
+dropout_1 (Dropout)          (None, 150)               0         
+_________________________________________________________________
+dense_3 (Dense)              (None, 50)                7550      
+_________________________________________________________________
+activation_3 (Activation)    (None, 50)                0         
+_________________________________________________________________
+dense_4 (Dense)              (None, 1)                 51        
+=================================================================
+Total params: 38,301
+Trainable params: 38,301
+Non-trainable params: 0
+_________________________________________________________________
+{% endhighlight %}
+
+{% highlight ruby %}
+ANN_model.compile(optimizer='Adam', loss='mean_squared_error')
+{% endhighlight %}
+
+{% highlight ruby %}
+epochs_hist = ANN_model.fit(X_train, y_train, epochs = 100, batch_size = 20, validation_split = 0.2)
+{% endhighlight %}
+
+
+{% highlight ruby %}
+Epoch 1/100
+17/17 [==============================] - 0s 10ms/step - loss: 0.5987 - val_loss: 0.2677
+Epoch 2/100
+17/17 [==============================] - 0s 2ms/step - loss: 0.4072 - val_loss: 0.2840
+Epoch 3/100
+17/17 [==============================] - 0s 2ms/step - loss: 0.3481 - val_loss: 0.2514
+Epoch 4/100
+17/17 [==============================] - 0s 2ms/step - loss: 0.2824 - val_loss: 0.2456
+Epoch 5/100
+17/17 [==============================] - 0s 2ms/step - loss: 0.2683 - val_loss: 0.2753
+Epoch 6/100
+17/17 [==============================] - 0s 2ms/step - loss: 0.2648 - val_loss: 0.2446
+Epoch 7/100
+17/17 [==============================] - 0s 2ms/step - loss: 0.2748 - val_loss: 0.2646
+Epoch 8/100
+17/17 [==============================] - 0s 2ms/step - loss: 0.2532 - val_loss: 0.2883
+Epoch 9/100
+17/17 [==============================] - 0s 2ms/step - loss: 0.2452 - val_loss: 0.2392
+Epoch 10/100
+17/17 [==============================] - 0s 2ms/step - loss: 0.2315 - val_loss: 0.2498
+Epoch 11/100
+17/17 [==============================] - 0s 2ms/step - loss: 0.2238 - val_loss: 0.2151
+Epoch 12/100
+17/17 [==============================] - 0s 2ms/step - loss: 0.2485 - val_loss: 0.2507
+Epoch 13/100
+17/17 [==============================] - 0s 2ms/step - loss: 0.2523 - val_loss: 0.2406
+Epoch 14/100
+17/17 [==============================] - 0s 2ms/step - loss: 0.2239 - val_loss: 0.2531
+Epoch 15/100
+17/17 [==============================] - 0s 2ms/step - loss: 0.2190 - val_loss: 0.2153
+Epoch 16/100
+17/17 [==============================] - 0s 2ms/step - loss: 0.2097 - val_loss: 0.2868
+Epoch 17/100
+17/17 [==============================] - 0s 2ms/step - loss: 0.2120 - val_loss: 0.2647
+Epoch 18/100
+17/17 [==============================] - 0s 2ms/step - loss: 0.2044 - val_loss: 0.2550
+Epoch 19/100
+17/17 [==============================] - 0s 2ms/step - loss: 0.2062 - val_loss: 0.2609
+Epoch 20/100
+17/17 [==============================] - 0s 2ms/step - loss: 0.2109 - val_loss: 0.2244
+Epoch 21/100
+17/17 [==============================] - 0s 2ms/step - loss: 0.2051 - val_loss: 0.2444
+Epoch 22/100
+17/17 [==============================] - 0s 2ms/step - loss: 0.2048 - val_loss: 0.2399
+Epoch 23/100
+17/17 [==============================] - 0s 2ms/step - loss: 0.1909 - val_loss: 0.2379
+Epoch 24/100
+17/17 [==============================] - 0s 2ms/step - loss: 0.1962 - val_loss: 0.2261
+Epoch 25/100
+17/17 [==============================] - 0s 2ms/step - loss: 0.1883 - val_loss: 0.2631
+Epoch 26/100
+17/17 [==============================] - 0s 2ms/step - loss: 0.2176 - val_loss: 0.2200
+Epoch 27/100
+17/17 [==============================] - 0s 2ms/step - loss: 0.1901 - val_loss: 0.2430
+Epoch 28/100
+17/17 [==============================] - 0s 2ms/step - loss: 0.2034 - val_loss: 0.2405
+Epoch 29/100
+17/17 [==============================] - 0s 2ms/step - loss: 0.1905 - val_loss: 0.2395
+Epoch 30/100
+17/17 [==============================] - 0s 2ms/step - loss: 0.1976 - val_loss: 0.2455
+Epoch 31/100
+17/17 [==============================] - 0s 2ms/step - loss: 0.1951 - val_loss: 0.2165
+Epoch 32/100
+17/17 [==============================] - 0s 2ms/step - loss: 0.1888 - val_loss: 0.2279
+Epoch 33/100
+17/17 [==============================] - 0s 2ms/step - loss: 0.1912 - val_loss: 0.2262
+Epoch 34/100
+17/17 [==============================] - 0s 2ms/step - loss: 0.1950 - val_loss: 0.1985
+Epoch 35/100
+17/17 [==============================] - 0s 2ms/step - loss: 0.1912 - val_loss: 0.2035
+Epoch 36/100
+17/17 [==============================] - 0s 2ms/step - loss: 0.1943 - val_loss: 0.2680
+Epoch 37/100
+17/17 [==============================] - 0s 2ms/step - loss: 0.1728 - val_loss: 0.2742
+Epoch 38/100
+17/17 [==============================] - 0s 2ms/step - loss: 0.1930 - val_loss: 0.2100
+Epoch 39/100
+17/17 [==============================] - 0s 2ms/step - loss: 0.1718 - val_loss: 0.2568
+Epoch 40/100
+17/17 [==============================] - 0s 2ms/step - loss: 0.1726 - val_loss: 0.2058
+Epoch 41/100
+17/17 [==============================] - 0s 2ms/step - loss: 0.1775 - val_loss: 0.2385
+Epoch 42/100
+17/17 [==============================] - 0s 2ms/step - loss: 0.1781 - val_loss: 0.2659
+Epoch 43/100
+17/17 [==============================] - 0s 2ms/step - loss: 0.1766 - val_loss: 0.2716
+Epoch 44/100
+17/17 [==============================] - 0s 2ms/step - loss: 0.1962 - val_loss: 0.2207
+Epoch 45/100
+17/17 [==============================] - 0s 2ms/step - loss: 0.1852 - val_loss: 0.2786
+Epoch 46/100
+17/17 [==============================] - 0s 2ms/step - loss: 0.1662 - val_loss: 0.2267
+Epoch 47/100
+17/17 [==============================] - 0s 2ms/step - loss: 0.1523 - val_loss: 0.2635
+Epoch 48/100
+17/17 [==============================] - 0s 2ms/step - loss: 0.1558 - val_loss: 0.2660
+Epoch 49/100
+17/17 [==============================] - 0s 2ms/step - loss: 0.1592 - val_loss: 0.2320
+Epoch 50/100
+17/17 [==============================] - 0s 2ms/step - loss: 0.1483 - val_loss: 0.2649
+Epoch 51/100
+17/17 [==============================] - 0s 2ms/step - loss: 0.1580 - val_loss: 0.2737
+Epoch 52/100
+17/17 [==============================] - 0s 2ms/step - loss: 0.1372 - val_loss: 0.2154
+Epoch 53/100
+17/17 [==============================] - 0s 2ms/step - loss: 0.1351 - val_loss: 0.2991
+Epoch 54/100
+17/17 [==============================] - 0s 2ms/step - loss: 0.1715 - val_loss: 0.2176
+Epoch 55/100
+17/17 [==============================] - 0s 2ms/step - loss: 0.1727 - val_loss: 0.2840
+Epoch 56/100
+17/17 [==============================] - 0s 2ms/step - loss: 0.1444 - val_loss: 0.2457
+Epoch 57/100
+17/17 [==============================] - 0s 2ms/step - loss: 0.1526 - val_loss: 0.2204
+Epoch 58/100
+17/17 [==============================] - 0s 2ms/step - loss: 0.1563 - val_loss: 0.2948
+Epoch 59/100
+17/17 [==============================] - 0s 2ms/step - loss: 0.1492 - val_loss: 0.2274
+Epoch 60/100
+17/17 [==============================] - 0s 2ms/step - loss: 0.1400 - val_loss: 0.2485
+Epoch 61/100
+17/17 [==============================] - 0s 2ms/step - loss: 0.1438 - val_loss: 0.2475
+Epoch 62/100
+17/17 [==============================] - 0s 2ms/step - loss: 0.1603 - val_loss: 0.2517
+Epoch 63/100
+17/17 [==============================] - 0s 2ms/step - loss: 0.1696 - val_loss: 0.2102
+Epoch 64/100
+17/17 [==============================] - 0s 2ms/step - loss: 0.1461 - val_loss: 0.2394
+Epoch 65/100
+17/17 [==============================] - 0s 2ms/step - loss: 0.1324 - val_loss: 0.2174
+Epoch 66/100
+17/17 [==============================] - 0s 2ms/step - loss: 0.1441 - val_loss: 0.2413
+Epoch 67/100
+17/17 [==============================] - 0s 2ms/step - loss: 0.1396 - val_loss: 0.2292
+Epoch 68/100
+17/17 [==============================] - 0s 2ms/step - loss: 0.1415 - val_loss: 0.2504
+Epoch 69/100
+17/17 [==============================] - 0s 2ms/step - loss: 0.1415 - val_loss: 0.2383
+Epoch 70/100
+17/17 [==============================] - 0s 2ms/step - loss: 0.1299 - val_loss: 0.2379
+Epoch 71/100
+17/17 [==============================] - 0s 2ms/step - loss: 0.1331 - val_loss: 0.2439
+Epoch 72/100
+17/17 [==============================] - 0s 2ms/step - loss: 0.1316 - val_loss: 0.2343
+Epoch 73/100
+17/17 [==============================] - 0s 2ms/step - loss: 0.1283 - val_loss: 0.2632
+Epoch 74/100
+17/17 [==============================] - 0s 2ms/step - loss: 0.1504 - val_loss: 0.3116
+Epoch 75/100
+17/17 [==============================] - 0s 2ms/step - loss: 0.1532 - val_loss: 0.2292
+Epoch 76/100
+17/17 [==============================] - 0s 2ms/step - loss: 0.1389 - val_loss: 0.2442
+Epoch 77/100
+17/17 [==============================] - 0s 2ms/step - loss: 0.1393 - val_loss: 0.2709
+Epoch 78/100
+17/17 [==============================] - 0s 2ms/step - loss: 0.1295 - val_loss: 0.2829
+Epoch 79/100
+17/17 [==============================] - 0s 2ms/step - loss: 0.1324 - val_loss: 0.2107
+Epoch 80/100
+17/17 [==============================] - 0s 2ms/step - loss: 0.1208 - val_loss: 0.2660
+Epoch 81/100
+17/17 [==============================] - 0s 2ms/step - loss: 0.1336 - val_loss: 0.2807
+Epoch 82/100
+17/17 [==============================] - 0s 2ms/step - loss: 0.1174 - val_loss: 0.2388
+Epoch 83/100
+17/17 [==============================] - 0s 2ms/step - loss: 0.1268 - val_loss: 0.2467
+Epoch 84/100
+17/17 [==============================] - 0s 2ms/step - loss: 0.1393 - val_loss: 0.2446
+Epoch 85/100
+17/17 [==============================] - 0s 2ms/step - loss: 0.1342 - val_loss: 0.2534
+Epoch 86/100
+17/17 [==============================] - 0s 2ms/step - loss: 0.1181 - val_loss: 0.2381
+Epoch 87/100
+17/17 [==============================] - 0s 2ms/step - loss: 0.1433 - val_loss: 0.2400
+Epoch 88/100
+17/17 [==============================] - 0s 2ms/step - loss: 0.1151 - val_loss: 0.2853
+Epoch 89/100
+17/17 [==============================] - 0s 2ms/step - loss: 0.1181 - val_loss: 0.2449
+Epoch 90/100
+17/17 [==============================] - 0s 2ms/step - loss: 0.1191 - val_loss: 0.2596
+Epoch 91/100
+17/17 [==============================] - 0s 2ms/step - loss: 0.1178 - val_loss: 0.2746
+Epoch 92/100
+17/17 [==============================] - 0s 2ms/step - loss: 0.1200 - val_loss: 0.2831
+Epoch 93/100
+17/17 [==============================] - 0s 2ms/step - loss: 0.1331 - val_loss: 0.2721
+Epoch 94/100
+17/17 [==============================] - 0s 2ms/step - loss: 0.1027 - val_loss: 0.2789
+Epoch 95/100
+17/17 [==============================] - 0s 2ms/step - loss: 0.1235 - val_loss: 0.2386
+Epoch 96/100
+17/17 [==============================] - 0s 2ms/step - loss: 0.1177 - val_loss: 0.2672
+Epoch 97/100
+17/17 [==============================] - 0s 2ms/step - loss: 0.1148 - val_loss: 0.2774
+Epoch 98/100
+17/17 [==============================] - 0s 2ms/step - loss: 0.1154 - val_loss: 0.2934
+Epoch 99/100
+17/17 [==============================] - 0s 2ms/step - loss: 0.0984 - val_loss: 0.2418
+Epoch 100/100
+17/17 [==============================] - 0s 2ms/step - loss: 0.1098 - val_loss: 0.2488
+{% endhighlight %}
+
+{% highlight ruby %}
+result = ANN_model.evaluate(X_test, y_test)
+accuracy_ANN = 1 - result
+print("Accuracy : {}".format(accuracy_ANN))
+{% endhighlight %}
+
+{% highlight ruby %}
+3/3 [==============================] - 0s 665us/step - loss: 0.2416
+Accuracy : 0.7584277391433716
+{% endhighlight %}
+
+{% highlight ruby %}
+epochs_hist.history.keys()
+{% endhighlight %}
+
+`dict_keys(['loss', 'val_loss'])`
+
+{% highlight ruby %}
+plt.plot(epochs_hist.history['loss'])
+plt.title('Model Loss Progress During Training')
+plt.xlabel('Epoch')
+plt.ylabel('Training Loss')
+plt.legend(['Training Loss'])
+{% endhighlight %}
+
+{: .center}
+![GOT]({{site.baseurl}}/assets/img/pro_grad_pic_16.JPG)
+
+
 
 `Source` and `target` are the two `nodes` that are linked by an `edge`. A network can have directed or undirected edges and in this network all the edges are undirected. The weight attribute of every edge tells us the number of `interactions that the characters` have had over the book, and the book column tells us the book number.
 
