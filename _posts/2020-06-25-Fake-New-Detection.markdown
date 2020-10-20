@@ -146,6 +146,33 @@ df['original'][0]
 
 ### 3. PERFORM DATA CLEANING
 
+Let's download `stopwords`.
+
+{% highlight ruby %}
+nltk.download("stopwords")
+{% endhighlight %}
+
+Obtain additional stopwords from nltk
+
+{% highlight ruby %}
+from nltk.corpus import stopwords
+stop_words = stopwords.words('english')
+stop_words.extend(['from', 'subject', 're', 'edu', 'use'])
+{% endhighlight %}
+
+We have to remove stopwords and remove words with 2 or less characters.
+
+{% highlight ruby %}
+def preprocess(text):
+    result = []
+    for token in gensim.utils.simple_preprocess(text):
+        if token not in gensim.parsing.preprocessing.STOPWORDS and len(token) > 3 and token not in stop_words:
+            result.append(token)
+            
+    return result
+{% endhighlight %}
+
+preprocess
 
 Getting a concise `summary` of the dataframe admission_df.
 
