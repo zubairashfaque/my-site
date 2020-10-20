@@ -9,7 +9,7 @@ tags: [ZUBI_ASH, PROJECT, REGRESSION, Admission] # add tag
 ---
 
 ##  Project Description
-All around the world, it's the dream of every student to get admission to the Ivy League and students are often worried about their chances of admission to graduate school. The aim of this blog is to show how a regression model can be built to predict the chance of admission into a particular university based on the student's profile. This model will give students a clear idea about their admission probability in a particular university.
+All around the world, it's the dream of every student to get admission to the Ivy League and students are often worried about their chances of admission to graduate school. The aim of this blog is to show how different regression models can be built to predict the chance of admission into a particular university based on the student's profile. This model will give students a clear idea about their admission probability in a particular university.
 
 
 {: .center}
@@ -666,6 +666,99 @@ plt.legend(['Training Loss'])
 {: .center}
 ![GOT]({{site.baseurl}}/assets/img/pro_grad_pic_16.JPG)
 
+
+#### TRAIN AND EVALUATE A DECISION TREE AND RANDOM FOREST MODELS
+Now, I am going to use decision tree builds regression models. As we all know that decision tree breaks down a dataset into smaller subsets while at the same time an associated decision tree is incrementally developed. The final result is a tree with decision nodes and leaf nodes.
+
+
+{% highlight ruby %}
+from sklearn.tree import DecisionTreeRegressor
+DecisionTree_model = DecisionTreeRegressor()
+DecisionTree_model.fit(X_train, y_train)
+{% endhighlight %}
+
+{% highlight ruby %}
+accuracy_DecisionTree = DecisionTree_model.score(X_test, y_test)
+accuracy_DecisionTree
+{% endhighlight %}
+
+Result: `0.5616226623761651`
+
+As we can see result is not so good.
+
+
+Now we going to use renowned ensembling model `random forest`. In which it make up a random forest model which is an ensemble model. Predictions made by each decision tree are averaged to get the prediction of random forest model.A random forest regressor fits a number of classifying decision trees on various sub-samples of the dataset and uses averaging to improve the predictive accuracy and control over-fitting. 
+
+
+{% highlight ruby %}
+from sklearn.ensemble import RandomForestRegressor
+RandomForest_model = RandomForestRegressor(n_estimators=100, max_depth = 10)
+RandomForest_model.fit(X_train, y_train)
+{% endhighlight %}
+
+{% highlight ruby %}
+accuracy_RandomForest = RandomForest_model.score(X_test, y_test)
+accuracy_RandomForest
+{% endhighlight %}
+
+Result: `0.752819921074695`
+
+Now result is much better.
+
+#### Model Performance 
+
+After model fitting, we would like to assess the performance of the model by comparing model predictions to actual(TRUE) data
+
+
+{% highlight ruby %}
+y_predict = LinearRegression_model.predict(X_test)
+plt.plot(y_test, y_predict, '^', color = 'r')
+{% endhighlight %}
+
+
+{: .center}
+![GOT]({{site.baseurl}}/assets/img/pro_grad_pic_17.JPG)
+
+
+
+{% highlight ruby %}
+y_predict_orig = scaler_y.inverse_transform(y_predict)
+y_test_orig = scaler_y.inverse_transform(y_test)
+{% endhighlight %}
+
+
+
+{% highlight ruby %}
+plt.plot(y_test_orig, y_predict_orig, '^', color = 'r')
+{% endhighlight %}
+
+
+{: .center}
+![GOT]({{site.baseurl}}/assets/img/pro_grad_pic_17.JPG)
+
+
+{% highlight ruby %}
+from sklearn.metrics import r2_score, mean_squared_error, mean_absolute_error
+from math import sqrt
+
+RMSE = float(format(np.sqrt(mean_squared_error(y_test_orig, y_predict_orig)),'.3f'))
+MSE = mean_squared_error(y_test_orig, y_predict_orig)
+MAE = mean_absolute_error(y_test_orig, y_predict_orig)
+r2 = r2_score(y_test_orig, y_predict_orig)
+adj_r2 = 1-(1-r2)*(n-1)/(n-k-1)
+
+print('RMSE =',RMSE, '\nMSE =',MSE, '\nMAE =',MAE, '\nR2 =', r2, '\nAdjusted R2 =', adj_r2) 
+
+{% endhighlight %}
+
+
+{% highlight ruby %}
+RMSE = 0.057 
+MSE = 0.0032666218189135966 
+MAE = 0.04155201155403992 
+R2 = 0.795970795592809 
+Adjusted R2 = 0.7746543115502666
+{% endhighlight %}
 
 
 
