@@ -786,4 +786,4 @@ Adjusted R2 = 0.7746543115502666
 [link to github!](https://github.com/zubairashfaque/REGRESSION/tree/master/Graduate_Admission_Prediction)
 
 
-`***` Taken from: https://www.usatoday.com/story/college/2017/04/26/heres-what-it-really-takes-to-get-into-the-ivy-league-these-days/37430681/ 
+`***` Taken from: https://thenewstack.io/mits-new-ai-tackles-loopholes-in-fake-news-detection-tools/
