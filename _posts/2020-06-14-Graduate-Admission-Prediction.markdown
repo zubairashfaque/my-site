@@ -788,7 +788,7 @@ Adjusted R2 = 0.7746543115502666
 
 #### 9. Please find below twitter sentiment Analysis jupyter notebook on github
 
-[link to github!](https://github.com/zubairashfaque/NLP/tree/main/Twitter%20Sentiment%20Analysis)
+[link to github!](https://github.com/zubairashfaque/REGRESSION/tree/master/Graduate_Admission_Prediction)
 
 
 `***` Taken from: https://www.usatoday.com/story/college/2017/04/26/heres-what-it-really-takes-to-get-into-the-ivy-league-these-days/37430681/ 
