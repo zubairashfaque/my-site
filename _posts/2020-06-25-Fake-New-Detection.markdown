@@ -469,9 +469,9 @@ print("Model Accuracy : ", accuracy)
 
 `Model Accuracy :  0.9968819599109131`
 
-#### 9. Please find below Graduate Admission Prediction jupyter notebook on github
+#### 9. Please find below Fake News Classification jupyter notebook on github
 
-[link to github!](https://github.com/zubairashfaque/REGRESSION/tree/master/Graduate_Admission_Prediction)
+[link to github!](https://github.com/zubairashfaque/NLP/tree/main/Fake%20News%20Classification)
 
 
 `***` Taken from: https://thenewstack.io/mits-new-ai-tackles-loopholes-in-fake-news-detection-tools/
