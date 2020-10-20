@@ -1,7 +1,7 @@
 ---
 layout: post
 title: Graduate Admission Prediction
-date: 2020-05-24 00:00:00 +0300
+date: 2020-06-14 00:00:00 +0300
 description: In this blog, I will discuss how to predict admission probability on the basis of your portfolio. (optional)
 img: pro_grad_pic_1.jpeg # Add image post (optional)
 fig-caption: # Add figcaption (optional)
