@@ -704,8 +704,34 @@ accuracy_RandomForest
 Result: `0.752819921074695`
 
 Now result is much better.
+#### UNDERSTAND VARIOUS REGRESSION KPIs
 
-#### Model Performance 
+{: .center}
+![GOT]({{site.baseurl}}/assets/img/pro_grad_pic_18.JPG)
+
+{: .center}
+![GOT]({{site.baseurl}}/assets/img/pro_grad_pic_19.JPG)
+
+{: .center}
+![GOT]({{site.baseurl}}/assets/img/pro_grad_pic_20.JPG)
+
+{: .center}
+![GOT]({{site.baseurl}}/assets/img/pro_grad_pic_21.JPG)
+
+{: .center}
+![GOT]({{site.baseurl}}/assets/img/pro_grad_pic_22.JPG)
+
+{: .center}
+![GOT]({{site.baseurl}}/assets/img/pro_grad_pic_23.JPG)
+
+{: .center}
+![GOT]({{site.baseurl}}/assets/img/pro_grad_pic_24.JPG)
+
+{: .center}
+![GOT]({{site.baseurl}}/assets/img/pro_grad_pic_25.JPG)
+
+
+#### MODEL PERFORMANCE
 
 After model fitting, we would like to assess the performance of the model by comparing model predictions to actual(TRUE) data
 
