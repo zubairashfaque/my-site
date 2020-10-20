@@ -710,9 +710,6 @@ Now result is much better.
 ![GOT]({{site.baseurl}}/assets/img/pro_grad_pic_18.JPG)
 
 {: .center}
-![GOT]({{site.baseurl}}/assets/img/pro_grad_pic_19.JPG)
-
-{: .center}
 ![GOT]({{site.baseurl}}/assets/img/pro_grad_pic_20.JPG)
 
 {: .center}
