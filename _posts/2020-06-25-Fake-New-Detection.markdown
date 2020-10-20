@@ -188,9 +188,14 @@ df['original'][0]
 RESULT:
 {% highlight ruby %}
 'As U.S. budget fight looms, Republicans flip their fiscal script WASHINGTON (Reuters) - The head of a conservative Republican faction in the U.S. Congress, who voted this month for a huge expansion of the national debt to pay for tax cuts, called himself a “fiscal conservative” on Sunday and urged budget restraint in 2018. In keeping with a sharp pivot under way among Republicans, U.S. Representative Mark Meadows, speaking on CBS’ “Face the Nation,” drew a hard line on federal spending, which lawmakers are bracing to do battle over in January. When they return from the holidays on Wednesday, lawmakers will begin trying to pass a federal budget in a fight likely to be linked to other issues, such as immigration policy, even as the November congressional election campaigns approach in which Republicans will seek to keep control of Congress. President Donald Trump and his Republicans want a big budget increase in military spending, while Democrats also want proportional increases for non-defense “discretionary” spending on programs that support education, scientific research, infrastructure, public health and environmental protection. “The (Trump) administration has already been willing to say: ‘We’re going to increase non-defense discretionary spending ... by about 7 percent,’” '
-print(df['clean'][0])
+{% endhighlight %}
+
 
 Show cleaned up news after removing stopwords
+
+{% highlight ruby %}
+print(df['clean'][0])
+{% endhighlight %}
 
 {% highlight ruby %}
 ['budget', 'fight', 'looms', 'republicans', 'flip', 'fiscal', 'script', 'washington', 'reuters', 'head', 'conservative', 'republican', 'faction', 'congress', 'voted', 'month', 'huge', 'expansion', 'national', 'debt', 'cuts', 'called', 'fiscal', 'conservative', 'sunday', 'urged', 'budget', 'restraint', 'keeping', 'sharp', 'pivot', 'republicans', 'representative', 'mark', 'meadows', 'speaking', 'face', 'nation', 'drew', 'hard', 'line', 'federal', 'spending', 'lawmakers', 'bracing', 'battle', 'january', 'return', 'holidays', 'wednesday', 'lawmakers', 'begin', 'trying', 'pass', 'federal', 'budget', 'fight', 'likely', 'linked', 'issues', 'immigration', 'policy', 'november', 'congressional', 'election', 'campaigns', 'approach', 'republicans', 'seek', 'control', 'congress', 'president', 'donald', 'trump', 'republicans', 'want', 'budget', 'increase', 'military', 'spending', 'democrats', 'want', 'proportional', 'increases', 'defense', 'discretionary', 'spending', 'programs', 'support', 'education', 'scientific', 'research', 'infrastructure', 'public', 'health', 'environmental', 'protection', 'trump', 'administration', 'willing', 'going', 'increase', 'defense', 'discretionary', 'spending', 'percent', 'meadows', 'chairman', 'small', 'influential', 'house', 'freedom', 'caucus', 'said', 'program', 'democrats', 'saying', 'need', 'government', 'raise', 'percent', 'fiscal', 'conservative', 'rationale', 'eventually', 'people', 'money', 'said', 'meadows', 'republicans', 'voted', 'late', 'december', 'party', 'debt', 'financed', 'overhaul', 'expected', 'balloon', 'federal', 'budget', 'deficit', 'trillion', 'years']
@@ -247,12 +252,75 @@ df['clean_joined'][0]
 
 
 {% highlight ruby %}
-'budget fight looms republicans flip fiscal script washington reuters head conservative republican faction congress voted month huge expansion national debt cuts called fiscal conservative sunday urged budget restraint keeping sharp pivot republicans representative mark meadows speaking face nation drew hard line federal spending lawmakers bracing battle january return holidays wednesday lawmakers begin trying pass federal budget fight likely linked issues immigration policy november congressional election campaigns approach republicans seek control congress president donald trump republicans want budget increase military spending democrats want proportional increases defense discretionary spending programs support education scientific research infrastructure public health environmental protection trump administration willing going increase defense discretionary spending percent meadows chairman small influential house freedom caucus said program democrats saying need government raise percent fiscal conservative rationale eventually people money said meadows republicans voted late december party debt financed overhaul expected balloon federal budget deficit trillion years trillion national debt interesting hear mark talk fiscal responsibility democratic representative joseph crowley said crowley said republican require united states borrow trillion paid future generations finance cuts corporations rich fiscally responsible bills seen passed history house representatives think going paying years come crowley said republicans insist package biggest overhaul years boost economy growth house speaker paul ryan supported recently went meadows making clear radio interview welfare entitlement reform party calls republican priority republican parlance entitlement programs mean food stamps housing assistance medicare medicaid health insurance elderly poor disabled programs created washington assist needy democrats seized ryan early december remarks saying showed republicans overhaul seeking spending cuts social programs goals house republicans seat senate votes democrats needed approve budget prevent government shutdown democrats leverage senate republicans narrowly control defend discretionary defense programs social spending tackling issue dreamers people brought illegally country children trump september march expiration date deferred action childhood arrivals daca program protects young immigrants deportation provides work permits president said recent twitter messages wants funding proposed mexican border wall immigration changes exchange agreeing help dreamers representative debbie dingell told favor linking issue policy objectives wall funding need daca clean said wednesday trump aides meet congressional leaders discuss issues followed weekend strategy sessions trump republican leaders white house said trump scheduled meet sunday florida republican governor rick scott wants emergency house passed billion package hurricanes florida texas puerto rico wildfires california package exceeded billion requested trump administration senate voted'
+'budget fight looms republicans flip fiscal script washington reuters head conservative republican faction congress voted month huge expansion national debt cuts called fiscal conservative sunday urged budget restraint keeping sharp pivot republicans representative mark meadows speaking face nation drew hard line federal spending lawmakers bracing battle january return holidays wednesday lawmakers begin trying pass federal budget fight likely linked issues immigration policy november congressional election campaigns approach republicans seek control congress president donald trump republicans want budget increase military spending democrats want proportional increases defense discretionary spending programs support education scientific research infrastructure public health environmental protection trump administration willing going increase defense discretionary spending percent meadows chairman small influential house freedom caucus said program democrats saying need government raise percent fiscal conservative rationale eventually people money said meadows republicans voted late december party debt financed overhaul expected balloon federal budget deficit trillion years trillion national debt interesting hear mark talk fiscal responsibility democratic representative joseph crowley said crowley said republican require united states borrow trillion paid future generations finance cuts corporations rich fiscally responsible bills seen passed history house representatives think going paying years come crowley said republicans insist package biggest overhaul years boost economy growth house speaker paul ryan supported recently went meadows making clear'
 {% endhighlight %}
 
-Show cleaned up news after removing stopwords
+### 4. VISUALIZE CLEANED UP DATASET
 
-OUTPUT.
+Plot the number of samples in 'subject'
+
+{% highlight ruby %}
+plt.figure(figsize = (8, 8))
+sns.countplot(y = "subject", data = df)
+{% endhighlight %}
+
+RESULT:
+{: .center}
+![GOT]({{site.baseurl}}/assets/img/fake_11.JPG)
+
+
+Plot the count plot for fake vs. true news
+
+{% highlight ruby %}
+plt.figure(figsize = (8, 8))
+sns.countplot(y = "subject", data = df)
+{% endhighlight %}
+
+RESULT:
+{: .center}
+![GOT]({{site.baseurl}}/assets/img/fake_12.JPG)
+
+
+Plot the word cloud for text that is Real
+
+{% highlight ruby %}
+plt.figure(figsize = (20,20)) 
+wc = WordCloud(max_words = 2000 , width = 1600 , height = 800 , stopwords = stop_words).generate(" ".join(df[df.isfake == 1].clean_joined))
+plt.imshow(wc, interpolation = 'bilinear')
+{% endhighlight %}
+
+RESULT:
+{: .center}
+![GOT]({{site.baseurl}}/assets/img/fake_13.JPG)
+
+Plot the word cloud for text that is Fake
+
+{% highlight ruby %}
+plt.figure(figsize = (20,20)) 
+wc = WordCloud(max_words = 2000 , width = 1600 , height = 800 , stopwords = stop_words).generate(" ".join(df[df.isfake == 0].clean_joined))
+plt.imshow(wc, interpolation = 'bilinear')
+{% endhighlight %}
+
+RESULT:
+{: .center}
+![GOT]({{site.baseurl}}/assets/img/fake_14.JPG)
+
+Length of maximum document will be needed to create word embeddings 
+
+{% highlight ruby %}
+maxlen = -1
+for doc in df.clean_joined:
+    tokens = nltk.word_tokenize(doc)
+    if(maxlen<len(tokens)):
+        maxlen = len(tokens)
+print("The maximum number of words in any document is =", maxlen)
+{% endhighlight %}
+
+{% highlight ruby %}
+The maximum number of words in any document is = 4405
+{% endhighlight %}
+
+
 
 {% highlight ruby %}
 
