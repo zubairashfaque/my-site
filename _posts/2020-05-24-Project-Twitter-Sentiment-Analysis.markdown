@@ -584,11 +584,14 @@ Features in machine learning is basically numerical attributes from which anyone
 Lets suppose we have folowing four strings
  
 STRING1: This is the first paper.
+
 STRING2: This paper is the second paper.
+
 STRING3: And this is the thirt one.
+
 STRING4: Is this the first paper?
 
-we wanted to convert them in bunch of numbers. We do pick every single word from t he s entences and place them in a table as column (each word each column). And as rows we put training samples. At the end we add zeros and ones corresponding to locations of every single word if it exist every single instinct and frequency in the sentence.
+we wanted to convert them in bunch of numbers. We do pick every single word from the sentences and place them in a table as column (each word each column). And as rows we put training samples. At the end we add zeros and ones corresponding to locations of every single word if it exist every single instinct and frequency in the sentence.
 
 {: .center}
 ![GOT]({{site.baseurl}}/assets/img/sentiment_9.JPG)
